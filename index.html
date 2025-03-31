@@ -1,122 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joseph Adeleke | Portfolio</title>
-  <!-- Google Fonts -->
+  <link rel="stylesheet" href="styles.css"> <!-- External CSS for better performance -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Chart.js for skills chart -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    /* Reset and basic styling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      background-color: #0f172a;
-      color: #e2e8f0;
-    }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-
-    /* Navbar */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      z-index: 1000;
-      padding: 10px 0;
-      backdrop-filter: blur(5px);
-    }
-    nav {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      justify-content: center;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-    nav li a {
-      font-size: 1.1em;
-      font-weight: 500;
-    }
-
-    /* Section common style */
-    section {
-      padding: 100px 20px 60px;
-      max-width: 1100px;
-      margin: 0 auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h1, h2, h3 {
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: 2.8em;
-      color: #38bdf8;
-    }
-    h2 {
-      font-size: 2em;
-      color: #fbbf24;
-      border-bottom: 2px solid #334155;
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-
-    /* Hero Section */
-    #hero {
-      text-align: center;
-      padding-top: 140px;
-    }
-    #hero img.avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid #38bdf8;
-      margin-bottom: 20px;
-      object-fit: cover;
-    }
-    #hero p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      background: #1e293b;
-      margin-top: 40px;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      nav ul { flex-direction: column; gap: 15px; }
-      #hero h1 { font-size: 2.2em; }
-    }
-  </style>
 </head>
 <body>
 
@@ -135,30 +25,73 @@
 
   <!-- Hero Section -->
   <section id="hero">
-    <img class="avatar" src="https://media.licdn.com/dms/image/v2/D4D03AQG4rldzNX-_RQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1676548625238?e=1748476800&v=beta&t=Oa3-Dw4yAkhOcYTMtpcVqCajB15xVHWI7S1P7vfavnM" alt="Joseph Adeleke Avatar">
+    <img class="avatar" src="profile.jpg" alt="Joseph Adeleke Avatar" loading="lazy">
     <h1>Joseph Adeleke</h1>
-    <p>DevOps Engineer | Machine Learning Enthusiast | ASR & NLP Researcher</p>
+    <p>DevOps Engineer | MSc Computer Science | ML, ASR & NLP Enthusiast</p>
+    <a href="#contact" class="btn">Get in Touch</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a Master's student specializing in Machine Learning, Automatic Speech Recognition, and Natural Language Processing. 
+      I enjoy solving complex problems and building innovative solutions. Let's connect on 
+      <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank">LinkedIn</a>.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="language-identification.jpg" alt="Language Identification Project">
+        <div class="project-info">
+          <h3>Ghanaian Language Identification</h3>
+          <p>Wav2Vec-powered model for classifying Ghanaian languages from audio samples.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="cnn-akan.jpg" alt="CNN Akan Twi Project">
+        <div class="project-info">
+          <h3>CNN Image Classifier in Akan Twi</h3>
+          <p>Image classification using CNN, labeling images in Akan Twi.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="asr-project.jpg" alt="ASR Project">
+        <div class="project-info">
+          <h3>ASR for Speech-Impaired Users</h3>
+          <p>AI-driven ASR-TTS pipeline for individuals with speech impairments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="chart-container">
+      <canvas id="skillsChart"></canvas>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank">linkedin.com/in/josephadeleke</a></p>
+    <p>GitHub: <a href="https://github.com/jadeleke" target="_blank">github.com/josephadeleke</a></p>
   </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Joseph Adeleke. All Rights Reserved.
+    <p>&copy; 2025 Joseph Adeleke. All Rights Reserved.</p>
   </footer>
 
-  <script>
-    // Smooth section animations
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
+  <!-- JavaScript -->
+  <script src="script.js"></script> <!-- External JS for better performance -->
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  </script>
 </body>
 </html>
