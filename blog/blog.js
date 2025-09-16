@@ -86,9 +86,30 @@ async function renderPost() {
       const r = await fetch(mdPath, { cache: 'no-cache' });
       if (!r.ok) throw new Error('Failed to load markdown');
       const md = await r.text();
+      // Remove leading H1 from Markdown to avoid duplicate title on page
+      function stripLeadingH1(text) {
+        const lines = text.split(/\r?\n/);
+        let i = 0;
+        while (i < lines.length && lines[i].trim() === '') i++;
+        if (i < lines.length) {
+          const l = lines[i].trim();
+          if (l.startsWith('# ')) {
+            lines.splice(i, 1);
+            while (i < lines.length && lines[i].trim() === '') lines.splice(i, 1);
+            return lines.join('\n');
+          }
+          if (i + 1 < lines.length && /^=+$/.test(lines[i + 1].trim())) {
+            lines.splice(i, 2);
+            while (i < lines.length && lines[i].trim() === '') lines.splice(i, 1);
+            return lines.join('\n');
+          }
+        }
+        return text;
+      }
+      const mdNoH1 = stripLeadingH1(md);
       // Try to extract first image from Markdown for OG image
       let ogImg = null;
-      const m = md.match(/!\[[^\]]*\]\(([^)]+)\)/);
+      const m = mdNoH1.match(/!\[[^\]]*\]\(([^)]+)\)/);
       if (m && m[1]) {
         ogImg = m[1];
         if (!/^https?:\/\//i.test(ogImg)) {
@@ -101,9 +122,9 @@ async function renderPost() {
         ogImgResolved = ogImg;
       }
       if (window.marked) {
-        contentEl.innerHTML = marked.parse(md);
+        contentEl.innerHTML = marked.parse(mdNoH1);
       } else {
-        contentEl.textContent = md;
+        contentEl.textContent = mdNoH1;
       }
     } else if (post.content) {
       contentEl.innerHTML = post.content;
