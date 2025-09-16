@@ -20,6 +20,8 @@
     text-decoration: none;
   }
   a:hover { text-decoration: underline; }
+  .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+  .skip-link:focus { position: fixed; left: 16px; top: 16px; width: auto; height: auto; padding: 8px 12px; background:#111827; border:1px solid #334155; border-radius:8px; z-index: 2000; }
   
   /* Navbar */
   header {
@@ -126,6 +128,17 @@
     margin: auto;
     height: 360px;
   }
+
+  /* Capabilities */
+  .cap-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; text-align:left; }
+  .cap-card { background:#1e293b; border-radius: 10px; padding: 16px; }
+  .cap-card h3 { color:#e2e8f0; margin-bottom: 10px; }
+  .cap-card ul { list-style: disc; margin-left: 18px; color:#cbd5e1; }
+
+  /* Education */
+  .edu-card { background:#1e293b; border-radius: 10px; padding: 16px; display:inline-block; text-align:left; }
+  .edu-card h3 { color:#e2e8f0; }
+  .edu-card p { color:#cbd5e1; }
 
   /* Blog */
   .blog-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; text-align: left; }

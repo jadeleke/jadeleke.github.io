@@ -31,15 +31,35 @@ jobs:
           GH_USERNAME: jadeleke
         run: node scripts/cache_repos.js
 
+      - name: Build RSS feed
+        run: node scripts/build_rss.js
+
+      - name: Build sitemap
+        run: node scripts/build_sitemap.js
+
       - name: Commit cache if changed
         run: |
+          CHANGED=0
           if [[ -n "$(git status --porcelain data/repos-cache.json)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            CHANGED=1
             git add data/repos-cache.json
-            git commit -m "chore: update repos cache [skip ci]"
+          fi
+          if [[ -n "$(git status --porcelain feed.xml)" ]]; then
+            CHANGED=1
+            git add feed.xml
+          fi
+          if [[ -n "$(git status --porcelain sitemap.xml)" ]]; then
+            CHANGED=1
+            git add sitemap.xml
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ $CHANGED -eq 1 ]]; then
+            git commit -m "chore: update site artifacts [skip ci]"
             git push
           else
             echo "No changes to commit."
           fi
-
+          else
+            echo "No changes to commit."
+          fi

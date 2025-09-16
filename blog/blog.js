@@ -66,11 +66,40 @@ async function renderPost() {
     document.title = `${post.title} | Joseph Adeleke`;
     titleEl.textContent = post.title;
     metaEl.textContent = new Date(post.date).toLocaleDateString();
+
+    // Update SEO tags
+    const desc = post.excerpt || '';
+    const canonicalUrl = `https://jadeleke.github.io/blog/post.html?slug=${encodeURIComponent(post.slug)}`;
+    const set = (sel, attr, val) => { const el = document.getElementById(sel); if (el) el.setAttribute(attr, val); };
+    set('meta-description', 'content', desc);
+    set('og-title', 'content', `${post.title} | Joseph Adeleke`);
+    set('og-description', 'content', desc);
+    set('og-url', 'content', canonicalUrl);
+    set('twitter-title', 'content', `${post.title} | Joseph Adeleke`);
+    set('twitter-description', 'content', desc);
+    const canon = document.getElementById('canonical'); if (canon) canon.setAttribute('href', canonicalUrl);
+
+    // Load content (Markdown preferred)
+    let ogImgResolved = null;
     if (post.md || post.mdPath) {
       const mdPath = post.mdPath || post.md;
       const r = await fetch(mdPath, { cache: 'no-cache' });
       if (!r.ok) throw new Error('Failed to load markdown');
       const md = await r.text();
+      // Try to extract first image from Markdown for OG image
+      let ogImg = null;
+      const m = md.match(/!\[[^\]]*\]\(([^)]+)\)/);
+      if (m && m[1]) {
+        ogImg = m[1];
+        if (!/^https?:\/\//i.test(ogImg)) {
+          ogImg = mdPath.replace(/\/[^/]*$/, '/') + ogImg.replace(/^\.\//, '');
+        }
+      }
+      if (ogImg) {
+        set('og-image', 'content', ogImg);
+        set('twitter-image', 'content', ogImg);
+        ogImgResolved = ogImg;
+      }
       if (window.marked) {
         contentEl.innerHTML = marked.parse(md);
       } else {
@@ -81,6 +110,28 @@ async function renderPost() {
     } else {
       contentEl.textContent = 'No content available.';
     }
+
+    // Inject JSON-LD for BlogPosting
+    try {
+      const ld = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: desc,
+        datePublished: post.date,
+        author: {
+          '@type': 'Person',
+          name: 'Joseph Adeleke',
+          url: 'https://jadeleke.github.io/'
+        },
+        image: ogImgResolved || 'https://jadeleke.github.io/assets/project-default.svg',
+        url: canonicalUrl
+      };
+      const s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.textContent = JSON.stringify(ld);
+      document.head.appendChild(s);
+    } catch {}
   } catch (e) {
     titleEl.textContent = 'Error loading post';
     contentEl.textContent = 'Please try again later.';

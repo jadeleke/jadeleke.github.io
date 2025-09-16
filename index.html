@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Joseph Adeleke — DevOps Engineer and MSc Computer Science student focused on ML, ASR, and NLP.">
+  <meta name="description" content="Portfolio of Joseph Adeleke — DevOps & MLOps Engineer, Oracle Database Administrator, and Linux System Administrator.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="robots" content="index,follow">
   <meta name="color-scheme" content="dark light">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Joseph Adeleke">
   <meta property="og:title" content="Joseph Adeleke | DevOps • ML • NLP">
-  <meta property="og:description" content="DevOps Engineer and MSc student exploring ML, ASR, and NLP.">
+  <meta property="og:description" content="DevOps & MLOps Engineer, Oracle DBA, and Linux SysAdmin.">
   <meta property="og:url" content="https://jadeleke.github.io/">
   <meta property="og:image" content="https://jadeleke.github.io/assets/avatar.png">
   <!-- Twitter Card -->
@@ -23,16 +23,37 @@
   <meta name="twitter:description" content="DevOps Engineer and MSc student exploring ML, ASR, and NLP.">
   <!-- Plausible Analytics -->
   <script defer data-domain="jadeleke.github.io" src="https://plausible.io/js/script.js"></script>
+  <!-- Schema.org: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Joseph Adeleke",
+    "url": "https://jadeleke.github.io/",
+    "sameAs": [
+      "https://github.com/jadeleke",
+      "https://www.linkedin.com/in/joseph-adeleke-27b433149/"
+    ],
+    "jobTitle": "DevOps & MLOps Engineer",
+    "alumniOf": "MSc Computer Science",
+    "image": "https://jadeleke.github.io/assets/avatar.png"
+  }
+  </script>
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Icons & Manifest -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Blog RSS" href="/feed.xml">
+  <link rel="manifest" href="manifest.webmanifest">
   <!-- Chart.js (deferred for performance) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Navbar -->
   <header>
@@ -40,6 +61,8 @@
       <ul>
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#featured">Featured</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -50,13 +73,62 @@
   </header>
 
   <!-- Main Content -->
-  <main>
+  <main id="main">
   <!-- Hero Section -->
   <section id="hero">
     <img class="avatar" src="assets/avatar.png" alt="Joseph Adeleke Avatar" loading="lazy">
     <h1>Joseph Adeleke</h1>
-    <p class="tagline">MLOps Engineer • ML Systems • DevOps</p>
+    <p class="tagline">DevOps/MLOps • Oracle DBA • Linux SysAdmin</p>
     <a href="#contact" class="btn">Get in Touch</a>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section id="experience">
+    <h2>Capabilities</h2>
+    <p class="section-subtitle">Areas I deliver value across the ML and platform lifecycle.</p>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <h3>MLOps</h3>
+        <ul>
+          <li>Experiment tracking & model registry (MLflow)</li>
+          <li>Training pipelines & orchestration (Airflow)</li>
+          <li>Model serving (REST/gRPC), rollouts, monitoring</li>
+        </ul>
+      </div>
+      <div class="cap-card">
+        <h3>DevOps</h3>
+        <ul>
+          <li>CI/CD pipelines, IaC (Terraform)</li>
+          <li>Containers (Docker) & Kubernetes</li>
+          <li>Observability & incident response</li>
+        </ul>
+      </div>
+      <div class="cap-card">
+        <h3>Oracle DBA</h3>
+        <ul>
+          <li>Installations, upgrades, patching</li>
+          <li>Performance tuning & backups</li>
+          <li>High availability & security</li>
+        </ul>
+      </div>
+      <div class="cap-card">
+        <h3>Linux SysAdmin</h3>
+        <ul>
+          <li>System hardening & automation</li>
+          <li>Networking & storage</li>
+          <li>Troubleshooting & scripting</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-card">
+      <h3>MSc Computer Science</h3>
+      <p>Focus: Machine Learning, MLOps, and Systems Engineering.</p>
+    </div>
   </section>
 
   <!-- Featured Projects -->
@@ -78,7 +150,7 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm an MLOps Engineer and MSc Computer Science student focused on building reliable ML systems — from data and experiments to automated training, model registry, CI/CD, containerization, and scalable serving on cloud/Kubernetes.
+      I'm a DevOps Engineer, Oracle Database Administrator (DBA), MLOps Engineer, and Linux System Administrator. I focus on building reliable ML systems and robust platform infrastructure — from data and experiments to automated training, model registry, CI/CD, containerization, and scalable serving on cloud/Kubernetes.
       I enjoy solving complex problems and shipping practical, impactful solutions. Let's connect on
       <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
     </p>
@@ -133,7 +205,7 @@
   </main>
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Joseph Adeleke. All Rights Reserved.</p>
+    <p>&copy; 2025 Joseph Adeleke. All Rights Reserved. · <a href="/feed.xml">RSS</a></p>
   </footer>
 
   <!-- JavaScript -->

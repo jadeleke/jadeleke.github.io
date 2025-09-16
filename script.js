@@ -10,11 +10,11 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Python', 'Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Terraform', 'MLflow/Airflow'],
+      labels: ['Python', 'Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Terraform', 'MLflow/Airflow', 'Linux', 'Oracle DBA'],
       datasets: [{
         label: 'Proficiency (%)',
-        data: [90, 85, 70, 80, 75, 65, 70],
-        backgroundColor: ['#38bdf8', '#0ea5e9', '#3b82f6', '#22c55e', '#10b981', '#f59e0b', '#a78bfa'],
+        data: [90, 85, 70, 80, 75, 65, 70, 85, 70],
+        backgroundColor: ['#38bdf8', '#0ea5e9', '#3b82f6', '#22c55e', '#10b981', '#f59e0b', '#a78bfa', '#94a3b8', '#f87171'],
         borderWidth: 0
       }]
     },
@@ -138,7 +138,22 @@
       // Fallback to top 3 by stars
       const gh = await fetch('https://api.github.com/users/jadeleke/repos?per_page=100&sort=updated', { headers: { 'Accept': 'application/vnd.github+json' } });
       const repos = gh.ok ? (await gh.json()).filter(r => !r.fork && !r.archived).sort((a,b)=>b.stargazers_count-a.stargazers_count).slice(0,3) : [];
-      featured = repos.map(r => ({ title: r.name, description: r.description || '', image: 'assets/project-default.svg', repo: r.html_url, demo: r.homepage || '', tags: [r.language || 'repo'] }));
+      featured = repos.map(r => ({ title: r.name, description: r.description || '', image: 'assets/project-default.svg', repo: r.html_url, demo: r.homepage || '', tags: [r.language || 'repo'], pin: false }));
+    }
+    // Sort pinned first, then by order, then by title
+    featured.sort((a, b) => {
+      const pa = a.pin ? 1 : 0; const pb = b.pin ? 1 : 0;
+      return (pb - pa) || ((a.order ?? 9999) - (b.order ?? 9999)) || (a.title || '').localeCompare(b.title || '');
+    });
+
+    function preloadImage(url) {
+      try {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = url;
+        document.head.appendChild(link);
+      } catch {}
     }
     async function extractRepo(owner, repo) {
       // Try README image first
@@ -184,7 +199,9 @@
             src = 'assets/project-default.svg';
           }
         }
-        img.src = src || 'assets/project-default.svg';
+        src = src || 'assets/project-default.svg';
+        preloadImage(src);
+        img.src = src;
         img.alt = `${item.title} cover`;
         img.className = 'featured-thumb';
         img.loading = 'lazy';

@@ -5,7 +5,9 @@
     "image": "auto",
     "repo": "https://github.com/jadeleke/GhanaVoice",
     "demo": "",
-    "tags": ["ml", "asr", "cnn", "python"]
+    "tags": ["ml", "asr", "cnn", "python"],
+    "pin": true,
+    "order": 1
   },
   {
     "title": "react-docksmith",
@@ -13,7 +15,9 @@
     "image": "auto",
     "repo": "https://github.com/jadeleke/react-docksmith",
     "demo": "",
-    "tags": ["devops", "docker", "nginx", "react"]
+    "tags": ["devops", "docker", "nginx", "react"],
+    "pin": true,
+    "order": 2
   },
   {
     "title": "advanced-iris-visualization",
@@ -21,6 +25,7 @@
     "image": "auto",
     "repo": "https://github.com/jadeleke/advanced-iris-visualization",
     "demo": "",
-    "tags": ["ml", "visualization", "python"]
+    "tags": ["ml", "visualization", "python"],
+    "pin": false
   }
 ]

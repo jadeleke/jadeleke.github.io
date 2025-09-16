@@ -6,5 +6,13 @@
     "tags": ["mlops", "devops", "intro"],
     "excerpt": "Why I care about reliable ML systems and what I’ll write about.",
     "mdPath": "posts/hello-mlops.md"
+  },
+  {
+    "slug": "devops-mlops-oracle-linux",
+    "title": "DevOps, MLOps, Oracle DBA, and Linux Sysadmin — How They Fit Together",
+    "date": "2025-01-05",
+    "tags": ["devops", "mlops", "oracle", "linux"],
+    "excerpt": "How DevOps, MLOps, Oracle DBA, and Linux Sysadmin skills align to ship reliable platforms and models.",
+    "mdPath": "posts/devops-mlops-oracle-linux.md"
   }
 ]
