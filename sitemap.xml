@@ -6,4 +6,10 @@
   <url>
     <loc>https://jadeleke.github.io/blog/</loc>
   </url>
+  <url>
+    <loc>https://jadeleke.github.io/blog/post.html?slug=hello-mlops</loc>
+  </url>
+  <url>
+    <loc>https://jadeleke.github.io/blog/post.html?slug=devops-mlops-oracle-linux</loc>
+  </url>
 </urlset>
