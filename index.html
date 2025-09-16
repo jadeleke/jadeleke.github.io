@@ -3,72 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joseph Adeleke | Portfolio</title>
-  <link rel="stylesheet" href="styles.css"> <!-- External CSS for better performance -->
+  <meta name="description" content="Portfolio of Joseph Adeleke — DevOps Engineer and MSc Computer Science student focused on ML, ASR, and NLP.">
+  <meta name="author" content="Joseph Adeleke">
+  <meta name="robots" content="index,follow">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0f172a">
+  <title>Joseph Adeleke | DevOps • ML • NLP</title>
+  <link rel="canonical" href="https://jadeleke.github.io/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Joseph Adeleke">
+  <meta property="og:title" content="Joseph Adeleke | DevOps • ML • NLP">
+  <meta property="og:description" content="DevOps Engineer and MSc student exploring ML, ASR, and NLP.">
+  <meta property="og:url" content="https://jadeleke.github.io/">
+  <meta property="og:image" content="https://jadeleke.github.io/assets/avatar.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Joseph Adeleke | DevOps • ML • NLP">
+  <meta name="twitter:description" content="DevOps Engineer and MSc student exploring ML, ASR, and NLP.">
+  <!-- Plausible Analytics -->
+  <script defer data-domain="jadeleke.github.io" src="https://plausible.io/js/script.js"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Chart.js (deferred for performance) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 </head>
 <body>
 
   <!-- Navbar -->
   <header>
-    <nav>
+    <nav aria-label="Primary">
       <ul>
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#featured">Featured</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="blog/">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main Content -->
+  <main>
   <!-- Hero Section -->
   <section id="hero">
-    <img class="avatar" src="https://media.licdn.com/dms/image/v2/D4D03AQG4rldzNX-_RQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1676548625238?e=1748476800&v=beta&t=Oa3-Dw4yAkhOcYTMtpcVqCajB15xVHWI7S1P7vfavnM" alt="Joseph Adeleke Avatar" loading="lazy">
+    <img class="avatar" src="assets/avatar.png" alt="Joseph Adeleke Avatar" loading="lazy">
     <h1>Joseph Adeleke</h1>
-    <p>DevOps Engineer | MSc Computer Science | ML, ASR & NLP Enthusiast</p>
+    <p class="tagline">MLOps Engineer • ML Systems • DevOps</p>
     <a href="#contact" class="btn">Get in Touch</a>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="featured">
+    <h2>Featured Projects</h2>
+    <p class="section-subtitle">A curated selection of my MLOps and ML work.</p>
+    <div id="featured-grid" class="featured-grid" aria-live="polite">
+      <article class="featured-card skeleton">
+        <div class="featured-thumb skeleton-thumb"></div>
+        <div class="project-info">
+          <h3>Loading featured…</h3>
+          <p>Fetching highlighted repositories.</p>
+        </div>
+      </article>
+    </div>
   </section>
 
   <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I’m a Master's student specializing in Machine Learning, Automatic Speech Recognition, and Natural Language Processing. 
-      I enjoy solving complex problems and building innovative solutions. Let's connect on 
-      <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank">LinkedIn</a>.
+      I'm an MLOps Engineer and MSc Computer Science student focused on building reliable ML systems — from data and experiments to automated training, model registry, CI/CD, containerization, and scalable serving on cloud/Kubernetes.
+      I enjoy solving complex problems and shipping practical, impactful solutions. Let's connect on
+      <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
     </p>
   </section>
 
   <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="https://github.githubassets.com/assets/quickdraw-default--medium-dark-477cc984c57a.png" alt="Ghana Voice">
+    <p class="section-subtitle">Auto-fetched from my GitHub profile.</p>
+    <div id="projects-grid" class="project-grid" aria-live="polite">
+      <div class="project-card skeleton">
+        <div class="skeleton-thumb"></div>
         <div class="project-info">
-          <h3>GhanaVoice</h3>
-          <p>GhanaVoice is a speech classification system that uses Convolutional Neural Networks (CNNs) to identify spoken Ghanaian languages. The system is designed to classify speech samples into one of five languages: Akan, Ewe, Dagbani, Dagaare, and Ikposo.</p>
-        </div>
-      </div>
-      <div class="project-card">
-        <img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-9e10-51f7-b30c-d8dddfe6ff53/raw?se=2025-04-06T09%3A56%3A51Z&sp=r&sv=2024-08-04&sr=b&scid=6f66f097-1480-5fa8-8f4d-e6a9bc06518c&skoid=dfdaf859-26f6-4fed-affc-1befb5ac1ac2&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-06T07%3A08%3A28Z&ske=2025-04-07T07%3A08%3A28Z&sks=b&skv=2024-08-04&sig=I88/%2B8QURsf1Hd8TL6KFxwcAhYr0GLeeCftCHGkwNEc%3D" alt="Containerize React App">
-        <div class="project-info">
-          <h3>Containerize React App</h3>
-          <p>react-docksmith is a modern React portfolio application showcasing a complete DevOps workflow—developing with React, containerizing with Docker, and deploying via Nginx. It features a multi-stage Docker build, local development setup, and push-to-Docker-Hub support for seamless deployment.
-          </p>
-        </div>
-      </div>
-      <div class="project-card">
-        <img src="https://sdmntpreastus2.oaiusercontent.com/files/00000000-3d30-51f6-9cd6-b6aef72990af/raw?se=2025-04-06T09%3A43%3A24Z&sp=r&sv=2024-08-04&sr=b&scid=a2d619bc-cb43-5e19-a4cf-32dff438cbe0&skoid=dfdaf859-26f6-4fed-affc-1befb5ac1ac2&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-06T07%3A06%3A32Z&ske=2025-04-07T07%3A06%3A32Z&sks=b&skv=2024-08-04&sig=b8OXmXG%2BJiY7JUia31ZsXvGnbspO6/jdazhk8/Op%2BGw%3D" alt="Advanced Iris Visualization">
-        <div class="project-info">
-          <h3>advanced-iris-visualization</h3>
-          <p>This project employs advanced visualization techniques on the Iris dataset to reveal distribution patterns and uncertainties using violin, box, bar, and KDE plots. It transforms complex statistical data into clear, actionable insights for both experts and general audiences.
-          </p>
+          <h3>Loading projects…</h3>
+          <p>Please wait while I fetch repositories.</p>
         </div>
       </div>
     </div>
+    <p class="section-cta"><a class="btn" href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">View GitHub</a></p>
   </section>
 
   <!-- Skills Section -->
@@ -83,19 +112,33 @@
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank">linkedin.com/in/josephadeleke</a></p>
-    <p>GitHub: <a href="https://github.com/jadeleke" target="_blank">github.com/josephadeleke</a></p>
-    <p>Whatsapp: <a href="https:wa.com/233592868660">+233592868660</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">linkedin.com/in/joseph-adeleke-27b433149</a></p>
+    <p>GitHub: <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">github.com/jadeleke</a></p>
+    <p>WhatsApp: <a href="https://wa.me/233592868660" target="_blank" rel="noopener noreferrer">+233 59 286 8660</a></p>
 
   </section>
 
+  <!-- Blog Section -->
+  <section id="blog">
+    <h2>Latest Blog Posts</h2>
+    <div id="blog-list" class="blog-list" aria-live="polite">
+      <article class="blog-card skeleton">
+        <h3>Loading posts…</h3>
+        <p>Fetching latest articles.</p>
+      </article>
+    </div>
+    <p class="section-cta"><a class="btn" href="blog/">Visit Blog</a></p>
+  </section>
+
+  </main>
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Joseph Adeleke. All Rights Reserved.</p>
   </footer>
 
   <!-- JavaScript -->
-  <script src="script.js"></script> <!-- External JS for better performance -->
+  <noscript>This site works best with JavaScript enabled.</noscript>
+  <script src="script.js" defer></script>
 
 </body>
 </html>

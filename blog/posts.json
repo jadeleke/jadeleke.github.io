@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "hello-mlops",
+    "title": "Hello, MLOps!",
+    "date": "2025-01-01",
+    "tags": ["mlops", "devops", "intro"],
+    "excerpt": "Why I care about reliable ML systems and what I’ll write about.",
+    "mdPath": "posts/hello-mlops.md"
+  }
+]

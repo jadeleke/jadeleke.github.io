@@ -1,0 +1,45 @@
+name: Site CI
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate blog posts
+        run: node scripts/validate_posts.js
+
+      - name: Cache GitHub repos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USERNAME: jadeleke
+        run: node scripts/cache_repos.js
+
+      - name: Commit cache if changed
+        run: |
+          if [[ -n "$(git status --porcelain data/repos-cache.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/repos-cache.json
+            git commit -m "chore: update repos cache [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
