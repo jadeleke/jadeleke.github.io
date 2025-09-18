@@ -121,23 +121,23 @@
     "archived": false
   },
   {
+    "name": "jadeleke.github.io",
+    "html_url": "https://github.com/jadeleke/jadeleke.github.io",
+    "description": "Personal website of Joseph Adeleke",
+    "language": "JavaScript",
+    "stargazers_count": 0,
+    "updated_at": "2025-09-17T03:28:31Z",
+    "homepage": null,
+    "fork": false,
+    "archived": false
+  },
+  {
     "name": "jadeleke",
     "html_url": "https://github.com/jadeleke/jadeleke",
     "description": null,
     "language": null,
     "stargazers_count": 0,
     "updated_at": "2025-09-16T23:06:02Z",
-    "homepage": null,
-    "fork": false,
-    "archived": false
-  },
-  {
-    "name": "jadeleke.github.io",
-    "html_url": "https://github.com/jadeleke/jadeleke.github.io",
-    "description": "Personal website of Joseph Adeleke",
-    "language": "JavaScript",
-    "stargazers_count": 0,
-    "updated_at": "2025-09-16T17:52:00Z",
     "homepage": null,
     "fork": false,
     "archived": false
