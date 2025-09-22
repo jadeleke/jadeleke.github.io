@@ -40,27 +40,40 @@
   });
 })();
 
+const GITHUB_USERNAME = 'jadeleke';
+
+// --- GitHub Repo Fetching Utility ---
+async function getGithubRepos() {
+  // Try cache first
+  try {
+    const cached = await fetch('data/repos-cache.json', { cache: 'no-cache' });
+    if (cached.ok) {
+      const data = await cached.json();
+      if (Array.isArray(data) && data.length > 0) {
+        return data;
+      }
+    }
+  } catch (e) {
+    // Ignore cache errors and fall back to API
+  }
+
+  // Fallback to API
+  const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`, {
+    headers: { 'Accept': 'application/vnd.github+json' }
+  });
+  if (!res.ok) {
+    throw new Error(`GitHub API error: ${res.status}`);
+  }
+  return await res.json();
+}
+
 // --- Projects: Fetch from GitHub ---
 (async function loadProjects() {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
-  const username = 'jadeleke';
+
   try {
-    // Try cache first
-    let data = [];
-    try {
-      const cached = await fetch('data/repos-cache.json', { cache: 'no-cache' });
-      if (cached.ok) {
-        data = await cached.json();
-      }
-    } catch {}
-    if (!Array.isArray(data) || data.length === 0) {
-      const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, {
-        headers: { 'Accept': 'application/vnd.github+json' }
-      });
-      if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
-      data = await res.json();
-    }
+    const data = await getGithubRepos();
     const repos = data
       .filter(r => !r.fork && !r.archived)
       .sort((a, b) => b.stargazers_count - a.stargazers_count);
@@ -118,9 +131,8 @@
       grid.appendChild(card);
     });
   } catch (err) {
-    grid.innerHTML = `<p>Could not load projects. <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer">Visit GitHub</a>.</p>`;
-    // Optionally log error
-    // console.error(err);
+    grid.innerHTML = `<p>Could not load projects. <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" rel="noopener noreferrer">Visit GitHub</a>.</p>`;
+    // console.error(err); // Optionally log error
   }
 })();
 
@@ -128,18 +140,32 @@
 (async function loadFeatured() {
   const grid = document.getElementById('featured-grid');
   if (!grid) return;
+
   try {
     const res = await fetch('data/featured.json', { cache: 'no-cache' });
     let featured = [];
     if (res.ok) {
       featured = await res.json();
     }
+
     if (!featured || !featured.length) {
       // Fallback to top 3 by stars
-      const gh = await fetch('https://api.github.com/users/jadeleke/repos?per_page=100&sort=updated', { headers: { 'Accept': 'application/vnd.github+json' } });
-      const repos = gh.ok ? (await gh.json()).filter(r => !r.fork && !r.archived).sort((a,b)=>b.stargazers_count-a.stargazers_count).slice(0,3) : [];
-      featured = repos.map(r => ({ title: r.name, description: r.description || '', image: 'assets/project-default.svg', repo: r.html_url, demo: r.homepage || '', tags: [r.language || 'repo'], pin: false }));
+      const repos = await getGithubRepos();
+      const topRepos = repos
+        .filter(r => !r.fork && !r.archived)
+        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+        .slice(0, 3);
+      featured = topRepos.map(r => ({
+        title: r.name,
+        description: r.description || '',
+        image: 'assets/project-default.svg',
+        repo: r.html_url,
+        demo: r.homepage || '',
+        tags: [r.language || 'repo'],
+        pin: false
+      }));
     }
+
     // Sort pinned first, then by order, then by title
     featured.sort((a, b) => {
       const pa = a.pin ? 1 : 0; const pb = b.pin ? 1 : 0;
