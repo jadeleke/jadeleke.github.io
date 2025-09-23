@@ -17,7 +17,7 @@
   <link id="canonical" rel="canonical" href="https://jadeleke.github.io/blog/post.html">
   <script defer data-domain="jadeleke.github.io" src="https://plausible.io/js/script.js"></script>
   <link rel="stylesheet" href="../styles.css">
-</head>
+  </head>
 <body>
   <header>
     <nav aria-label="Primary">
@@ -35,7 +35,7 @@
   <main>
     <section>
       <article id="post-container" class="blog-card">
-        <h1 id="post-title">Loading…</h1>
+        <h1 id="post-title">Loading...</h1>
         <div id="post-meta" class="meta"></div>
         <div id="post-content"></div>
       </article>
@@ -43,6 +43,11 @@
   </main>
 
   <noscript>Enable JavaScript to read this post.</noscript>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
   <script src="blog.js" defer></script>
 </body>

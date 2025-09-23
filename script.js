@@ -1,11 +1,11 @@
-// Initialize skills chart safely after DOM parse
 // --- Skills (MLOps-centric) ---
 (function initSkillsChart() {
   const canvas = document.getElementById('skillsChart');
-  if (!canvas || typeof window.Chart === 'undefined') {
-    // Chart target or library missing; skip initialization gracefully
-    return;
-  }
+  if (!canvas || typeof window.Chart === 'undefined') return;
+  const styles = getComputedStyle(document.documentElement);
+  const axisColor = styles.getPropertyValue('--muted').trim() || '#cbd5e1';
+  const textColor = styles.getPropertyValue('--text').trim() || '#e2e8f0';
+  const gridColor = 'rgba(203,213,225,0.2)';
   const ctx = canvas.getContext('2d');
   new Chart(ctx, {
     type: 'bar',
@@ -22,20 +22,10 @@
       responsive: true,
       maintainAspectRatio: false,
       scales: {
-        y: {
-          beginAtZero: true,
-          max: 100,
-          ticks: { color: '#cbd5e1' },
-          grid: { color: 'rgba(203,213,225,0.2)' }
-        },
-        x: {
-          ticks: { color: '#cbd5e1' },
-          grid: { display: false }
-        }
+        y: { beginAtZero: true, max: 100, ticks: { color: axisColor }, grid: { color: gridColor } },
+        x: { ticks: { color: axisColor }, grid: { display: false } }
       },
-      plugins: {
-        legend: { labels: { color: '#e2e8f0' } }
-      }
+      plugins: { legend: { labels: { color: textColor } } }
     }
   });
 })();
@@ -50,20 +40,17 @@
     let data = [];
     try {
       const cached = await fetch('data/repos-cache.json', { cache: 'no-cache' });
-      if (cached.ok) {
-        data = await cached.json();
-      }
+      if (cached.ok) data = await cached.json();
     } catch {}
     if (!Array.isArray(data) || data.length === 0) {
-      const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, {
-        headers: { 'Accept': 'application/vnd.github+json' }
-      });
+      const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, { headers: { 'Accept': 'application/vnd.github+json' } });
       if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
       data = await res.json();
     }
-    const repos = data
+    let repos = data
       .filter(r => !r.fork && !r.archived)
-      .sort((a, b) => b.stargazers_count - a.stargazers_count);
+      .sort((a, b) => b.stargazers_count - a.stargazers_count)
+      .slice(0, 12);
 
     if (!repos.length) {
       grid.innerHTML = '<p>No repositories found.</p>';
@@ -85,7 +72,7 @@
       const meta = document.createElement('div');
       meta.className = 'repo-meta';
       const left = document.createElement('span');
-      left.textContent = repo.language || '—';
+      left.textContent = repo.language || 'N/A';
       const right = document.createElement('span');
       const stars = `★ ${repo.stargazers_count}`;
       const updated = new Date(repo.updated_at).toLocaleDateString();
@@ -100,7 +87,6 @@
       gh.rel = 'noopener noreferrer';
       gh.className = 'btn secondary';
       gh.textContent = 'GitHub';
-
       actions.appendChild(gh);
 
       if (repo.homepage && /^https?:\/\//i.test(repo.homepage)) {
@@ -119,8 +105,6 @@
     });
   } catch (err) {
     grid.innerHTML = `<p>Could not load projects. <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer">Visit GitHub</a>.</p>`;
-    // Optionally log error
-    // console.error(err);
   }
 })();
 
@@ -131,15 +115,15 @@
   try {
     const res = await fetch('data/featured.json', { cache: 'no-cache' });
     let featured = [];
-    if (res.ok) {
-      featured = await res.json();
-    }
+    if (res.ok) featured = await res.json();
+
     if (!featured || !featured.length) {
       // Fallback to top 3 by stars
       const gh = await fetch('https://api.github.com/users/jadeleke/repos?per_page=100&sort=updated', { headers: { 'Accept': 'application/vnd.github+json' } });
       const repos = gh.ok ? (await gh.json()).filter(r => !r.fork && !r.archived).sort((a,b)=>b.stargazers_count-a.stargazers_count).slice(0,3) : [];
       featured = repos.map(r => ({ title: r.name, description: r.description || '', image: 'assets/project-default.svg', repo: r.html_url, demo: r.homepage || '', tags: [r.language || 'repo'], pin: false }));
     }
+
     // Sort pinned first, then by order, then by title
     featured.sort((a, b) => {
       const pa = a.pin ? 1 : 0; const pb = b.pin ? 1 : 0;
@@ -155,10 +139,10 @@
         document.head.appendChild(link);
       } catch {}
     }
+
     async function extractRepo(owner, repo) {
       // Try README image first
       try {
-        // Get default branch
         const rep = await fetch(`https://api.github.com/repos/${owner}/${repo}`, { headers: { 'Accept': 'application/vnd.github+json' }});
         const repJson = rep.ok ? await rep.json() : null;
         const branch = repJson?.default_branch || 'main';
@@ -250,37 +234,38 @@
   }
 })();
 
-// --- Blog: Load latest posts on homepage ---
-(async function loadLatestPosts() {
-  const list = document.getElementById('blog-list');
-  if (!list) return;
-  try {
-    const res = await fetch('blog/posts.json', { cache: 'no-cache' });
-    if (!res.ok) throw new Error('Failed to load posts index');
-    const posts = await res.json();
-    const latest = posts.slice(0, 3);
-    if (!latest.length) {
-      list.innerHTML = '<p>No posts yet. Check back soon.</p>';
-      return;
-    }
-    list.innerHTML = '';
-    latest.forEach(post => {
-      const article = document.createElement('article');
-      article.className = 'blog-card';
-      const h3 = document.createElement('h3');
-      const a = document.createElement('a');
-      a.href = `blog/post.html?slug=${encodeURIComponent(post.slug)}`;
-      a.textContent = post.title;
-      h3.appendChild(a);
-      const meta = document.createElement('div');
-      meta.className = 'meta';
-      meta.textContent = new Date(post.date).toLocaleDateString();
-      const p = document.createElement('p');
-      p.textContent = post.excerpt || '';
-      article.append(h3, meta, p);
-      list.appendChild(article);
+// --- Theme toggle (light/dark/auto) ---
+(function themeToggle() {
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light' || saved === 'dark') {
+    root.setAttribute('data-theme', saved);
+  }
+  function label(mode) { return `Theme: ${mode === 'dark' ? 'Dark' : mode === 'light' ? 'Light' : 'Auto'}`; }
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'auto';
+      const next = current === 'dark' ? 'light' : current === 'light' ? 'auto' : 'dark';
+      if (next === 'auto') {
+        root.removeAttribute('data-theme');
+        localStorage.removeItem('theme');
+      } else {
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      }
+      btn.textContent = label(root.getAttribute('data-theme') || 'auto');
+      btn.setAttribute('aria-label', 'Toggle theme');
     });
-  } catch (e) {
-    list.innerHTML = '<p>Could not load blog posts.</p>';
+    btn.textContent = label(root.getAttribute('data-theme') || 'auto');
+  }
+})();
+
+// --- Service Worker registration ---
+(function registerSW() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
   }
 })();

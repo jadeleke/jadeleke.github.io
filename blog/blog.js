@@ -3,7 +3,9 @@
 async function fetchPosts() {
   const res = await fetch('posts.json', { cache: 'no-cache' });
   if (!res.ok) throw new Error('Failed to load posts.json');
-  return res.json();
+  const posts = await res.json();
+  // Sort latest first
+  return posts.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 function getQueryParam(name) {
@@ -32,7 +34,7 @@ async function renderList() {
       const meta = document.createElement('div');
       meta.className = 'meta';
       const date = new Date(post.date).toLocaleDateString();
-      meta.textContent = `${date}${post.tags && post.tags.length ? ' • ' + post.tags.join(', ') : ''}`;
+      meta.textContent = `${date}${post.tags && post.tags.length ? ' - ' + post.tags.join(', ') : ''}`;
       const p = document.createElement('p');
       p.textContent = post.excerpt || '';
       article.append(h3, meta, p);

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog | Joseph Adeleke</title>
+  <meta name="description" content="Blog by Joseph Adeleke on MLOps, DevOps, Oracle DBA, and Linux.">
+  <link rel="canonical" href="https://jadeleke.github.io/blog/">
   <script defer data-domain="jadeleke.github.io" src="https://plausible.io/js/script.js"></script>
   <link rel="stylesheet" href="../styles.css">
 </head>
@@ -27,7 +29,7 @@
       <p class="section-subtitle">Thoughts on MLOps, ML systems, and engineering.</p>
       <div id="blog-list" class="blog-list" aria-live="polite">
         <article class="blog-card skeleton">
-          <h3>Loading posts…</h3>
+          <h3>Loading posts...</h3>
           <p>Fetching articles.</p>
         </article>
       </div>
@@ -35,6 +37,11 @@
   </main>
 
   <noscript>Enable JavaScript to view blog posts.</noscript>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
+    }
+  </script>
   <script src="blog.js" defer></script>
 </body>
-</html>
+  </html>

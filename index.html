@@ -8,18 +8,18 @@
   <meta name="robots" content="index,follow">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0f172a">
-  <title>Joseph Adeleke | DevOps • ML • NLP</title>
+  <title>Joseph Adeleke | DevOps | ML | NLP</title>
   <link rel="canonical" href="https://jadeleke.github.io/">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Joseph Adeleke">
-  <meta property="og:title" content="Joseph Adeleke | DevOps • ML • NLP">
+  <meta property="og:title" content="Joseph Adeleke | DevOps | ML | NLP">
   <meta property="og:description" content="DevOps & MLOps Engineer, Oracle DBA, and Linux SysAdmin.">
   <meta property="og:url" content="https://jadeleke.github.io/">
   <meta property="og:image" content="https://jadeleke.github.io/assets/avatar.png">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Joseph Adeleke | DevOps • ML • NLP">
+  <meta name="twitter:title" content="Joseph Adeleke | DevOps | ML | NLP">
   <meta name="twitter:description" content="DevOps Engineer and MSc student exploring ML, ASR, and NLP.">
   <!-- Plausible Analytics -->
   <script defer data-domain="jadeleke.github.io" src="https://plausible.io/js/script.js"></script>
@@ -49,8 +49,8 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Blog RSS" href="/feed.xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <!-- Chart.js (deferred for performance) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <!-- Chart.js (pinned, deferred) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -68,6 +68,7 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="blog/">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">Theme</button></li>
       </ul>
     </nav>
   </header>
@@ -76,9 +77,9 @@
   <main id="main">
   <!-- Hero Section -->
   <section id="hero">
-    <img class="avatar" src="assets/avatar.png" alt="Joseph Adeleke Avatar" loading="lazy">
+    <img class="avatar" src="assets/avatar.png" alt="Joseph Adeleke Avatar" loading="eager" fetchpriority="high">
     <h1>Joseph Adeleke</h1>
-    <p class="tagline">DevOps/MLOps • Oracle DBA • Linux SysAdmin</p>
+    <p class="tagline">DevOps/MLOps | Oracle DBA | Linux SysAdmin</p>
     <a href="#contact" class="btn">Get in Touch</a>
   </section>
 
@@ -139,7 +140,7 @@
       <article class="featured-card skeleton">
         <div class="featured-thumb skeleton-thumb"></div>
         <div class="project-info">
-          <h3>Loading featured…</h3>
+          <h3>Loading featured...</h3>
           <p>Fetching highlighted repositories.</p>
         </div>
       </article>
@@ -164,7 +165,7 @@
       <div class="project-card skeleton">
         <div class="skeleton-thumb"></div>
         <div class="project-info">
-          <h3>Loading projects…</h3>
+          <h3>Loading projects...</h3>
           <p>Please wait while I fetch repositories.</p>
         </div>
       </div>
@@ -195,7 +196,7 @@
     <h2>Latest Blog Posts</h2>
     <div id="blog-list" class="blog-list" aria-live="polite">
       <article class="blog-card skeleton">
-        <h3>Loading posts…</h3>
+        <h3>Loading posts...</h3>
         <p>Fetching latest articles.</p>
       </article>
     </div>

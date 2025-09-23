@@ -18,7 +18,7 @@ async function main() {
     return `\n    <item>\n      <title>${title}</title>\n      <link>${link}</link>\n      <guid>${link}</guid>\n      <pubDate>${pubDate}</pubDate>\n      <description>${desc}</description>\n    </item>`;
   }).join('');
 
-  const rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>Joseph Adeleke — Blog</title>\n    <link>${SITE}/blog/</link>\n    <description>MLOps, DevOps, Oracle DBA, Linux SysAdmin</description>${items}\n  </channel>\n</rss>\n`;
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version=\"2.0\">\n  <channel>\n    <title>Joseph Adeleke — Blog</title>\n    <link>${SITE}/blog/</link>\n    <description>MLOps, DevOps, Oracle DBA, Linux SysAdmin</description>${items}\n  </channel>\n</rss>\n`;
   await writeFile('feed.xml', rss);
   console.log('Wrote feed.xml');
 }
