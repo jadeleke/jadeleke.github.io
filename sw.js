@@ -12,6 +12,7 @@ const ASSETS = [
   '/blog/',
   '/blog/index.html',
   '/blog/post.html',
+  '/resume.html',
   '/manifest.webmanifest'
 ];
 

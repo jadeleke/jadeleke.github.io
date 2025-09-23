@@ -39,27 +39,25 @@ jobs:
 
       - name: Commit cache if changed
         run: |
-          CHANGED=0
-          if [[ -n "$(git status --porcelain data/repos-cache.json)" ]]; then
-            CHANGED=1
-            git add data/repos-cache.json
-          fi
-          if [[ -n "$(git status --porcelain feed.xml)" ]]; then
-            CHANGED=1
-            git add feed.xml
-          fi
-          if [[ -n "$(git status --porcelain sitemap.xml)" ]]; then
-            CHANGED=1
-            git add sitemap.xml
-          fi
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ $CHANGED -eq 1 ]]; then
+          CHANGED=0
+          if ! git diff --quiet -- data/repos-cache.json 2>/dev/null; then
+            git add data/repos-cache.json
+            CHANGED=1
+          fi
+          if ! git diff --quiet -- feed.xml 2>/dev/null; then
+            git add feed.xml
+            CHANGED=1
+          fi
+          if ! git diff --quiet -- sitemap.xml 2>/dev/null; then
+            git add sitemap.xml
+            CHANGED=1
+          fi
+          if [ "$CHANGED" -eq 1 ]; then
             git commit -m "chore: update site artifacts [skip ci]"
             git push
-          else
-            echo "No changes to commit."
-          fi
           else
             echo "No changes to commit."
           fi

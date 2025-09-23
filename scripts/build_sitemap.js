@@ -4,7 +4,7 @@ const { readFile, writeFile } = require('node:fs/promises');
 const SITE = 'https://jadeleke.github.io';
 
 async function main() {
-  const staticUrls = [`${SITE}/`, `${SITE}/blog/`];
+  const staticUrls = [`${SITE}/`, `${SITE}/blog/`, `${SITE}/resume.html`];
   let posts = [];
   try {
     const raw = await readFile('blog/posts.json', 'utf-8');
@@ -19,4 +19,3 @@ async function main() {
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
-
