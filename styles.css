@@ -65,8 +65,9 @@ nav { display: flex; justify-content: center; }
 nav ul { display: flex; list-style: none; gap: 30px; }
 nav a { padding: 8px 6px; border-radius: 6px; }
 nav a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
-.theme-toggle { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; }
+.theme-toggle { padding: 6px; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; }
 .theme-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.theme-toggle svg { width: 20px; height: 20px; display: block; }
 
 /* Sections */
 section { padding: 100px 20px; max-width: 1100px; margin: auto; text-align: center; scroll-margin-top: calc(var(--header-offset) + 12px); }
@@ -148,10 +149,16 @@ footer { text-align: center; padding: 20px; background: var(--card); }
 #projects-filter:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 
 /* Contact form */
-.contact-form { margin-top: 20px; display: grid; gap: 12px; }
+.contact-form { margin-top: 20px; display: grid; gap: 12px; text-align: left; }
 .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contact-form .form-field { display: grid; gap: 6px; }
+.contact-form label { color: var(--muted); font-size: .95em; }
 .contact-form input, .contact-form textarea { width: 100%; border-radius: 8px; border: 1px solid var(--border); background: var(--card-2); color: var(--text); padding: 10px 12px; }
 .contact-form textarea { resize: vertical; }
 .contact-form .form-actions { display: flex; align-items: center; gap: 12px; }
-.contact-form .form-hint { color: var(--muted-2); font-size: 0.9em; }
+.form-status { color: var(--muted-2); font-size: 0.95em; min-height: 1.2em; }
+.form-status.is-success { color: #22c55e; }
+.form-status.is-error { color: #f43f5e; }
+@media (max-width: 640px) { .contact-form .form-row { grid-template-columns: 1fr; } }
+.hp { display: none !important; }
   

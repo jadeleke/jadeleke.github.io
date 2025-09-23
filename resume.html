@@ -15,11 +15,23 @@
     .resume-actions { display:flex; gap: 10px; }
     .resume-embed { width: 100%; height: 80vh; border: 1px solid var(--border); border-radius: 8px; background: var(--card-2); }
     .resume-meta { color: var(--muted-2); margin-bottom: 12px; }
+    .resume-tabs { display:flex; gap: 10px; margin: 8px 0 16px; }
+    .resume-tab { border: 1px solid var(--border); background: transparent; color: var(--text); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+    .resume-tab.is-active { background: var(--link); color: var(--btn-text); border-color: var(--link); }
+    .resume-web { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+    .resume-grid { display:grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+    .resume-section { margin-bottom: 14px; }
+    .resume-section h3 { color: var(--text); margin-bottom: 6px; font-size: 1.05rem; }
+    .resume-list { margin-left: 16px; }
+    .resume-title { display:flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .resume-title h2 { margin: 0; color: var(--text); }
+    .resume-subtitle { color: var(--muted-2); }
     @media print {
-      header, .resume-actions, .resume-meta, .resume-embed { display: none !important; }
+      header, .resume-actions, .resume-meta, .resume-tabs, .resume-embed { display: none !important; }
       body { background: #fff !important; color: #000 !important; }
       a { color: #000 !important; text-decoration: none; }
       section { padding: 0; }
+      .resume-web { border: none; padding: 0; }
     }
   </style>
 </head>
@@ -47,8 +59,60 @@
         </div>
       </div>
       <div class="resume-meta">Last updated: <span id="resume-updated">—</span></div>
-      <iframe class="resume-embed" src="/assets/resume.pdf#view=FitH" title="Resume PDF preview"></iframe>
-      <p class="section-cta">If the preview doesn’t load, use the buttons above.</p>
+      <div class="resume-tabs">
+        <button id="tab-web" class="resume-tab is-active" type="button">Web</button>
+        <button id="tab-pdf" class="resume-tab" type="button">PDF</button>
+      </div>
+
+      <div id="resume-web" class="resume-web">
+        <div class="resume-title">
+          <h2>Joseph Adeleke</h2>
+          <div class="resume-subtitle">DevOps & MLOps Engineer | Oracle DBA | Linux SysAdmin</div>
+        </div>
+        <div class="resume-grid">
+          <div>
+            <div class="resume-section">
+              <h3>Summary</h3>
+              <p>Engineer focused on shipping reliable ML systems and platforms: experiment tracking, training pipelines, CI/CD, containerization, Kubernetes, and scalable serving. Strong foundation in Linux and Oracle DBA.</p>
+            </div>
+            <div class="resume-section">
+              <h3>Experience</h3>
+              <ul class="resume-list">
+                <li><strong>DevOps/MLOps Projects</strong> — Built automated training and model deployment pipelines with MLflow, Airflow, and Docker; implemented observability and rollout strategies.</li>
+                <li><strong>Oracle DBA</strong> — Managed installations, upgrades, backups, and performance tuning with focus on HA and security.</li>
+                <li><strong>Linux SysAdmin</strong> — System hardening, networking/storage configuration, scripting, and troubleshooting.</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="resume-section">
+              <h3>Skills</h3>
+              <ul class="resume-list">
+                <li>Python, Shell, Git</li>
+                <li>Docker, Kubernetes</li>
+                <li>CI/CD, Terraform</li>
+                <li>MLflow, Airflow</li>
+                <li>AWS</li>
+                <li>Linux</li>
+                <li>Oracle Database</li>
+              </ul>
+            </div>
+            <div class="resume-section">
+              <h3>Education</h3>
+              <p>MSc Computer Science</p>
+            </div>
+            <div class="resume-section">
+              <h3>Links</h3>
+              <p><a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a><br>
+                 <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener">LinkedIn</a><br>
+                 <a href="https://github.com/jadeleke" target="_blank" rel="noopener">GitHub</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <iframe id="resume-pdf" class="resume-embed" src="/assets/resume.pdf#view=FitH" title="Resume PDF preview" hidden></iframe>
+      <p class="section-cta">Use the buttons to switch view or download the PDF.</p>
     </section>
   </main>
 
@@ -61,6 +125,21 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
       }
+      const tabWeb = document.getElementById('tab-web');
+      const tabPdf = document.getElementById('tab-pdf');
+      const web = document.getElementById('resume-web');
+      const pdf = document.getElementById('resume-pdf');
+      function activate(which){
+        if (which === 'web') {
+          web.hidden = false; pdf.hidden = true;
+          tabWeb.classList.add('is-active'); tabPdf.classList.remove('is-active');
+        } else {
+          web.hidden = true; pdf.hidden = false;
+          tabPdf.classList.add('is-active'); tabWeb.classList.remove('is-active');
+        }
+      }
+      tabWeb?.addEventListener('click', () => activate('web'));
+      tabPdf?.addEventListener('click', () => activate('pdf'));
     })();
   </script>
 </body>

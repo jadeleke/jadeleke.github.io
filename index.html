@@ -69,7 +69,11 @@
         <li><a href="blog/">Blog</a></li>
         <li><a href="/resume.html">Resume</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">Theme</button></li>
+        <li>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm8-5a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM7 12a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm10.95 6.536a1 1 0 0 1-1.414 0l-1.415-1.414a1 1 0 1 1 1.415-1.415l1.414 1.415a1 1 0 0 1 0 1.414zM7.879 7.879a1 1 0 0 1-1.415 0L5.05 6.465A1 1 0 1 1 6.465 5.05l1.414 1.414a1 1 0 0 1 0 1.415zM18.95 6.465a1 1 0 0 1 0 1.414l-1.415 1.415a1 1 0 1 1-1.414-1.415l1.414-1.414A1 1 0 0 1 18.95 6.465zM7.88 16.95a1 1 0 0 1 0 1.414l-1.415 1.415a1 1 0 1 1-1.414-1.415l1.414-1.414a1 1 0 0 1 1.415 0z"/></svg>
+          </button>
+        </li>
       </ul>
     </nav>
   </header>
@@ -165,7 +169,7 @@
     <p class="section-subtitle">Auto-fetched from my GitHub profile.</p>
     <p>
       <label for="projects-filter" class="visually-hidden">Filter projects</label>
-      <input id="projects-filter" type="search" placeholder="Filter by name, description, or language" aria-label="Filter projects">
+      <input id="projects-filter" type="search" placeholder="Search projects..." aria-label="Filter projects">
     </p>
     <div id="projects-grid" class="project-grid" aria-live="polite">
       <div class="project-card skeleton">
@@ -195,15 +199,25 @@
     <p>GitHub: <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">github.com/jadeleke</a></p>
     <p>WhatsApp: <a href="https://wa.me/233592868660" target="_blank" rel="noopener noreferrer">+233 59 286 8660</a></p>
 
-    <form id="contact-form" class="contact-form" method="POST" data-contact-endpoint="">
+    <form id="contact-form" class="contact-form" method="POST" data-contact-endpoint="https://submit-form.com/YOUR_FORMSPARK_ID">
       <div class="form-row">
-        <input name="name" type="text" placeholder="Your name" required>
-        <input name="email" type="email" placeholder="Your email" required>
+        <div class="form-field">
+          <label for="cf-name">Your name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="cf-email">Your email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required>
+        </div>
       </div>
-      <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+      <div class="form-field">
+        <label for="cf-message">Your message</label>
+        <textarea id="cf-message" name="message" rows="5" required></textarea>
+      </div>
+      <input type="text" name="_honeypot" class="hp" tabindex="-1" autocomplete="off">
       <div class="form-actions">
-        <button type="submit" class="btn">Send Message</button>
-        <span class="form-hint">Configure Formspark endpoint later.</span>
+        <button id="contact-submit" type="submit" class="btn">Send Message</button>
+        <span id="contact-status" class="form-status" aria-live="polite"></span>
       </div>
     </form>
   </section>

@@ -246,7 +246,12 @@
   if (saved === 'light' || saved === 'dark') {
     root.setAttribute('data-theme', saved);
   }
-  function label(mode) { return `Theme: ${mode === 'dark' ? 'Dark' : mode === 'light' ? 'Light' : 'Auto'}`; }
+  function icon(mode){
+    // moon, sun, auto (sun with dot)
+    if (mode === 'dark') return '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    if (mode === 'light') return '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V5a1 1 0 0 1 1-1zm0 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm8-5a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zM6 12a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zm10.95 6.536a1 1 0 0 1-1.414 0l-.793-.793a1 1 0 1 1 1.414-1.414l.793.793a1 1 0 0 1 0 1.414zM7.05 7.05a1 1 0 0 1-1.414 0l-.793-.793A1 1 0 1 1 6.257 4.843l.793.793a1 1 0 0 1 0 1.414z"/></svg>';
+    return '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm8-5a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM7 12a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1z"/></svg>';
+  }
   if (btn) {
     btn.addEventListener('click', () => {
       const current = root.getAttribute('data-theme') || 'auto';
@@ -258,10 +263,15 @@
         root.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
       }
-      btn.textContent = label(root.getAttribute('data-theme') || 'auto');
-      btn.setAttribute('aria-label', 'Toggle theme');
+      const mode = root.getAttribute('data-theme') || 'auto';
+      btn.innerHTML = icon(mode);
+      btn.setAttribute('aria-label', `Theme: ${mode}`);
+      btn.setAttribute('title', `Theme: ${mode}`);
     });
-    btn.textContent = label(root.getAttribute('data-theme') || 'auto');
+    const mode = root.getAttribute('data-theme') || 'auto';
+    btn.innerHTML = icon(mode);
+    btn.setAttribute('aria-label', `Theme: ${mode}`);
+    btn.setAttribute('title', `Theme: ${mode}`);
   }
 })();
 
@@ -278,7 +288,10 @@
 (function contactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
-  const endpoint = form.getAttribute('data-contact-endpoint') || '';
+  function getParam(name){ try { return new URL(window.location.href).searchParams.get(name) || ''; } catch { return ''; } }
+  const endpoint = getParam('formspark') || getParam('endpoint') || form.getAttribute('data-contact-endpoint') || '';
+  const status = document.getElementById('contact-status');
+  const submit = document.getElementById('contact-submit');
   form.addEventListener('submit', async (e) => {
     if (!endpoint) {
       // Fallback to mailto if no endpoint configured
@@ -287,18 +300,26 @@
       const msg = encodeURIComponent(form.message?.value || '');
       const subj = encodeURIComponent(`Website message from ${name}`);
       const body = msg;
+      if (status) { status.textContent = 'Opening your email client...'; status.className = 'form-status'; }
       window.location.href = `mailto:akdeljoseph@outlook.com?subject=${subj}&body=${body}`;
       return;
     }
     e.preventDefault();
     try {
       const data = new FormData(form);
-      const res = await fetch(endpoint, { method: 'POST', body: data });
+      if (status) { status.textContent = 'Sending...'; status.className = 'form-status'; }
+      if (submit) submit.disabled = true;
+      // Helpful defaults for Formspark/SubmitForm
+      if (!data.has('_subject')) data.set('_subject', 'Website contact from jadeleke.github.io');
+      if (!data.has('_replyto')) data.set('_replyto', form.querySelector('#cf-email')?.value || '');
+      if (!data.has('_redirect')) data.set('_redirect', window.location.origin + '/#contact');
+      const res = await fetch(endpoint, { method: 'POST', body: data, mode: 'cors', headers: { 'Accept': 'application/json' } });
       if (!res.ok) throw new Error('Submit failed');
-      alert('Thanks! Your message was sent.');
+      if (status) { status.textContent = 'Thanks! Your message was sent.'; status.className = 'form-status is-success'; }
       form.reset();
     } catch {
-      alert('Sorry, there was a problem sending your message.');
+      if (status) { status.textContent = 'Sorry, there was a problem sending your message.'; status.className = 'form-status is-error'; }
     }
+    finally { if (submit) submit.disabled = false; }
   });
 })();
