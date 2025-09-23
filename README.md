@@ -3,6 +3,7 @@
 Personal website of Joseph Adeleke.
 
 - Live site: https://jadeleke.github.io/
+- LinkedIn: https://www.linkedin.com/in/joseph-adeleke-27b433149/
 - Tech: plain HTML/CSS/JS + Chart.js (CDN)
   - Auto projects from GitHub API (with cache via CI)
   - Featured projects (curated, with README image auto-detect)
