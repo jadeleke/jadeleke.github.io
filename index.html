@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Joseph Adeleke — DevOps & MLOps Engineer, Oracle Database Administrator, and Linux System Administrator.">
+  <meta name="description" content="Portfolio of Joseph Adeleke - DevOps & MLOps Engineer, Oracle Database Administrator, and Linux System Administrator.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="robots" content="index,follow">
   <meta name="color-scheme" content="dark light">
@@ -49,8 +49,8 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Blog RSS" href="/feed.xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <!-- Chart.js (pinned, deferred) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4" defer></script>
+  <!-- Chart.js (pinned, SRI) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" integrity="sha384-NrKB+u6Ts6AtkIhwPixiKTzgSKNblyhlk0Sohlgar9UHUBzai/sgnNNWWd291xqt" crossorigin="anonymous" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -81,6 +81,7 @@
     <h1>Joseph Adeleke</h1>
     <p class="tagline">DevOps/MLOps | Oracle DBA | Linux SysAdmin</p>
     <a href="#contact" class="btn">Get in Touch</a>
+    <a href="/assets/resume.pdf" class="btn secondary" download>Download Resume</a>
   </section>
 
   <!-- Capabilities Section -->
@@ -151,7 +152,7 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm a DevOps Engineer, Oracle Database Administrator (DBA), MLOps Engineer, and Linux System Administrator. I focus on building reliable ML systems and robust platform infrastructure — from data and experiments to automated training, model registry, CI/CD, containerization, and scalable serving on cloud/Kubernetes.
+      I'm a DevOps Engineer, Oracle Database Administrator (DBA), MLOps Engineer, and Linux System Administrator. I focus on building reliable ML systems and robust platform infrastructure - from data and experiments to automated training, model registry, CI/CD, containerization, and scalable serving on cloud/Kubernetes.
       I enjoy solving complex problems and shipping practical, impactful solutions. Let's connect on
       <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
     </p>
@@ -161,6 +162,10 @@
   <section id="projects">
     <h2>Projects</h2>
     <p class="section-subtitle">Auto-fetched from my GitHub profile.</p>
+    <p>
+      <label for="projects-filter" class="visually-hidden">Filter projects</label>
+      <input id="projects-filter" type="search" placeholder="Filter by name, description, or language" aria-label="Filter projects">
+    </p>
     <div id="projects-grid" class="project-grid" aria-live="polite">
       <div class="project-card skeleton">
         <div class="skeleton-thumb"></div>
@@ -189,6 +194,17 @@
     <p>GitHub: <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">github.com/jadeleke</a></p>
     <p>WhatsApp: <a href="https://wa.me/233592868660" target="_blank" rel="noopener noreferrer">+233 59 286 8660</a></p>
 
+    <form id="contact-form" class="contact-form" method="POST" data-contact-endpoint="">
+      <div class="form-row">
+        <input name="name" type="text" placeholder="Your name" required>
+        <input name="email" type="email" placeholder="Your email" required>
+      </div>
+      <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+      <div class="form-actions">
+        <button type="submit" class="btn">Send Message</button>
+        <span class="form-hint">Configure Formspark endpoint later.</span>
+      </div>
+    </form>
   </section>
 
   <!-- Blog Section -->
@@ -206,7 +222,7 @@
   </main>
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Joseph Adeleke. All Rights Reserved. · <a href="/feed.xml">RSS</a></p>
+    <p>&copy; 2025 Joseph Adeleke. All Rights Reserved. | <a href="/feed.xml">RSS</a></p>
   </footer>
 
   <!-- JavaScript -->

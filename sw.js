@@ -8,6 +8,7 @@ const ASSETS = [
   '/assets/favicon.svg',
   '/assets/avatar.png',
   '/assets/project-default.svg',
+  '/assets/resume.pdf',
   '/blog/',
   '/blog/index.html',
   '/blog/post.html',
@@ -46,4 +47,3 @@ self.addEventListener('fetch', (event) => {
     );
   }
 });
-

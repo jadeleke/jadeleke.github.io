@@ -63,3 +63,14 @@ Plausible analytics is enabled for `jadeleke.github.io` via a lightweight script
 - Manifest: `manifest.webmanifest` and `assets/favicon.svg`
 - Accessibility: skip-link, focus styles, reduced-motion support
 - Sections: Capabilities and Education on the homepage
+
+
+## Resume
+
+Place your PDF at ssets/resume.pdf to enable the Download Resume button on the homepage.
+## Contact form (optional)
+- A basic form is included on the homepage. By default it falls back to mailto:.
+- To enable a provider like Formspark, set the data-contact-endpoint attribute on the #contact-form in index.html to your endpoint URL (e.g. https://submit-form.com/your-id).
+
+## Project filter
+- A search box filters projects by name, description, or language on the client side.

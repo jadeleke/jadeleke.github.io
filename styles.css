@@ -139,4 +139,19 @@ h2 { font-size: 2em; color: var(--accent); margin-bottom: 20px; }
 
 /* Footer */
 footer { text-align: center; padding: 20px; background: var(--card); }
+ 
+/* Utilities */
+.visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+
+/* Inputs */
+#projects-filter { width: 100%; max-width: 520px; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--card-2); color: var(--text); }
+#projects-filter:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+/* Contact form */
+.contact-form { margin-top: 20px; display: grid; gap: 12px; }
+.contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contact-form input, .contact-form textarea { width: 100%; border-radius: 8px; border: 1px solid var(--border); background: var(--card-2); color: var(--text); padding: 10px 12px; }
+.contact-form textarea { resize: vertical; }
+.contact-form .form-actions { display: flex; align-items: center; gap: 12px; }
+.contact-form .form-hint { color: var(--muted-2); font-size: 0.9em; }
   

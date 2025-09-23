@@ -35,6 +35,48 @@
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
   const username = 'jadeleke';
+  const filterInput = document.getElementById('projects-filter');
+  let allRepos = [];
+  function render(list) {
+    grid.innerHTML = '';
+    if (!list.length) {
+      grid.innerHTML = '<p>No repositories match your filter.</p>';
+      return;
+    }
+    list.forEach(repo => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      const info = document.createElement('div');
+      info.className = 'project-info';
+      const h3 = document.createElement('h3');
+      h3.textContent = repo.name;
+      const p = document.createElement('p');
+      p.textContent = repo.description || 'No description provided.';
+      const meta = document.createElement('div');
+      meta.className = 'repo-meta';
+      const left = document.createElement('span');
+      left.textContent = repo.language || 'N/A';
+      const right = document.createElement('span');
+      const stars = `Stars: ${repo.stargazers_count}`;
+      const updated = new Date(repo.updated_at).toLocaleDateString();
+      right.textContent = `${stars} - Updated ${updated}`;
+      meta.append(left, right);
+      const actions = document.createElement('div');
+      actions.className = 'card-actions';
+      const gh = document.createElement('a');
+      gh.href = repo.html_url;
+      gh.target = '_blank'; gh.rel = 'noopener noreferrer'; gh.className = 'btn secondary'; gh.textContent = 'GitHub';
+      actions.appendChild(gh);
+      if (repo.homepage && /^https?:\/\//i.test(repo.homepage)) {
+        const demo = document.createElement('a');
+        demo.href = repo.homepage; demo.target = '_blank'; demo.rel = 'noopener noreferrer'; demo.className = 'btn'; demo.textContent = 'Demo';
+        actions.appendChild(demo);
+      }
+      info.append(h3, p, meta, actions);
+      card.appendChild(info);
+      grid.appendChild(card);
+    });
+  }
   try {
     // Try cache first
     let data = [];
@@ -51,58 +93,20 @@
       .filter(r => !r.fork && !r.archived)
       .sort((a, b) => b.stargazers_count - a.stargazers_count)
       .slice(0, 12);
-
-    if (!repos.length) {
-      grid.innerHTML = '<p>No repositories found.</p>';
-      return;
+    allRepos = repos;
+    render(allRepos);
+    if (filterInput) {
+      filterInput.addEventListener('input', () => {
+        const q = (filterInput.value || '').toLowerCase();
+        if (!q) { render(allRepos); return; }
+        const filtered = allRepos.filter(r =>
+          (r.name || '').toLowerCase().includes(q) ||
+          (r.description || '').toLowerCase().includes(q) ||
+          (r.language || '').toLowerCase().includes(q)
+        );
+        render(filtered);
+      });
     }
-
-    grid.innerHTML = '';
-    repos.forEach(repo => {
-      const card = document.createElement('div');
-      card.className = 'project-card';
-
-      const info = document.createElement('div');
-      info.className = 'project-info';
-      const h3 = document.createElement('h3');
-      h3.textContent = repo.name;
-      const p = document.createElement('p');
-      p.textContent = repo.description || 'No description provided.';
-
-      const meta = document.createElement('div');
-      meta.className = 'repo-meta';
-      const left = document.createElement('span');
-      left.textContent = repo.language || 'N/A';
-      const right = document.createElement('span');
-      const stars = `★ ${repo.stargazers_count}`;
-      const updated = new Date(repo.updated_at).toLocaleDateString();
-      right.textContent = `${stars} • Updated ${updated}`;
-      meta.append(left, right);
-
-      const actions = document.createElement('div');
-      actions.className = 'card-actions';
-      const gh = document.createElement('a');
-      gh.href = repo.html_url;
-      gh.target = '_blank';
-      gh.rel = 'noopener noreferrer';
-      gh.className = 'btn secondary';
-      gh.textContent = 'GitHub';
-      actions.appendChild(gh);
-
-      if (repo.homepage && /^https?:\/\//i.test(repo.homepage)) {
-        const demo = document.createElement('a');
-        demo.href = repo.homepage;
-        demo.target = '_blank';
-        demo.rel = 'noopener noreferrer';
-        demo.className = 'btn';
-        demo.textContent = 'Demo';
-        actions.appendChild(demo);
-      }
-
-      info.append(h3, p, meta, actions);
-      card.appendChild(info);
-      grid.appendChild(card);
-    });
   } catch (err) {
     grid.innerHTML = `<p>Could not load projects. <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer">Visit GitHub</a>.</p>`;
   }
@@ -268,4 +272,33 @@
       navigator.serviceWorker.register('/sw.js').catch(() => {});
     });
   }
+})();
+
+// --- Contact form handling (optional Formspark) ---
+(function contactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const endpoint = form.getAttribute('data-contact-endpoint') || '';
+  form.addEventListener('submit', async (e) => {
+    if (!endpoint) {
+      // Fallback to mailto if no endpoint configured
+      e.preventDefault();
+      const name = encodeURIComponent(form.name?.value || '');
+      const msg = encodeURIComponent(form.message?.value || '');
+      const subj = encodeURIComponent(`Website message from ${name}`);
+      const body = msg;
+      window.location.href = `mailto:akdeljoseph@outlook.com?subject=${subj}&body=${body}`;
+      return;
+    }
+    e.preventDefault();
+    try {
+      const data = new FormData(form);
+      const res = await fetch(endpoint, { method: 'POST', body: data });
+      if (!res.ok) throw new Error('Submit failed');
+      alert('Thanks! Your message was sent.');
+      form.reset();
+    } catch {
+      alert('Sorry, there was a problem sending your message.');
+    }
+  });
 })();

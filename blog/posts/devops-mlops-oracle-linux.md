@@ -1,4 +1,4 @@
-# DevOps, MLOps, Oracle DBA, and Linux Sysadmin — How They Fit Together
+# DevOps, MLOps, Oracle DBA, and Linux Sysadmin - How They Fit Together
 
 I wear a few hats: DevOps Engineer, MLOps Engineer, Oracle Database Administrator (DBA), and Linux System Administrator. This combo helps me design, build, and operate end‑to‑end systems that ship reliable features and models.
 
@@ -28,5 +28,4 @@ I wear a few hats: DevOps Engineer, MLOps Engineer, Oracle Database Administrato
 
 ## Putting It Together
 
-These skills align into a single goal: robust, observable platforms that support data‑driven products. I care about reproducibility, reliability, and speed — from database to deployment, from feature pipelines to production inference.
-
+These skills align into a single goal: robust, observable platforms that support data-driven products. I care about reproducibility, reliability, and speed - from database to deployment, from feature pipelines to production inference.
