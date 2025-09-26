@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #0f172a;
   --surface: #111927;
   --surface-alt: #182234;
@@ -302,11 +302,7 @@ a:focus-visible {
   margin-top: 2px;
 }
 
-.card-grid {
-  display: grid;
-  gap: 20px;
-  margin-top: 2.2rem;
-}
+.card-grid {\n  display: grid;\n  gap: 20px;\n  margin-top: 2.2rem;\n}\n\n.card-grid.one {\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n}
 
 .card-grid.two {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -563,4 +559,6 @@ a:focus-visible {
     margin: 0 auto;
   }
 }
+
+
 
