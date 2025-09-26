@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <meta name="author" content="Joseph Adeleke">
   <meta name="robots" content="index,follow">
   <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#11131f">
   <title>Joseph Adeleke | DevOps | ML | NLP</title>
   <link rel="canonical" href="https://jadeleke.github.io/">
   <!-- Open Graph -->
@@ -42,7 +42,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
   <!-- Icons & Manifest -->
@@ -55,202 +55,226 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Navbar -->
-  <header>
-    <nav aria-label="Primary">
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#featured">Featured</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="blog/">Blog</a></li>
-        <li><a href="/resume.html">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" class="theme-toggle" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M20.447 20.452H17.07V14.89c0-1.327-.026-3.037-1.85-3.037-1.853 0-2.136 1.447-2.136 2.943v5.656H9.708V9h3.22v1.561h.046c.448-.846 1.542-1.74 3.175-1.74 3.396 0 4.024 2.236 4.024 5.144v6.487zM5.337 7.433c-1.036 0-1.875-.84-1.875-1.875 0-1.036.84-1.875 1.875-1.875 1.035 0 1.875.84 1.875 1.875 0 1.036-.84 1.875-1.875 1.875zM6.897 20.452H3.776V9h3.121v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.728v20.543C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.728C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm8-5a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM7 12a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm10.95 6.536a1 1 0 0 1-1.414 0l-1.415-1.414a1 1 0 1 1 1.415-1.415l1.414 1.415a1 1 0 0 1 0 1.414zM7.879 7.879a1 1 0 0 1-1.415 0L5.05 6.465A1 1 0 1 1 6.465 5.05l1.414 1.414a1 1 0 0 1 0 1.415zM18.95 6.465a1 1 0 0 1 0 1.414l-1.415 1.415a1 1 0 1 1-1.414-1.415l1.414-1.414A1 1 0 0 1 18.95 6.465zM7.88 16.95a1 1 0 0 1 0 1.414l-1.415 1.415a1 1 0 1 1-1.414-1.415l1.414-1.414a1 1 0 0 1 1.415 0z"/></svg>
-          </button>
-        </li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="/"><span>JA</span> Joseph Adeleke</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#featured">Featured</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="blog/">Blog</a></li>
+          <li><a href="/resume.html">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"></button></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Main Content -->
   <main id="main">
-  <!-- Hero Section -->
-  <section id="hero">
-    <img class="avatar" src="assets/avatar.png" alt="Joseph Adeleke Avatar" loading="eager" fetchpriority="high">
-    <h1>Joseph Adeleke</h1>
-    <p class="tagline">DevOps/MLOps | Oracle DBA | Linux SysAdmin</p>
-    <a href="#contact" class="btn">Get in Touch</a>
-    <a href="/assets/resume.pdf" class="btn secondary" download>Download Resume</a>
-    <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" class="btn secondary" target="_blank" rel="noopener noreferrer" aria-label="Connect on LinkedIn">Connect on LinkedIn</a>
-  </section>
-
-  <!-- Capabilities Section -->
-  <section id="experience">
-    <h2>Capabilities</h2>
-    <p class="section-subtitle">Areas I deliver value across the ML and platform lifecycle.</p>
-    <div class="cap-grid">
-      <div class="cap-card">
-        <h3>MLOps</h3>
-        <ul>
-          <li>Experiment tracking & model registry (MLflow)</li>
-          <li>Training pipelines & orchestration (Airflow)</li>
-          <li>Model serving (REST/gRPC), rollouts, monitoring</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h3>DevOps</h3>
-        <ul>
-          <li>CI/CD pipelines, IaC (Terraform)</li>
-          <li>Containers (Docker) & Kubernetes</li>
-          <li>Observability & incident response</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h3>Oracle DBA</h3>
-        <ul>
-          <li>Installations, upgrades, patching</li>
-          <li>Performance tuning & backups</li>
-          <li>High availability & security</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h3>Linux SysAdmin</h3>
-        <ul>
-          <li>System hardening & automation</li>
-          <li>Networking & storage</li>
-          <li>Troubleshooting & scripting</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education">
-    <h2>Education</h2>
-    <div class="edu-card">
-      <h3>MSc Computer Science</h3>
-      <p>Focus: Machine Learning, MLOps, and Systems Engineering.</p>
-    </div>
-  </section>
-
-  <!-- Featured Projects -->
-  <section id="featured">
-    <h2>Featured Projects</h2>
-    <p class="section-subtitle">A curated selection of my MLOps and ML work.</p>
-    <div id="featured-grid" class="featured-grid" aria-live="polite">
-      <article class="featured-card skeleton">
-        <div class="featured-thumb skeleton-thumb"></div>
-        <div class="project-info">
-          <h3>Loading featured...</h3>
-          <p>Fetching highlighted repositories.</p>
+    <section id="hero" class="section hero">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <h1>Joseph <span>Adeleke</span></h1>
+          <p class="hero-tagline">DevOps & MLOps engineer, Oracle DBA, and Linux system administrator. I build reliable ML platforms end-to-end, from experiment tracking and automated training to Kubernetes-native deployment, monitoring, and incident response.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn">Let's collaborate</a>
+            <a href="/resume.html" class="btn secondary">View resume</a>
+            <a href="/assets/resume.pdf" class="btn secondary" download>Download PDF</a>
+          </div>
+          <ul class="social-list" aria-label="Social links">
+            <li><a href="mailto:akdeljoseph@outlook.com">Email</a></li>
+            <li><a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://wa.me/233592868660" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
         </div>
-      </article>
-    </div>
-  </section>
+        <aside class="hero-meta">
+          <img src="assets/avatar.png" alt="Joseph Adeleke portrait" loading="eager" fetchpriority="high">
+          <div class="hero-stat">
+            <strong>Current focus</strong>
+            <span>ML platforms · Observability · Automation</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Location</strong>
+            <span>Remote · Accra, GH</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Email</strong>
+            <a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a DevOps Engineer, Oracle Database Administrator (DBA), MLOps Engineer, and Linux System Administrator. I focus on building reliable ML systems and robust platform infrastructure - from data and experiments to automated training, model registry, CI/CD, containerization, and scalable serving on cloud/Kubernetes.
-      I enjoy solving complex problems and shipping practical, impactful solutions. Let's connect on
-      <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
-    </p>
-  </section>
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="section-intro">I help teams ship dependable ML products by bridging DevOps, data, and infrastructure. My work spans orchestrating training pipelines, codifying infrastructure, instrumenting observability, and keeping services robust in production.</p>
+      </div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <p class="section-subtitle">Auto-fetched from my GitHub profile.</p>
-    <p>
-      <label for="projects-filter" class="visually-hidden">Filter projects</label>
-      <input id="projects-filter" type="search" placeholder="Search projects..." aria-label="Filter projects">
-    </p>
-    <div id="projects-grid" class="project-grid" aria-live="polite">
-      <div class="project-card skeleton">
-        <div class="skeleton-thumb"></div>
-        <div class="project-info">
-          <h3>Loading projects...</h3>
-          <p>Please wait while I fetch repositories.</p>
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Experience & Capabilities</h2>
+        <p class="section-intro">Areas where I deliver value across the ML and platform lifecycle.</p>
+        <div class="cap-grid">
+          <div class="cap-card">
+            <h3>MLOps</h3>
+            <ul>
+              <li>Experiment tracking & model registry (MLflow)</li>
+              <li>Training pipelines & orchestration (Airflow)</li>
+              <li>Model serving (REST/gRPC), rollouts, monitoring</li>
+            </ul>
+          </div>
+          <div class="cap-card">
+            <h3>DevOps</h3>
+            <ul>
+              <li>CI/CD pipelines, IaC (Terraform)</li>
+              <li>Containers (Docker) & Kubernetes</li>
+              <li>Observability & incident response</li>
+            </ul>
+          </div>
+          <div class="cap-card">
+            <h3>Oracle DBA</h3>
+            <ul>
+              <li>Installations, upgrades, patching</li>
+              <li>Performance tuning & backups</li>
+              <li>High availability & security</li>
+            </ul>
+          </div>
+          <div class="cap-card">
+            <h3>Linux SysAdmin</h3>
+            <ul>
+              <li>System hardening & automation</li>
+              <li>Networking & storage</li>
+              <li>Troubleshooting & scripting</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <p class="section-cta"><a class="btn" href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">View GitHub</a></p>
-  </section>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="chart-container">
-      <canvas id="skillsChart"></canvas>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">linkedin.com/in/joseph-adeleke-27b433149</a></p>
-    <p>GitHub: <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">github.com/jadeleke</a></p>
-    <p>WhatsApp: <a href="https://wa.me/233592868660" target="_blank" rel="noopener noreferrer">+233 59 286 8660</a></p>
-
-    <form id="contact-form" class="contact-form" method="POST" data-contact-endpoint="https://submit-form.com/YOUR_FORMSPARK_ID">
-      <div class="form-row">
-        <div class="form-field">
-          <label for="cf-name">Your name</label>
-          <input id="cf-name" name="name" type="text" autocomplete="name" required>
-        </div>
-        <div class="form-field">
-          <label for="cf-email">Your email</label>
-          <input id="cf-email" name="email" type="email" autocomplete="email" required>
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="resume-web">
+          <div class="resume-section">
+            <h3>MSc Computer Science</h3>
+            <p>Focus: Machine Learning, MLOps, and Systems Engineering.</p>
+          </div>
         </div>
       </div>
-      <div class="form-field">
-        <label for="cf-message">Your message</label>
-        <textarea id="cf-message" name="message" rows="5" required></textarea>
-      </div>
-      <input type="text" name="_honeypot" class="hp" tabindex="-1" autocomplete="off">
-      <div class="form-actions">
-        <button id="contact-submit" type="submit" class="btn">Send Message</button>
-        <span id="contact-status" class="form-status" aria-live="polite"></span>
-      </div>
-    </form>
-  </section>
+    </section>
 
-  <!-- Blog Section -->
-  <section id="blog">
-    <h2>Latest Blog Posts</h2>
-    <div id="blog-list" class="blog-list" aria-live="polite">
-      <article class="blog-card skeleton">
-        <h3>Loading posts...</h3>
-        <p>Fetching latest articles.</p>
-      </article>
-    </div>
-    <p class="section-cta"><a class="btn" href="blog/">Visit Blog</a></p>
-  </section>
+    <section id="featured" class="section">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-intro">Curated MLOps and ML work I've been excited about lately.</p>
+        <div id="featured-grid" class="featured-grid" aria-live="polite">
+          <article class="featured-card skeleton">
+            <div class="featured-thumb skeleton-thumb"></div>
+            <div class="project-info">
+              <h3>Loading featured...</h3>
+              <p>Fetching highlighted repositories.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-intro">Auto-fetched from my GitHub profile - filter by name, description, or language.</p>
+        <div class="form-field" style="max-width: 440px;">
+          <label class="visually-hidden" for="projects-filter">Filter projects</label>
+          <input id="projects-filter" type="search" placeholder="Search projects..." aria-label="Filter projects">
+        </div>
+        <div id="projects-grid" class="project-grid" aria-live="polite">
+          <div class="project-card skeleton">
+            <div class="skeleton-thumb"></div>
+            <div class="project-info">
+              <h3>Loading projects...</h3>
+              <p>Please wait while I fetch repositories.</p>
+            </div>
+          </div>
+        </div>
+        <p class="section-cta"><a class="btn secondary" href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">View full GitHub profile</a></p>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="chart-container">
+          <canvas id="skillsChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="section">
+      <div class="container">
+        <h2 class="section-title">Latest Writing</h2>
+        <p class="section-intro">Thoughts on MLOps, ML systems, and engineering.</p>
+        <div id="blog-list" class="blog-list" aria-live="polite">
+          <article class="blog-card skeleton">
+            <h3>Loading posts...</h3>
+            <p>Fetching latest articles.</p>
+          </article>
+        </div>
+        <p class="section-cta"><a class="btn secondary" href="blog/">Visit blog</a></p>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-intro">Say hello or tell me about a project - I'm always happy to chat.</p>
+        <ul class="social-list" aria-label="Quick links">
+          <li><a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a></li>
+          <li><a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://wa.me/233592868660" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+        <form id="contact-form" class="contact-form" method="POST" data-contact-endpoint="https://submit-form.com/YOUR_FORMSPARK_ID">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-name">Your name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="cf-email">Your email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="cf-message">Your message</label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+          </div>
+          <input type="text" name="_honeypot" class="hp" tabindex="-1" autocomplete="off">
+          <div class="form-actions">
+            <button id="contact-submit" type="submit" class="btn">Send message</button>
+            <span id="contact-status" class="form-status" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Joseph Adeleke. All Rights Reserved. | <a href="/feed.xml">RSS</a></p>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Joseph Adeleke. All rights reserved. <a href="/feed.xml">RSS</a></p>
+    </div>
   </footer>
 
-  <!-- JavaScript -->
   <noscript>This site works best with JavaScript enabled.</noscript>
   <script src="script.js" defer></script>
-
 </body>
 </html>
+

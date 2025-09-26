@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,67 +22,52 @@
     "image": "https://jadeleke.github.io/assets/avatar.png"
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Page-specific tweaks */
-    body.resume-page main { max-width: 900px; text-align: left; }
-    .resume-header { display:flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .resume-actions { display:flex; gap: 10px; }
-    .resume-embed { width: 100%; height: 80vh; border: 1px solid var(--border); border-radius: 8px; background: var(--card-2); }
-    .resume-meta { color: var(--muted-2); margin-bottom: 12px; }
-    .resume-tabs { display:flex; gap: 10px; margin: 8px 0 16px; }
-    .resume-tab { border: 1px solid var(--border); background: transparent; color: var(--text); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
-    .resume-tab.is-active { background: var(--link); color: var(--btn-text); border-color: var(--link); }
-    .resume-web { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
-    .resume-grid { display:grid; grid-template-columns: 2fr 1fr; gap: 16px; }
-    .resume-section { margin-bottom: 14px; }
-    .resume-section h3 { color: var(--text); margin-bottom: 6px; font-size: 1.05rem; }
-    .resume-list { margin-left: 16px; }
-    .resume-title { display:flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-    .resume-title h2 { margin: 0; color: var(--text); }
-    .resume-subtitle { color: var(--muted-2); }
-    @media print {
-      header, .resume-actions, .resume-meta, .resume-tabs, .resume-embed { display: none !important; }
-      body { background: #fff !important; color: #000 !important; }
-      a { color: #000 !important; text-decoration: none; }
-      section { padding: 0; }
-      .resume-web { border: none; padding: 0; }
-    }
-  </style>
 </head>
 <body class="resume-page">
-  <header>
-    <nav aria-label="Primary">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/#about">About</a></li>
-        <li><a href="/#projects">Projects</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/resume.html" aria-current="page">Resume</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="/"><span>JA</span> Joseph Adeleke</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="/#hero">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/#education">Education</a></li>
+          <li><a href="/#skills">Skills</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume.html" aria-current="page">Resume</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"></button></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <div class="resume-header">
-        <h1>Resume</h1>
-        <div class="resume-actions">
+  <main id="main" class="section">
+    <div class="container">
+      <div class="resume-header" style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h1 class="section-title">Resume</h1>
+        <div class="resume-actions" style="display:flex; gap: 10px;">
           <a class="btn" href="/assets/resume.pdf" download>Download PDF</a>
           <a class="btn secondary" href="/assets/resume.pdf" target="_blank" rel="noopener">Open PDF</a>
         </div>
       </div>
-      <div class="resume-meta">Last updated: <span id="resume-updated">—</span></div>
+      <div class="resume-meta">Last updated: <span id="resume-updated">-</span></div>
       <div class="resume-tabs">
         <button id="tab-web" class="resume-tab is-active" type="button">Web</button>
         <button id="tab-pdf" class="resume-tab" type="button">PDF</button>
       </div>
 
       <div id="resume-web" class="resume-web">
-        <div class="resume-title">
+        <div class="resume-title" style="display:flex; justify-content: space-between; align-items: flex-end; gap: 12px;">
           <h2>Joseph Adeleke</h2>
-          <div class="resume-subtitle">DevOps & MLOps Engineer | Oracle DBA | Linux SysAdmin</div>
+          <div class="resume-subtitle" style="color: var(--text-muted);">DevOps & MLOps Engineer | Oracle DBA | Linux SysAdmin</div>
         </div>
         <div class="resume-grid">
           <div>
@@ -93,9 +78,9 @@
             <div class="resume-section">
               <h3>Experience</h3>
               <ul class="resume-list">
-                <li><strong>DevOps/MLOps Projects</strong> — Built automated training and model deployment pipelines with MLflow, Airflow, and Docker; implemented observability and rollout strategies.</li>
-                <li><strong>Oracle DBA</strong> — Managed installations, upgrades, backups, and performance tuning with focus on HA and security.</li>
-                <li><strong>Linux SysAdmin</strong> — System hardening, networking/storage configuration, scripting, and troubleshooting.</li>
+                <li><strong>DevOps/MLOps Projects</strong> - Built automated training and model deployment pipelines with MLflow, Airflow, and Docker; implemented observability and rollout strategies.</li>
+                <li><strong>Oracle DBA</strong> - Managed installations, upgrades, backups, and performance tuning with focus on HA and security.</li>
+                <li><strong>Linux SysAdmin</strong> - System hardening, networking/storage configuration, scripting, and troubleshooting.</li>
               </ul>
             </div>
           </div>
@@ -127,9 +112,15 @@
       </div>
 
       <iframe id="resume-pdf" class="resume-embed" src="/assets/resume.pdf#view=FitH" title="Resume PDF preview" hidden></iframe>
-      <p class="section-cta">Use the buttons to switch view or download the PDF.</p>
-    </section>
+      <p class="section-intro">Use the tabs to switch view or download the PDF version.</p>
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Joseph Adeleke. All rights reserved. <a href="/feed.xml">RSS</a></p>
+    </div>
+  </footer>
 
   <script>
     (function(){
@@ -159,3 +150,4 @@
   </script>
 </body>
 </html>
+

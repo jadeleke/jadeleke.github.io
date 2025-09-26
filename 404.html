@@ -1,18 +1,24 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main id="main">
-    <section>
-      <h1>404 - Page Not Found</h1>
-      <p>The page you’re looking for doesn’t exist.</p>
-      <p><a class="btn" href="/">Go to Homepage</a></p>
-    </section>
+  <main id="main" class="section" style="display:flex; align-items:center; justify-content:center; min-height:100vh;">
+    <div class="container" style="text-align:center; max-width:520px;">
+      <h1 style="font-size: clamp(2.4rem, 6vw, 3.5rem); margin-bottom: 1rem;">404</h1>
+      <p class="section-intro">The page you're looking for doesn't exist or has moved.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a class="btn" href="/">Return home</a>
+        <a class="btn secondary" href="/blog/">Visit blog</a>
+      </div>
+    </div>
   </main>
 </body>
 </html>

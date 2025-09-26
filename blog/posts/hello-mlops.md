@@ -1,6 +1,6 @@
-MLOps sits at the intersection of machine learning, software engineering, and operations. I’m interested in productionizing models, streamlining CI/CD for ML, and building reliable data/serving pipelines.
+﻿MLOps sits at the intersection of machine learning, software engineering, and operations. Iâ€™m interested in productionizing models, streamlining CI/CD for ML, and building reliable data/serving pipelines.
 
-On this blog, I’ll share notes and examples on topics like:
+On this blog, Iâ€™ll share notes and examples on topics like:
 
 - Containerizing models (Docker) and serving at scale (Kubernetes)
 - Model registries and experiment tracking (MLflow)
@@ -9,3 +9,4 @@ On this blog, I’ll share notes and examples on topics like:
 - Observability, metrics, and drift detection
 
 Stay tuned!
+

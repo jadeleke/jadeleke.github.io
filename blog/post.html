@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -16,32 +16,48 @@
   <meta id="twitter-image" name="twitter:image" content="https://jadeleke.github.io/assets/project-default.svg">
   <link id="canonical" rel="canonical" href="https://jadeleke.github.io/blog/post.html">
   <script defer data-domain="jadeleke.github.io" src="https://plausible.io/js/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
-  </head>
+</head>
 <body>
-  <header>
-    <nav aria-label="Primary">
-      <ul>
-        <li><a href="../#hero">Home</a></li>
-        <li><a href="../#about">About</a></li>
-        <li><a href="../#projects">Projects</a></li>
-        <li><a href="../#skills">Skills</a></li>
-        <li><a href="./">Blog</a></li>
-        <li><a href="../resume.html">Resume</a></li>
-        <li><a href="../#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="/"><span>JA</span> Joseph Adeleke</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../#hero">Home</a></li>
+          <li><a href="../#about">About</a></li>
+          <li><a href="../#projects">Projects</a></li>
+          <li><a href="../#education">Education</a></li>
+          <li><a href="../#skills">Skills</a></li>
+          <li><a href="./">Blog</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"></button></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section>
+  <main id="main" class="section">
+    <div class="container">
       <article id="post-container" class="blog-card">
         <h1 id="post-title">Loading...</h1>
         <div id="post-meta" class="meta"></div>
         <div id="post-content"></div>
       </article>
-    </section>
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Joseph Adeleke. All rights reserved. <a href="/feed.xml">RSS</a></p>
+    </div>
+  </footer>
 
   <noscript>Enable JavaScript to read this post.</noscript>
   <script>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,42 +7,53 @@
   <meta name="description" content="Blog by Joseph Adeleke on MLOps, DevOps, Oracle DBA, and Linux.">
   <link rel="canonical" href="https://jadeleke.github.io/blog/">
   <script defer data-domain="jadeleke.github.io" src="https://plausible.io/js/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-  <header>
-    <nav aria-label="Primary">
-      <ul>
-        <li><a href="../#hero">Home</a></li>
-        <li><a href="../#about">About</a></li>
-        <li><a href="../#projects">Projects</a></li>
-        <li><a href="../#skills">Skills</a></li>
-        <li><a href="./">Blog</a></li>
-        <li><a href="../resume.html">Resume</a></li>
-        <li><a href="../#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="/"><span>JA</span> Joseph Adeleke</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../#hero">Home</a></li>
+          <li><a href="../#about">About</a></li>
+          <li><a href="../#projects">Projects</a></li>
+          <li><a href="../#education">Education</a></li>
+          <li><a href="../#skills">Skills</a></li>
+          <li><a href="./" aria-current="page">Blog</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"></button></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <h1>Blog</h1>
-      <p class="section-subtitle">Thoughts on MLOps, ML systems, and engineering.</p>
+  <main id="main" class="section">
+    <div class="container">
+      <h1 class="section-title">Blog</h1>
+      <p class="section-intro">Deep dives on MLOps, ML systems, DevOps, Oracle, and Linux.</p>
       <div id="blog-list" class="blog-list" aria-live="polite">
         <article class="blog-card skeleton">
           <h3>Loading posts...</h3>
           <p>Fetching articles.</p>
         </article>
       </div>
-    </section>
+    </div>
   </main>
 
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Joseph Adeleke. All rights reserved. <a href="/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+
   <noscript>Enable JavaScript to view blog posts.</noscript>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
-    }
-  </script>
-  <script src="blog.js" defer></script>
+  <script src="../script.js" defer></script>
 </body>
-  </html>
+</html>

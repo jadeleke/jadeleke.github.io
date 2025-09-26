@@ -1,11 +1,11 @@
-// --- Skills (MLOps-centric) ---
+﻿// --- Skills (MLOps-centric) ---
 (function initSkillsChart() {
   const canvas = document.getElementById('skillsChart');
   if (!canvas || typeof window.Chart === 'undefined') return;
   const styles = getComputedStyle(document.documentElement);
-  const axisColor = styles.getPropertyValue('--muted').trim() || '#cbd5e1';
+  const axisColor = styles.getPropertyValue('--text-muted').trim() || '#9fa6c3';
   const textColor = styles.getPropertyValue('--text').trim() || '#e2e8f0';
-  const gridColor = 'rgba(203,213,225,0.2)';
+  const gridColor = 'rgba(159,166,195,0.28)';
   const ctx = canvas.getContext('2d');
   new Chart(ctx, {
     type: 'bar',
@@ -323,3 +323,5 @@
     finally { if (submit) submit.disabled = false; }
   });
 })();
+
+
