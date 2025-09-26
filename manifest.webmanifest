@@ -1,18 +1,15 @@
-﻿{
-    "name":  "Joseph Adeleke",
-    "short_name":  "JA",
-    "start_url":  "/",
-    "display":  "standalone",
-    "background_color":  "#11131f",
-    "theme_color":  "#11131f",
-    "icons":  [
-                  {
-                      "src":  "/assets/favicon.svg",
-                      "sizes":  "64x64",
-                      "type":  "image/svg+xml",
-                      "purpose":  "any"
-                  }
-              ]
+{
+  "name": "Joseph Adeleke",
+  "short_name": "JA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ]
 }
-
-

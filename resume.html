@@ -4,150 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume | Joseph Adeleke</title>
-  <meta name="description" content="Resume of Joseph Adeleke - DevOps & MLOps Engineer, Oracle DBA, Linux SysAdmin.">
-  <link rel="canonical" href="https://jadeleke.github.io/resume.html">
-  <script defer data-domain="jadeleke.github.io" src="https://plausible.io/js/script.js"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Joseph Adeleke",
-    "url": "https://jadeleke.github.io/",
-    "sameAs": [
-      "https://github.com/jadeleke",
-      "https://www.linkedin.com/in/joseph-adeleke-27b433149/"
-    ],
-    "jobTitle": "DevOps & MLOps Engineer",
-    "email": "mailto:akdeljoseph@outlook.com",
-    "image": "https://jadeleke.github.io/assets/avatar.png"
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="resume-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-
+  <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <div class="container nav-bar">
-      <a class="brand" href="/"><span>JA</span> Joseph Adeleke</a>
+      <a class="brand" href="/">
+        <span class="brand-icon">JA</span>
+        <span>Joseph Adeleke</span>
+      </a>
       <nav aria-label="Primary">
-        <ul>
-          <li><a href="/#hero">Home</a></li>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#projects">Projects</a></li>
-          <li><a href="/#education">Education</a></li>
-          <li><a href="/#skills">Skills</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/resume.html" aria-current="page">Resume</a></li>
-          <li><a href="/#contact">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"></button></li>
+        <ul class="menu">
+          <li><a href="#summary">Summary</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button">A</button></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main id="main" class="section">
+  <main id="content" class="section">
     <div class="container">
-      <div class="resume-header" style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+      <header class="section-heading">
         <h1 class="section-title">Resume</h1>
-        <div class="resume-actions" style="display:flex; gap: 10px;">
-          <a class="btn" href="/assets/resume.pdf" download>Download PDF</a>
-          <a class="btn secondary" href="/assets/resume.pdf" target="_blank" rel="noopener">Open PDF</a>
+        <p class="section-lead">Download the PDF or skim the highlights below.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="assets/resume.pdf" download>Download PDF</a>
+          <a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener">Open PDF</a>
         </div>
-      </div>
-      <div class="resume-meta">Last updated: <span id="resume-updated">-</span></div>
-      <div class="resume-tabs">
-        <button id="tab-web" class="resume-tab is-active" type="button">Web</button>
-        <button id="tab-pdf" class="resume-tab" type="button">PDF</button>
-      </div>
+      </header>
 
-      <div id="resume-web" class="resume-web">
-        <div class="resume-title" style="display:flex; justify-content: space-between; align-items: flex-end; gap: 12px;">
-          <h2>Joseph Adeleke</h2>
-          <div class="resume-subtitle" style="color: var(--text-muted);">DevOps & MLOps Engineer | Oracle DBA | Linux SysAdmin</div>
-        </div>
-        <div class="resume-grid">
-          <div>
-            <div class="resume-section">
-              <h3>Summary</h3>
-              <p>Engineer focused on shipping reliable ML systems and platforms: experiment tracking, training pipelines, CI/CD, containerization, Kubernetes, and scalable serving. Strong foundation in Linux and Oracle DBA.</p>
-            </div>
-            <div class="resume-section">
-              <h3>Experience</h3>
-              <ul class="resume-list">
-                <li><strong>DevOps/MLOps Projects</strong> - Built automated training and model deployment pipelines with MLflow, Airflow, and Docker; implemented observability and rollout strategies.</li>
-                <li><strong>Oracle DBA</strong> - Managed installations, upgrades, backups, and performance tuning with focus on HA and security.</li>
-                <li><strong>Linux SysAdmin</strong> - System hardening, networking/storage configuration, scripting, and troubleshooting.</li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="resume-section">
-              <h3>Skills</h3>
-              <ul class="resume-list">
-                <li>Python, Shell, Git</li>
-                <li>Docker, Kubernetes</li>
-                <li>CI/CD, Terraform</li>
-                <li>MLflow, Airflow</li>
-                <li>AWS</li>
-                <li>Linux</li>
-                <li>Oracle Database</li>
-              </ul>
-            </div>
-            <div class="resume-section">
-              <h3>Education</h3>
-              <p>MSc Computer Science</p>
-            </div>
-            <div class="resume-section">
-              <h3>Links</h3>
-              <p><a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a><br>
-                 <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener">LinkedIn</a><br>
-                 <a href="https://github.com/jadeleke" target="_blank" rel="noopener">GitHub</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <section id="summary" class="card" style="margin-bottom:24px;">
+        <h2>Summary</h2>
+        <p class="muted">Engineer focused on building reliable ML platforms: experiment tracking, data and training pipelines, CI/CD, orchestration, and production monitoring. Strong foundation in Linux and Oracle DBA support.</p>
+      </section>
 
-      <iframe id="resume-pdf" class="resume-embed" src="/assets/resume.pdf#view=FitH" title="Resume PDF preview" hidden></iframe>
-      <p class="section-intro">Use the tabs to switch view or download the PDF version.</p>
+      <section id="experience" class="card-grid two">
+        <article class="card">
+          <h3>DevOps / MLOps</h3>
+          <ul>
+            <li>Automated training and deployment pipelines with MLflow and Airflow</li>
+            <li>Containerized services and platform rollout with Docker and Kubernetes</li>
+            <li>Implemented observability covering metrics, logs, and drift detection</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Oracle DBA</h3>
+          <ul>
+            <li>Production support for installations, upgrades, and patch cycles</li>
+            <li>Backup, restore, and performance tuning routines</li>
+            <li>Security hardening and high availability design</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Linux administration</h3>
+          <ul>
+            <li>System hardening, patch management, and automation</li>
+            <li>Network and storage design for on-prem and cloud workloads</li>
+            <li>Troubleshooting with shell/Python scripting</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="skills" class="card-grid two" style="margin-top:24px;">
+        <article class="card">
+          <h3>Languages & tooling</h3>
+          <ul>
+            <li>Python, Bash, SQL</li>
+            <li>Docker, Kubernetes</li>
+            <li>Terraform, Ansible</li>
+            <li>GitHub Actions, Jenkins</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Platforms</h3>
+          <ul>
+            <li>AWS (EKS, ECS, S3, RDS)</li>
+            <li>Oracle Database</li>
+            <li>Linux (RHEL, Ubuntu)</li>
+            <li>Monitoring (Prometheus, Grafana, ELK)</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="education" class="card" style="margin-top:24px;">
+        <h3>MSc Computer Science</h3>
+        <p class="muted">Coursework in machine learning, MLOps, systems engineering, and distributed computing.</p>
+      </section>
+
+      <section id="contact" class="card" style="margin-top:24px;">
+        <h3>Contact</h3>
+        <p class="muted">Email <a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a>. LinkedIn <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener">joseph-adeleke</a>.</p>
+      </section>
     </div>
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2025 Joseph Adeleke. All rights reserved. <a href="/feed.xml">RSS</a></p>
+      <p>&copy; 2025 Joseph Adeleke. All rights reserved.</p>
     </div>
   </footer>
 
-  <script>
-    (function(){
-      fetch('/assets/resume.pdf', { method: 'HEAD' }).then(r => {
-        const d = r.headers.get('last-modified');
-        if (d) document.getElementById('resume-updated').textContent = new Date(d).toLocaleDateString();
-      }).catch(()=>{});
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
-      }
-      const tabWeb = document.getElementById('tab-web');
-      const tabPdf = document.getElementById('tab-pdf');
-      const web = document.getElementById('resume-web');
-      const pdf = document.getElementById('resume-pdf');
-      function activate(which){
-        if (which === 'web') {
-          web.hidden = false; pdf.hidden = true;
-          tabWeb.classList.add('is-active'); tabPdf.classList.remove('is-active');
-        } else {
-          web.hidden = true; pdf.hidden = false;
-          tabPdf.classList.add('is-active'); tabWeb.classList.remove('is-active');
-        }
-      }
-      tabWeb?.addEventListener('click', () => activate('web'));
-      tabPdf?.addEventListener('click', () => activate('pdf'));
-    })();
-  </script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
 

@@ -1,31 +1,16 @@
 [
   {
     "title": "GhanaVoice",
-    "description": "Speech classification for Ghanaian languages using CNNs (Akan, Ewe, Dagbani, Dagaare, Ikposo).",
-    "image": "auto",
+    "description": "Speech classification for Ghanaian languages using CNN models.",
     "repo": "https://github.com/jadeleke/GhanaVoice",
     "demo": "",
-    "tags": ["ml", "asr", "cnn", "python"],
-    "pin": true,
-    "order": 1
+    "tags": ["ml", "python", "speech"]
   },
   {
     "title": "react-docksmith",
-    "description": "React portfolio showcasing DevOps workflow: Docker multi-stage builds, Nginx deploy, and CI integration.",
-    "image": "auto",
+    "description": "React portfolio showing DevOps workflow: Docker multi-stage builds and CI.",
     "repo": "https://github.com/jadeleke/react-docksmith",
     "demo": "",
-    "tags": ["devops", "docker", "nginx", "react"],
-    "pin": true,
-    "order": 2
-  },
-  {
-    "title": "advanced-iris-visualization",
-    "description": "Advanced visualization for the Iris dataset: violin, box, bar, and KDE plots for distribution insights.",
-    "image": "auto",
-    "repo": "https://github.com/jadeleke/advanced-iris-visualization",
-    "demo": "",
-    "tags": ["ml", "visualization", "python"],
-    "pin": false
+    "tags": ["devops", "docker", "react"]
   }
 ]

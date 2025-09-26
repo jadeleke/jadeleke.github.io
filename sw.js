@@ -1,50 +1,37 @@
-const VERSION = 'v1.0.0';
-const STATIC_CACHE = `static-${VERSION}`;
+const CACHE_NAME = 'site-cache-v1';
 const ASSETS = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/assets/favicon.svg',
-  '/assets/avatar.png',
-  '/assets/project-default.svg',
-  '/assets/resume.pdf',
+  '/css/main.css',
+  '/js/main.js',
   '/blog/',
   '/blog/index.html',
-  '/blog/post.html',
+  '/blog/posts/hello-mlops.html',
+  '/blog/posts/devops-mlops-oracle-linux.html',
   '/resume.html',
-  '/manifest.webmanifest'
+  '/404.html'
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())
   );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== STATIC_CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())
+    caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())
   );
 });
 
-// Network-first for navigation requests; cache-first for others
-self.addEventListener('fetch', (event) => {
-  const req = event.request;
-  const url = new URL(req.url);
-  if (req.mode === 'navigate') {
-    event.respondWith(
-      fetch(req).catch(() => caches.match('/index.html'))
-    );
-    return;
-  }
-  if (url.origin === location.origin) {
-    event.respondWith(
-      caches.match(req).then((cached) => cached || fetch(req).then((res) => {
-        const resClone = res.clone();
-        caches.open(STATIC_CACHE).then((cache) => cache.put(req, resClone));
-        return res;
-      }).catch(() => cached))
-    );
-  }
+self.addEventListener('fetch', event => {
+  const { request } = event;
+  if (request.method !== 'GET') return;
+  event.respondWith(
+    caches.match(request).then(cached => cached || fetch(request).then(response => {
+      const clone = response.clone();
+      caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
+      return response;
+    }).catch(() => cached))
+  );
 });
