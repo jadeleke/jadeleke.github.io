@@ -256,66 +256,6 @@
   }
 })();
 
-(function contactForm() {
-  const form = document.getElementById("contact-form");
-  if (!form) return;
-  const status = document.getElementById("contact-status");
-  const submit = document.getElementById("contact-submit");
-
-  const query = new URLSearchParams(window.location.search);
-  const endpoint = query.get("formspark") || query.get("endpoint") || form.getAttribute("data-contact-endpoint") || "";
-
-  form.addEventListener("submit", async event => {
-    event.preventDefault();
-
-    if (!endpoint) {
-      const name = encodeURIComponent(form.name?.value || "");
-      const message = encodeURIComponent(form.message?.value || "");
-      const subject = encodeURIComponent(`Website message from ${name}`);
-      window.location.href = `mailto:akdeljoseph@outlook.com?subject=${subject}&body=${message}`;
-      if (status) {
-        status.textContent = "Opening your email client...";
-        status.className = "form-status";
-      }
-      return;
-    }
-
-    try {
-      const data = new FormData(form);
-      data.set("_subject", "Website contact from jadeleke.github.io");
-      data.set("_replyto", form.querySelector("#cf-email")?.value || "");
-      data.set("_redirect", window.location.origin + "/#contact");
-
-      if (status) {
-        status.textContent = "Sending...";
-        status.className = "form-status";
-      }
-      if (submit) submit.disabled = true;
-
-      const res = await fetch(endpoint, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" }
-      });
-
-      if (!res.ok) throw new Error("Submit failed");
-
-      if (status) {
-        status.textContent = "Thanks. Your message was sent.";
-        status.className = "form-status is-success";
-      }
-      form.reset();
-    } catch (err) {
-      if (status) {
-        status.textContent = "Sorry, there was a problem sending your message.";
-        status.className = "form-status is-error";
-      }
-    } finally {
-      if (submit) submit.disabled = false;
-    }
-  });
-})();
-
 (function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
   window.addEventListener("load", () => {
