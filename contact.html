@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">\n  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -33,32 +34,78 @@
           <li><a href="blog/">Blog</a></li>
           <li><a href="resume.html">Resume</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button">A</button></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
         </ul>
       </nav>
     </div>
   </header>
+
   <main id="content" class="section">
-    <div class="container">      <div class="section-heading">
-        <h1 class="section-title">Contact</h1>
-        <p class="section-lead">Reach out through any of the channels below.</p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-links">
-          <a href="mailto:akdeljoseph@outlook.com">Email</a>
-          <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://wa.me/233592868660" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <div class="container contact-layout">
+      <section class="contact-overview">
+        <div class="section-heading">
+          <h1 class="section-title">Contact</h1>
+          <p class="section-lead">Let's build reliable delivery pipelines and machine learning platforms together.</p>
         </div>
-        <p class="muted">For project inquiries please include scope, timelines, tooling, and stakeholders.</p>
-      </div>    </div>
+        <div class="contact-summary">
+          <p>I partner with data science and platform teams to automate delivery, harden infrastructure, and bring ML workloads to production. Email is the fastest way to reach me and keeps project context in one thread.</p>
+          <ul class="contact-summary-list">
+            <li>
+              <span class="label">Availability</span>
+              <span>Remote contracts, consulting engagements, and full-time roles</span>
+            </li>
+            <li>
+              <span class="label">Focus</span>
+              <span>MLOps automation, observability, cloud migration, Oracle DBA</span>
+            </li>
+            <li>
+              <span class="label">Response</span>
+              <span>Within 24 hours on weekdays</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <aside class="contact-card contact-panel">
+        <h2 class="contact-panel-title">Say hello</h2>
+        <div class="contact-links">
+          <a href="mailto:akdeljoseph@outlook.com">
+            <span>Email</span>
+            <span>akdeljoseph@outlook.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">
+            <span>LinkedIn</span>
+            <span>/joseph-adeleke</span>
+          </a>
+          <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">
+            <span>GitHub</span>
+            <span>@jadeleke</span>
+          </a>
+          <a href="https://wa.me/233592868660" target="_blank" rel="noopener noreferrer">
+            <span>WhatsApp</span>
+            <span>+233 59 286 8660</span>
+          </a>
+        </div>
+        <div class="contact-meta">
+          <div>
+            <span class="label">Timezone</span>
+            <span>GMT (Accra)</span>
+          </div>
+          <div>
+            <span class="label">Languages</span>
+            <span>English</span>
+          </div>
+        </div>
+      </aside>
+    </div>
   </main>
+
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2025 Joseph Adeleke. All rights reserved.</p>
+      <p>&copy; 2025 Joseph Adeleke.</p>
     </div>
   </footer>
+
   <script src="js/main.js" defer></script>
 </body>
 </html>
-

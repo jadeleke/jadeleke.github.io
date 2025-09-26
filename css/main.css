@@ -278,6 +278,14 @@ a:focus-visible {
   gap: 20px;
   box-shadow: var(--shadow);
 }
+.hero-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
 
 .hero-badge {
   width: 120px;
@@ -554,11 +562,22 @@ a:focus-visible {
     order: -1;
     text-align: center;
   }
+.hero-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
 
   .hero-badge {
     margin: 0 auto;
   }
 }
+
+
+
 
 
 
