@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Joseph Adeleke - DevOps and MLOps engineer.">
+  <meta name="description" content="Joseph Adeleke is a DevOps and MLOps engineer building reliable ML platforms, CI/CD, and database automation.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0f172a">
-  <title>Joseph Adeleke | DevOps - MLOps - Oracle DBA</title>
+  <title>Joseph Adeleke | DevOps · MLOps · Oracle DBA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,8 +22,16 @@
         <span class="brand-icon">JA</span>
         <span>Joseph Adeleke</span>
       </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="menu-toggle-box" aria-hidden="true">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
       <nav aria-label="Primary">
-        <ul class="menu">
+        <ul id="primary-menu" class="menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="experience.html">Experience</a></li>
@@ -44,15 +52,22 @@
     <section class="section hero">
       <div class="container hero-grid">
         <div>
+          <span class="eyebrow">DevOps · MLOps · Oracle DBA</span>
           <h1 class="hero-title">Hi, I'm <span>Joseph Adeleke</span></h1>
-          <p class="hero-subtitle">DevOps and MLOps engineer, Oracle database administrator, and Linux system administrator. I help teams ship reliable ML products by building the platforms behind them.</p>
+          <p class="hero-subtitle">I build and operate the delivery systems behind data science teams: ML platforms, automated training pipelines, production observability, and the databases they rely on.</p>
+          <div class="hero-badges hero-badges-inline" aria-label="Capabilities">
+            <span class="badge">Kubernetes</span>
+            <span class="badge">MLflow &amp; Airflow</span>
+            <span class="badge">Oracle DBA</span>
+          </div>
           <div class="hero-actions">
             <a class="btn primary" href="mailto:akdeljoseph@outlook.com">Email me</a>
             <a class="btn" href="mailto:akdeljoseph@outlook.com?subject=Project%20Kickoff%20Inquiry">Email about a project</a>
             <a class="btn" href="resume.html">View resume</a>
             <a class="btn" href="assets/resume.pdf" download>Download PDF</a>
           </div>
-          <div class="hero-links" aria-label="Social links">
+          <p class="skill-note">Currently partnering with platform, data, and ops teams to ship ML workloads with confidence.</p>
+          <div class="hero-links" aria-label="Primary channels">
             <a href="mailto:akdeljoseph@outlook.com">Email</a>
             <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -61,22 +76,25 @@
         </div>
         <aside class="hero-card">
           <img class="hero-image" src="https://avatars.githubusercontent.com/jadeleke" alt="Joseph Adeleke" loading="lazy">
-          <div class="hero-meta">Current focus<strong>ML platforms - Observability - Automation</strong></div>
-          <div class="hero-meta">Location<strong>Accra, GH - Remote</strong></div>
+          <div class="hero-badges">
+            <span class="badge">Remote-first</span>
+            <span class="badge">Platform Reliability</span>
+          </div>
+          <div class="hero-meta">Current focus<strong>ML platforms · Observability · Automation</strong></div>
+          <div class="hero-meta">Location<strong>Accra, Ghana — Remote-first</strong></div>
+          <div class="hero-meta">Availability<strong>Consulting &amp; full-time</strong></div>
           <div class="hero-meta">Email<strong><a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a></strong></div>
         </aside>
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
     <div class="container">
       <p>&copy; 2025 Joseph Adeleke.</p>
     </div>
   </footer>
 
-
   <script src="js/main.js" defer></script>
 </body>
 </html>
-
-

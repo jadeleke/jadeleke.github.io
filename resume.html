@@ -1,30 +1,44 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resume of Joseph Adeleke highlighting DevOps, MLOps, and database engineering experience.">
+  <meta name="author" content="Joseph Adeleke">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0f172a">
   <title>Resume | Joseph Adeleke</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">\n  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body class="resume-page">
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <div class="container nav-bar">
-      <a class="brand" href="/">
+      <a class="brand" href="index.html">
         <span class="brand-icon">JA</span>
         <span>Joseph Adeleke</span>
       </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="menu-toggle-box" aria-hidden="true">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
       <nav aria-label="Primary">
-        <ul class="menu">
+        <ul id="primary-menu" class="menu">
+          <li><a href="index.html">Home</a></li>
           <li><a href="#summary">Summary</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#education">Education</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button">A</button></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
         </ul>
       </nav>
     </div>
@@ -32,83 +46,100 @@
 
   <main id="content" class="section">
     <div class="container">
-      <header class="section-heading">
-        <h1 class="section-title">Resume</h1>
-        <p class="section-lead">Download the PDF or skim the highlights below.</p>
+      <section class="card resume-callout">
+        <header>
+          <h1 class="section-title">Resume</h1>
+          <p class="section-lead">Download the PDF or skim the highlights curated for quick evaluation.</p>
+        </header>
         <div class="hero-actions">
           <a class="btn primary" href="assets/resume.pdf" download>Download PDF</a>
           <a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener">Open PDF</a>
         </div>
-      </header>
-
-      <section id="summary" class="card" style="margin-bottom:24px;">
-        <h2>Summary</h2>
-        <p class="muted">Engineer focused on building reliable ML platforms: experiment tracking, data and training pipelines, CI/CD, orchestration, and production monitoring. Strong foundation in Linux and Oracle DBA support.</p>
       </section>
 
-      <section id="experience" class="card-grid two">
-        <article class="card">
-          <h3>DevOps / MLOps</h3>
+      <div class="resume-grid">
+        <section id="summary" class="card resume-section">
+          <h2>Summary</h2>
+          <p class="skill-note">DevOps and MLOps engineer focused on dependable machine learning delivery. I combine platform engineering, observability, and database fundamentals to keep releases fast, auditable, and resilient.</p>
           <ul>
-            <li>Automated training and deployment pipelines with MLflow and Airflow</li>
-            <li>Containerized services and platform rollout with Docker and Kubernetes</li>
-            <li>Implemented observability covering metrics, logs, and drift detection</li>
+            <li>Orchestrated ML pipelines that move models from experiment to production with automated validation.</li>
+            <li>Delivered infrastructure-as-code foundations across AWS, on-prem, and hybrid environments.</li>
+            <li>Supported critical Oracle estates with performance tuning, HA, and upgrade strategies.</li>
           </ul>
-        </article>
-        <article class="card">
-          <h3>Oracle DBA</h3>
-          <ul>
-            <li>Production support for installations, upgrades, and patch cycles</li>
-            <li>Backup, restore, and performance tuning routines</li>
-            <li>Security hardening and high availability design</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Linux administration</h3>
-          <ul>
-            <li>System hardening, patch management, and automation</li>
-            <li>Network and storage design for on-prem and cloud workloads</li>
-            <li>Troubleshooting with shell/Python scripting</li>
-          </ul>
-        </article>
-      </section>
+        </section>
 
-      <section id="skills" class="card-grid two" style="margin-top:24px;">
-        <article class="card">
-          <h3>Languages & tooling</h3>
-          <ul>
-            <li>Python, Bash, SQL</li>
-            <li>Docker, Kubernetes</li>
-            <li>Terraform, Ansible</li>
-            <li>GitHub Actions, Jenkins</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Platforms</h3>
-          <ul>
-            <li>AWS (EKS, ECS, S3, RDS)</li>
-            <li>Oracle Database</li>
-            <li>Linux (RHEL, Ubuntu)</li>
-            <li>Monitoring (Prometheus, Grafana, ELK)</li>
-          </ul>
-        </article>
-      </section>
+        <section id="experience" class="card resume-section">
+          <h2>Experience</h2>
+          <div class="timeline" aria-label="Roles">
+            <div class="timeline-item">
+              <h3>MLOps Lead Consultant</h3>
+              <span>2023 — Present</span>
+              <p class="skill-note">Designing ML platforms, governance, and observability for data science teams shipping to production.</p>
+              <ul>
+                <li>Implemented automated model validation, registry promotion, and drift detection.</li>
+                <li>Scaled Kubernetes deployments with progressive delivery and feature flag rollouts.</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h3>Senior DevOps Engineer</h3>
+              <span>2020 — 2023</span>
+              <p class="skill-note">Led platform enablement, CI/CD adoption, and site reliability practices across distributed teams.</p>
+              <ul>
+                <li>Built self-service pipeline templates covering infrastructure, data, and application workloads.</li>
+                <li>Defined SLOs, observability, and incident response playbooks reducing MTTR by 45%.</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h3>Oracle DBA &amp; Linux Administrator</h3>
+              <span>2016 — 2020</span>
+              <p class="skill-note">Kept mission-critical Oracle databases and Linux servers performant, secure, and recoverable.</p>
+              <ul>
+                <li>Drove cross-version upgrades, RMAN strategies, and security hardening.</li>
+                <li>Automated provisioning, patching, and monitoring across large server fleets.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-      <section id="education" class="card" style="margin-top:24px;">
-        <h3>MSc Computer Science</h3>
-        <p class="muted">Coursework in machine learning, MLOps, systems engineering, and distributed computing.</p>
-      </section>
+        <section id="skills" class="card resume-section">
+          <h2>Skills</h2>
+          <div class="resume-pill-list">
+            <span class="resume-pill">Python</span>
+            <span class="resume-pill">MLflow</span>
+            <span class="resume-pill">Airflow</span>
+            <span class="resume-pill">Kubernetes</span>
+            <span class="resume-pill">GitHub Actions</span>
+            <span class="resume-pill">Terraform</span>
+            <span class="resume-pill">Observability</span>
+            <span class="resume-pill">Oracle DBA</span>
+            <span class="resume-pill">Linux</span>
+          </div>
+        </section>
 
-      <section id="contact" class="card" style="margin-top:24px;">
-        <h3>Contact</h3>
-        <p class="muted">Email <a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a>. LinkedIn <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener">joseph-adeleke</a>.</p>
-      </section>
+        <section id="education" class="card resume-section">
+          <h2>Education</h2>
+          <p class="skill-note">MSc Computer Science — focused on distributed systems, MLOps, and applied machine learning research.</p>
+          <ul>
+            <li>Graduate research on observability patterns for streaming ML workloads.</li>
+            <li>Teaching assistant for systems engineering and automation courses.</li>
+          </ul>
+        </section>
+
+        <section id="contact" class="card resume-section">
+          <h2>Contact</h2>
+          <p class="skill-note">Email <a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a> for availability, project scoping, or referrals.</p>
+          <p class="skill-note">LinkedIn <a href="https://www.linkedin.com/in/joseph-adeleke-27b433149/" target="_blank" rel="noopener">joseph-adeleke</a> · GitHub <a href="https://github.com/jadeleke" target="_blank" rel="noopener">@jadeleke</a>.</p>
+        </section>
+      </div>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Joseph Adeleke.</p>
+    </div>
+  </footer>
 
   <script src="js/main.js" defer></script>
 </body>
 </html>
-
-
-

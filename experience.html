@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Joseph Adeleke - DevOps and MLOps engineer.">
+  <meta name="description" content="Professional experience of Joseph Adeleke across DevOps, MLOps, Oracle DBA, and Linux administration.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0f172a">
@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -21,8 +22,16 @@
         <span class="brand-icon">JA</span>
         <span>Joseph Adeleke</span>
       </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="menu-toggle-box" aria-hidden="true">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
       <nav aria-label="Primary">
-        <ul class="menu">
+        <ul id="primary-menu" class="menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="experience.html">Experience</a></li>
@@ -33,57 +42,78 @@
           <li><a href="blog/">Blog</a></li>
           <li><a href="resume.html">Resume</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button">A</button></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
         </ul>
       </nav>
     </div>
   </header>
+
   <main id="content" class="section">
-    <div class="container">      <div class="section-heading">
-        <h1 class="section-title">Experience & capabilities</h1>
-        <p class="section-lead">Coverage across the full machine learning and platform lifecycle.</p>
+    <div class="container">
+      <header class="section-heading">
+        <span class="eyebrow">Experience</span>
+        <h1 class="section-title">Experience &amp; capabilities</h1>
+        <p class="section-lead">A decade honing the tooling, automation, and operational practices that keep machine learning and data platforms production-ready.</p>
+      </header>
+
+      <div class="card-grid two">
+        <article class="card">
+          <h2>MLOps leadership</h2>
+          <ul>
+            <li>Designed and ran ML platforms with MLflow registries, automated retraining, and drift-aware monitoring.</li>
+            <li>Productionised models with blue/green and canary strategies across Kubernetes, serverless, and batch environments.</li>
+            <li>Partnered with data scientists to standardise experiment metadata, lineage, and reproducibility.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>DevOps delivery</h2>
+          <ul>
+            <li>Built GitHub Actions and Jenkins pipelines for infrastructure, data pipelines, and application services.</li>
+            <li>Codified infrastructure with Terraform, Ansible, and Helm across AWS, on-prem, and hybrid estates.</li>
+            <li>Led blameless incident response practices backed by robust observability and SLOs.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Oracle DBA expertise</h2>
+          <ul>
+            <li>Handled lifecycle management: installs, upgrades, patching, cloning, and cross-version migrations.</li>
+            <li>Implemented RMAN backup strategies, Data Guard, and performance tuning across OLTP and warehouse workloads.</li>
+            <li>Introduced security baselines and auditing to meet compliance and uptime targets.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Linux systems operations</h2>
+          <ul>
+            <li>Engineered hardened baselines, configuration management, and golden images for fleet consistency.</li>
+            <li>Delivered automation in Bash and Python for provisioning, patching, and fleet drift detection.</li>
+            <li>Optimised networking, storage, and virtualization stacks to keep latency and throughput predictable.</li>
+          </ul>
+        </article>
       </div>
-      <div class="card-grid four">
-        <article class="card">
-          <h3>MLOps</h3>
-          <ul>
-            <li>Experiment tracking & registry (MLflow)</li>
-            <li>Data and training pipelines (Airflow)</li>
-            <li>Serving strategies, rollout, monitoring</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>DevOps</h3>
-          <ul>
-            <li>CI/CD pipelines and automation</li>
-            <li>Infrastructure as code with Terraform</li>
-            <li>Observability and incident response</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Oracle DBA</h3>
-          <ul>
-            <li>Installations, upgrades, patching</li>
-            <li>Performance tuning and backup strategy</li>
-            <li>High availability and security</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Linux administration</h3>
-          <ul>
-            <li>System hardening and automation</li>
-            <li>Networking and storage</li>
-            <li>Troubleshooting with scripting</li>
-          </ul>
-        </article>
-      </div>    </div>
+
+      <section class="timeline" aria-label="Highlights">
+        <div class="timeline-item">
+          <h3>Scaled ML platform uptime from 92% to 99.8%</h3>
+          <span>Through automated validation gates, progressive delivery, and real-time drift dashboards.</span>
+        </div>
+        <div class="timeline-item">
+          <h3>Reduced release cycle time by 65%</h3>
+          <span>Introduced trunk-based development, reusable pipeline templates, and compliance automation.</span>
+        </div>
+        <div class="timeline-item">
+          <h3>Modernised Oracle estates without downtime</h3>
+          <span>Executed cross-region migrations, performance tuning, and HA rollouts for mission-critical databases.</span>
+        </div>
+      </section>
+    </div>
   </main>
+
   <footer class="site-footer">
     <div class="container">
       <p>&copy; 2025 Joseph Adeleke.</p>
     </div>
   </footer>
+
   <script src="js/main.js" defer></script>
 </body>
 </html>
-

@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Joseph Adeleke - DevOps and MLOps engineer.">
+  <meta name="description" content="Featured open source projects by Joseph Adeleke.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0f172a">
@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -21,8 +22,16 @@
         <span class="brand-icon">JA</span>
         <span>Joseph Adeleke</span>
       </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="menu-toggle-box" aria-hidden="true">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
       <nav aria-label="Primary">
-        <ul class="menu">
+        <ul id="primary-menu" class="menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="experience.html">Experience</a></li>
@@ -33,25 +42,35 @@
           <li><a href="blog/">Blog</a></li>
           <li><a href="resume.html">Resume</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button">A</button></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
         </ul>
       </nav>
     </div>
   </header>
+
   <main id="content" class="section">
-    <div class="container">      <div class="section-heading">
+    <div class="container">
+      <header class="section-heading">
+        <span class="eyebrow">Open source</span>
         <h1 class="section-title">Featured projects</h1>
-        <p class="section-lead">Curated highlights drawn from my open source work.</p>
-      </div>
+        <p class="section-lead">A shortlist of projects representing how I approach automation, developer experience, and ML operations. Pull the source, explore the issues, or reach out if you want to collaborate.</p>
+      </header>
+
       <div id="featured-list" class="card-grid three">
         <article class="card">
           <h3>Loading</h3>
           <p class="muted">Fetching featured repositories...</p>
         </article>
-      </div>    </div>
+      </div>
+    </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Joseph Adeleke.</p>
+    </div>
+  </footer>
 
   <script src="js/main.js" defer></script>
 </body>
 </html>
-

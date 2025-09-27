@@ -1,9 +1,9 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Joseph Adeleke - DevOps and MLOps engineer.">
+  <meta name="description" content="Learn more about Joseph Adeleke, a DevOps and MLOps engineer building reliable machine learning platforms and infrastructure.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0f172a">
@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -21,8 +22,16 @@
         <span class="brand-icon">JA</span>
         <span>Joseph Adeleke</span>
       </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="menu-toggle-box" aria-hidden="true">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
       <nav aria-label="Primary">
-        <ul class="menu">
+        <ul id="primary-menu" class="menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="experience.html">Experience</a></li>
@@ -33,31 +42,67 @@
           <li><a href="blog/">Blog</a></li>
           <li><a href="resume.html">Resume</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button">A</button></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
         </ul>
       </nav>
     </div>
   </header>
+
   <main id="content" class="section">
-    <div class="container">      <div class="section-heading">
-        <h1 class="section-title">About</h1>
-        <p class="section-lead">I help teams ship dependable ML products by bridging DevOps, data, and infrastructure. My work spans orchestrating experiments and automated training to packaging models, deploying with Kubernetes, and instrumenting observability.</p>
+    <div class="container">
+      <header class="section-heading">
+        <span class="eyebrow">Profile</span>
+        <h1 class="section-title">About Joseph Adeleke</h1>
+        <p class="section-lead">I'm a DevOps and MLOps engineer focused on building trustworthy machine learning delivery systems. From orchestrating experiments to shipping models into production with airtight observability, I help teams stay confident in the platforms that power their products.</p>
+      </header>
+
+      <div class="about-grid">
+        <article class="card highlight-card">
+          <h2>What I bring</h2>
+          <ul>
+            <li>Model operations expertise spanning experiment tracking, automated retraining, and safe rollout strategies.</li>
+            <li>Proven delivery of cloud-native infrastructure, CI/CD, and observability tailored to data science workloads.</li>
+            <li>Deep Oracle DBA and Linux background for hybrid environments where legacy and modern platforms converge.</li>
+          </ul>
+        </article>
+
+        <aside class="card">
+          <h2>Quick facts</h2>
+          <ul class="list-plain">
+            <li>7+ years enabling platform, data, and infrastructure teams.</li>
+            <li>Hands-on with Kubernetes, MLflow, Airflow, Terraform, and GitHub Actions.</li>
+            <li>Comfortable across AWS, Oracle Database, and hardened Linux estates.</li>
+            <li>Passionate about mentoring engineers into hybrid DevOps/MLOps roles.</li>
+          </ul>
+        </aside>
       </div>
-      <article class="card" style="margin-top:24px;">
-        <h2>Focus areas</h2>
-        <ul>
-          <li>Designing ML platforms that are reproducible and observable</li>
-          <li>Automating training, evaluation, and deployment workflows</li>
-          <li>Ensuring smooth operations across cloud and on-prem environments</li>
-        </ul>
-      </article>    </div>
+
+      <section class="timeline" aria-label="Journey">
+        <div class="timeline-item">
+          <h3>2024 — MLOps lead consultant</h3>
+          <span>Guiding data science teams from notebooks to resilient, observable production deployments.</span>
+          <p class="skill-note">Introduced golden paths for model packaging, automated validation, and continuous delivery.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2021 — Senior DevOps engineer</h3>
+          <span>Scaled CI/CD and infrastructure-as-code for distributed engineering teams.</span>
+          <p class="skill-note">Brought Kubernetes, service meshes, and centralised telemetry online with zero downtime migrations.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2017 — Oracle DBA &amp; Linux administrator</h3>
+          <span>Kept mission-critical databases and servers performant, secure, and recoverable.</span>
+          <p class="skill-note">Built the foundation in scripting, automation, and fault analysis that still anchors my work today.</p>
+        </div>
+      </section>
+    </div>
   </main>
+
   <footer class="site-footer">
     <div class="container">
       <p>&copy; 2025 Joseph Adeleke.</p>
     </div>
   </footer>
+
   <script src="js/main.js" defer></script>
 </body>
 </html>
-
