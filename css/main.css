@@ -348,6 +348,19 @@ button {
   margin-bottom: 22px;
 }
 
+
+.hero-badges > * + *,
+.hero-actions > * + * {
+  margin-left: 12px;
+}
+
+@supports (gap: 1rem) {
+  .hero-badges > * + *,
+  .hero-actions > * + * {
+    margin-left: 0;
+  }
+}
+
 .hero-links {
   display: flex;
   flex-wrap: wrap;
@@ -536,7 +549,7 @@ button {
 }
 
 .list-plain li::before {
-  content: "•";
+  content: "";
   color: var(--accent);
   font-size: 1.2rem;
   line-height: 1;
@@ -1078,7 +1091,7 @@ button {
     justify-content: center;
   }
 }
-
+
 
 .card.is-compact {
   max-width: 520px;
@@ -1089,7 +1102,7 @@ button {
 .hero-actions-center {
   justify-content: center;
 }
-
+
 
 .visually-hidden {
   position: absolute;
@@ -1102,5 +1115,5 @@ button {
   white-space: nowrap;
   border: 0;
 }
-
-
+
+
