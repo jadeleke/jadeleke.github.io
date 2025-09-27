@@ -348,16 +348,27 @@ button {
   margin-bottom: 22px;
 }
 
+.hero-badges,
+.hero-actions {
+  align-items: center;
+}
 
-.hero-badges > * + *,
-.hero-actions > * + * {
-  margin-left: 12px;
+.hero-badges > *,
+.hero-actions > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.hero-badges > *:last-child,
+.hero-actions > *:last-child {
+  margin-right: 0;
 }
 
 @supports (gap: 1rem) {
-  .hero-badges > * + *,
-  .hero-actions > * + * {
-    margin-left: 0;
+  .hero-badges > *,
+  .hero-actions > * {
+    margin-right: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -1091,7 +1102,8 @@ button {
     justify-content: center;
   }
 }
-
+
+
 
 .card.is-compact {
   max-width: 520px;
@@ -1102,7 +1114,8 @@ button {
 .hero-actions-center {
   justify-content: center;
 }
-
+
+
 
 .visually-hidden {
   position: absolute;
@@ -1115,5 +1128,8 @@ button {
   white-space: nowrap;
   border: 0;
 }
-
-
+
+
+
+
+
