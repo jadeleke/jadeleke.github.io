@@ -344,50 +344,70 @@ button {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
+  margin: -6px;
   margin-bottom: 22px;
 }
 
-.hero-badges,
-.hero-actions {
-  align-items: center;
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: -6px;
 }
 
-.hero-badges > *,
-.hero-actions > * {
-  margin-right: 12px;
-  margin-bottom: 12px;
-}
-
-.hero-badges > *:last-child,
-.hero-actions > *:last-child {
-  margin-right: 0;
-}
-
-@supports (gap: 1rem) {
-  .hero-badges > *,
-  .hero-actions > * {
-    margin-right: 0;
-    margin-bottom: 0;
-  }
+.hero-actions .btn,
+.hero-badges .badge {
+  margin: 6px;
 }
 
 .hero-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
+  margin: -6px;
 }
 
 .hero-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 8px 14px;
   background: var(--surface-alt);
   color: var(--muted);
   font-size: 0.92rem;
+  margin: 6px;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
+
+.hero-links svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.hero-links span {
+  font-weight: 500;
+}
+
+@supports (gap: 1rem) {
+  .hero-actions,
+  .hero-badges,
+  .hero-links {
+    margin: 0;
+  }
+
+  .hero-actions .btn,
+  .hero-badges .badge,
+  .hero-links a {
+    margin: 0;
+  }
+}
+
 
 .hero-links a:hover,
 .hero-links a:focus-visible {
