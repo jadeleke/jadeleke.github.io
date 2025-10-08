@@ -98,6 +98,14 @@
       const card = document.createElement("article");
       card.className = "card";
 
+      const img = document.createElement("img");
+      img.src = `https://via.placeholder.com/400x200.png?text=${repo.name}`;
+      img.alt = "";
+      img.style.aspectRatio = "16/9";
+      img.style.width = "100%";
+      img.style.objectFit = "cover";
+      card.appendChild(img);
+
       const title = document.createElement("h3");
       title.textContent = repo.name;
       card.appendChild(title);
