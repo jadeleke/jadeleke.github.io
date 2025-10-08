@@ -114,7 +114,7 @@
       const lang = repo.language || "Unknown";
       const stars = repo.stargazers_count || 0;
       const updated = new Date(repo.updated_at).toLocaleDateString();
-      meta.textContent = `${lang} • ? ${stars} • Updated ${updated}`;
+      meta.textContent = `${lang} â€¢ ${stars} stars â€¢ Updated ${updated}`;
       card.appendChild(meta);
 
       const actions = document.createElement("div");
