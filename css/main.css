@@ -164,6 +164,7 @@ button {
   background: rgba(11, 18, 34, 0.88);
   backdrop-filter: blur(18px);
   z-index: 1100;
+  transform: translateZ(0);
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
