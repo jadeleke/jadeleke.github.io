@@ -59,8 +59,17 @@
       </header>
 
       <div class="filter">
-        <label class="visually-hidden" for="projects-filter">Filter projects</label>
-        <input id="projects-filter" type="search" placeholder="Search by name, description, or language">
+        <div class="search-wrapper">
+          <label class="visually-hidden" for="projects-filter">Filter projects</label>
+          <input id="projects-filter" class="search-input" type="search" placeholder="Search by name, topic, or language...">
+        </div>
+        <div class="pill-filters" id="language-filters" aria-label="Filter by language">
+          <button class="filter-pill active" data-lang="all">All</button>
+          <button class="filter-pill" data-lang="python">Python</button>
+          <button class="filter-pill" data-lang="javascript">JS / TS</button>
+          <button class="filter-pill" data-lang="hcl">Terraform / HCL</button>
+          <button class="filter-pill" data-lang="shell">Shell</button>
+        </div>
       </div>
 
       <div id="projects-list" class="card-grid three">

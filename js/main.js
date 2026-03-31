@@ -97,56 +97,31 @@
     list.forEach(repo => {
       const card = document.createElement("article");
       card.className = "card";
+      card.className = "card repo-card";
 
-      const img = document.createElement("img");
-      img.src = repo.owner.avatar_url;
-      img.alt = repo.owner.login;
-      img.style.aspectRatio = "16/9";
-      img.style.width = "100%";
-      img.style.objectFit = "cover";
-      card.appendChild(img);
-
-      const title = document.createElement("h3");
-      title.textContent = repo.name;
-      card.appendChild(title);
-
-      if (repo.description) {
-        const summary = document.createElement("p");
-        summary.className = "muted";
-        summary.textContent = repo.description;
-        card.appendChild(summary);
-      }
-
-      const meta = document.createElement("p");
-      meta.className = "repo-meta";
-      const lang = repo.language || "Unknown";
-      const stars = repo.stargazers_count || 0;
-      const updated = new Date(repo.updated_at).toLocaleDateString();
-      meta.textContent = `${lang} • ${stars} stars • Updated ${updated}`;
-      card.appendChild(meta);
-
-      const actions = document.createElement("div");
-      actions.className = "hero-actions";
-
-      const githubLink = document.createElement("a");
-      githubLink.className = "btn";
-      githubLink.href = repo.html_url;
-      githubLink.target = "_blank";
-      githubLink.rel = "noopener noreferrer";
-      githubLink.textContent = "GitHub";
-      actions.appendChild(githubLink);
-
-      if (repo.homepage && /^https?:\/\//i.test(repo.homepage)) {
-        const live = document.createElement("a");
-        live.className = "btn primary";
-        live.href = repo.homepage;
-        live.target = "_blank";
-        live.rel = "noopener noreferrer";
-        live.textContent = "Live";
-        actions.appendChild(live);
-      }
-
-      card.appendChild(actions);
+      card.innerHTML = `
+        <div class="repo-card-header">
+          <svg class="repo-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537l-1.04-2.08a.75.75 0 0 0-1.343 0l-1.04 2.08-2.295.334a.75.75 0 0 0-.416 1.28l1.66 1.618-.391 2.285a.75.75 0 0 0 1.088.791l2.053-1.08 2.053 1.08a.75.75 0 0 0 1.088-.79l-.392-2.286 1.66-1.618a.75.75 0 0 0-.416-1.28l-2.294-.334Z"></path></svg>
+          <h3 class="repo-title">
+            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a>
+          </h3>
+        </div>
+        ${repo.description ? `<p class="muted repo-desc">${repo.description}</p>` : '<p class="muted repo-desc"></p>'}
+        <div class="repo-stats">
+          ${repo.language ? `<span class="repo-lang"><span class="repo-lang-color" data-lang="${repo.language}"></span>${repo.language}</span>` : ''}
+          ${repo.stargazers_count ? `
+          <a class="repo-stat" href="${repo.html_url}/stargazers" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></svg>
+            ${repo.stargazers_count}
+          </a>` : ''}
+          ${repo.forks_count ? `<span class="repo-stat"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.5a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path></svg>${repo.forks_count}</span>` : ''}
+          <span class="repo-stat">Updated ${new Date(repo.updated_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+        </div>
+        ${repo.homepage && /^https?:\/\//i.test(repo.homepage) ? `
+          <div class="repo-actions">
+            <a class="btn primary btn-sm" href="${repo.homepage}" target="_blank" rel="noopener noreferrer">View Live Demo</a>
+          </div>` : ''}
+      `;
       container.appendChild(card);
     });
   }
@@ -173,21 +148,42 @@
 
     render(repos);
 
-    if (filterInput) {
-      filterInput.addEventListener("input", () => {
-        const q = filterInput.value.trim().toLowerCase();
-        if (!q) {
-          render(repos);
-          return;
-        }
-        const filtered = repos.filter(repo =>
+    let currentFilter = 'all';
+
+    function applyFilters() {
+      const q = filterInput ? filterInput.value.trim().toLowerCase() : '';
+      const filtered = repos.filter(repo => {
+        const matchesSearch = !q || (
           (repo.name || "").toLowerCase().includes(q) ||
           (repo.description || "").toLowerCase().includes(q) ||
           (repo.language || "").toLowerCase().includes(q)
         );
-        render(filtered);
+        let matchesLang = true;
+        if (currentFilter !== 'all') {
+          const l = (repo.language || "").toLowerCase();
+          if (currentFilter === 'python') matchesLang = l === 'python' || l === 'jupyter notebook';
+          else if (currentFilter === 'javascript') matchesLang = l === 'javascript' || l === 'typescript';
+          else if (currentFilter === 'hcl') matchesLang = l === 'hcl';
+          else if (currentFilter === 'shell') matchesLang = l === 'shell';
+        }
+        return matchesSearch && matchesLang;
       });
+      render(filtered);
     }
+
+    if (filterInput) {
+      filterInput.addEventListener("input", applyFilters);
+    }
+
+    const pills = document.querySelectorAll(".filter-pill");
+    pills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        pills.forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        currentFilter = pill.getAttribute("data-lang") || 'all';
+        applyFilters();
+      });
+    });
   } catch (err) {
     container.innerHTML = `<article class="card"><h3>GitHub unavailable</h3><p class="muted">Could not load repositories. <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer">View my GitHub profile</a>.</p></article>`;
   }
