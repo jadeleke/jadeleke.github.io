@@ -55,26 +55,56 @@
 
   <div id="site-content">
     <main id="content">
-        <section class="section hero">
-            <div class="container hero-grid">
-                <div>
-                    <span class="eyebrow">Multi-Cloud DevSecOps &amp; MLOps Engineer &bull; Linux Specialist &bull; Cloud Admin</span>
-                    <h1 class="hero-title">Hi, I'm <span>Joseph Adeleke</span>, MSc</h1>
-                    <p class="hero-subtitle">Versatile engineer specializing in Multi-Cloud DevSecOps and MLOps. Focuses on secure, scalable cloud architectures and AI-driven workflows, with a strong enthusiasm for automation.</p>
-                    <div class="hero-badges hero-badges-inline" aria-label="Capabilities">
-                        <span class="badge">Kubernetes</span>
-                        <span class="badge">MLflow &amp; Airflow</span>
-                        <span class="badge">Docker</span>
-                        <span class="badge">Oracle DBA</span>
-                    </div>
-                    <div class="hero-actions">
-                        <a class="btn primary" href="mailto:akdeljoseph@outlook.com">Email me</a>
-                        <a class="btn" href="mailto:akdeljoseph@outlook.com?subject=Project%20Kickoff%20Inquiry">Email about a project</a>
-                        <a class="btn" href="resume.html">View resume</a>
-                        <a class="btn" href="assets/resume.pdf" download>Download PDF</a>
-                    </div>
-                    <p class="skill-note">Currently partnering with platform, data, and ops teams to ship ML workloads with confidence.</p>
-                    <div class="hero-links" aria-label="Primary channels">
+        <section class="section bento-hero">
+            <div class="container bento-grid">
+                
+                <!-- Main Intro Card -->
+                <div class="bento-card intro-card">
+                  <div class="status-badge"><span class="pulse-dot"></span> Open to new opportunities</div>
+                  <h1 class="bento-title">BUILDING RESILIENT CLOUD INFRASTRUCTURE.</h1>
+                  <p class="bento-subtitle">I'm <strong>Joseph Adeleke, MSc</strong>. A versatile Multi-Cloud DevSecOps and MLOps Engineer focused on secure, scalable cloud architectures and AI-driven workflows.</p>
+                  <div class="hero-actions">
+                      <a class="btn primary" href="mailto:akdeljoseph@outlook.com">Start a conversation</a>
+                      <a class="btn" href="resume.html">View resume</a>
+                  </div>
+                </div>
+
+                <!-- Avatar Card -->
+                <div class="bento-card avatar-card">
+                  <div class="avatar-glass-overlay"></div>
+                  <img src="https://avatars.githubusercontent.com/jadeleke" alt="Joseph Adeleke" class="bento-avatar" loading="lazy">
+                  <div class="avatar-meta">
+                    <strong>Accra, Ghana &bull; Remote</strong>
+                    <span>Platform Reliability</span>
+                  </div>
+                </div>
+
+                <!-- Tech Marquee Card -->
+                <div class="bento-card stack-card">
+                  <div class="marquee-track">
+                     <div class="marquee-list">
+                        <span>Kubernetes</span><span>Docker</span><span>Terraform</span><span>Python</span><span>Bash</span><span>Azure</span><span>Oracle DBA</span><span>MLflow</span><span>Airflow</span>
+                        <span aria-hidden="true">Kubernetes</span><span aria-hidden="true">Docker</span><span aria-hidden="true">Terraform</span><span aria-hidden="true">Python</span><span aria-hidden="true">Bash</span><span aria-hidden="true">Azure</span><span aria-hidden="true">Oracle DBA</span><span aria-hidden="true">MLflow</span><span aria-hidden="true">Airflow</span>
+                     </div>
+                  </div>
+                </div>
+
+                <!-- Quick Facts Card -->
+                <div class="bento-card facts-card">
+                   <div class="bento-fact">
+                     <h2>3+</h2>
+                     <span>Years Shipping Production Code</span>
+                   </div>
+                   <div class="bento-fact">
+                     <h2 style="font-size: clamp(1.4rem, 2vw, 1.8rem);">ML &amp;<br>DevSecOps</h2>
+                     <span>Core Specializations</span>
+                   </div>
+                </div>
+
+                <!-- Socials Card -->
+                <div class="bento-card connect-card">
+                    <span class="eyebrow" style="margin-bottom: 12px; display: block;">Network</span>
+                    <div class="hero-links bento-links" aria-label="Primary channels" style="max-width: 160px; margin: 0 auto; justify-content: center; flex-wrap: wrap;">
                         <a href="mailto:akdeljoseph@outlook.com" aria-label="Email Joseph Adeleke">
                             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <path d="M4 5a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V7c0-1.1-.9-2-2-2H4zm0 2h16v.12l-8 4.8-8-4.8V7zm0 3.2V17h16v-6.8l-6.92 4.16a1.6 1.6 0 0 1-1.16.2c-.2-.03-.4-.1-.6-.2L4 10.2z"/>
@@ -102,16 +132,25 @@
                         </a>
                     </div>
                 </div>
-                <aside class="hero-card">
-                    <img class="hero-image" src="https://avatars.githubusercontent.com/jadeleke" alt="Joseph Adeleke" loading="lazy">
-                    <div class="hero-badges">
-                        <span class="badge">Remote-first</span>
-                        <span class="badge">Platform Reliability</span>
-                    </div>
-                    <div class="hero-meta">Current focus<strong>ML platforms &bull; Observability &bull; Automation</strong></div>
-                    <div class="hero-meta">Location<strong>Accra, Ghana &bull; Remote</strong></div>
-                    <div class="hero-meta">Availability<strong>Open to opportunities</strong></div>
-                </aside>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section mapped directly into Homepage -->
+        <section class="section featured-section" style="padding-top: 40px;">
+            <div class="container">
+                <header class="section-heading" style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <span class="eyebrow">Portfolio</span>
+                    <h2 class="section-title" style="margin-bottom: 0;">Featured Work</h2>
+                  </div>
+                  <a href="projects.html" class="btn">View all projects &rarr;</a>
+                </header>
+                <div id="featured-list" class="card-grid three">
+                   <!-- Will be auto-populated by js/main.js loadFeatured() -->
+                   <article class="card repo-card">
+                     <div class="repo-card-header"><h3 class="repo-title">Loading...</h3></div>
+                   </article>
+                </div>
             </div>
         </section>
     </main>

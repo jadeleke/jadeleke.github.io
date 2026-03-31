@@ -221,57 +221,31 @@
 
     featured.forEach(item => {
       const card = document.createElement("article");
-      card.className = "card";
+      card.className = "card repo-card";
 
-      const title = document.createElement("h3");
-      title.textContent = item.title;
-      card.appendChild(title);
+      const tagsHtml = (Array.isArray(item.tags) && item.tags.length) 
+        ? `<div class="tag-strip" style="margin-bottom: 16px;">
+            ${item.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
+           </div>`
+        : '';
+        
+      const actionsHtml = (item.repo || item.demo) 
+        ? `<div class="repo-actions" style="display: flex; gap: 12px; border-top: none; padding-top: 0;">
+            ${item.repo ? `<a class="btn" href="${item.repo}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ''}
+            ${item.demo ? `<a class="btn primary" href="${item.demo}" target="_blank" rel="noopener noreferrer">Live Demo</a>` : ''}
+           </div>`
+        : '';
 
-      if (item.description) {
-        const summary = document.createElement("p");
-        summary.className = "muted";
-        summary.textContent = item.description;
-        card.appendChild(summary);
-      }
-
-      if (Array.isArray(item.tags) && item.tags.length) {
-        const strip = document.createElement("div");
-        strip.className = "tag-strip";
-        item.tags.forEach(tag => {
-          const pill = document.createElement("span");
-          pill.className = "tag-pill";
-          pill.textContent = tag;
-          strip.appendChild(pill);
-        });
-        card.appendChild(strip);
-      }
-
-      const actions = document.createElement("div");
-      actions.className = "hero-actions";
-
-      if (item.repo) {
-        const repoLink = document.createElement("a");
-        repoLink.className = "btn";
-        repoLink.href = item.repo;
-        repoLink.target = "_blank";
-        repoLink.rel = "noopener noreferrer";
-        repoLink.textContent = "GitHub";
-        actions.appendChild(repoLink);
-      }
-
-      if (item.demo) {
-        const demoLink = document.createElement("a");
-        demoLink.className = "btn primary";
-        demoLink.href = item.demo;
-        demoLink.target = "_blank";
-        demoLink.rel = "noopener noreferrer";
-        demoLink.textContent = "Live";
-        actions.appendChild(demoLink);
-      }
-
-      if (actions.children.length) {
-        card.appendChild(actions);
-      }
+      card.innerHTML = `
+        <div class="repo-card-header">
+          <h3 class="repo-title">
+            ${item.repo ? `<a href="${item.repo}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
+          </h3>
+        </div>
+        ${item.description ? `<p class="muted repo-desc">${item.description}</p>` : '<p class="muted repo-desc"></p>'}
+        ${tagsHtml}
+        ${actionsHtml}
+      `;
 
       container.appendChild(card);
     });
