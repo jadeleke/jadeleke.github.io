@@ -7,10 +7,52 @@
     "tags": ["ml", "python", "speech"]
   },
   {
+    "title": "Melanoma-Classification-Pipeline",
+    "description": "End-to-end ML pipeline for melanoma classification with model training, evaluation, and deployment.",
+    "repo": "https://github.com/jadeleke/Melanoma-Classification-Pipeline",
+    "demo": "",
+    "tags": ["ml", "python", "pipeline"]
+  },
+  {
+    "title": "Akan-Whisper-Transcription",
+    "description": "Automatic speech recognition for the Akan language using OpenAI Whisper.",
+    "repo": "https://github.com/jadeleke/Akan-Whisper-Transcription",
+    "demo": "",
+    "tags": ["ml", "python", "nlp"]
+  },
+  {
+    "title": "Multi-Language-Classifier",
+    "description": "NLP classifier supporting multiple languages for text categorisation.",
+    "repo": "https://github.com/jadeleke/Multi-Language-Classifier",
+    "demo": "",
+    "tags": ["ml", "python", "nlp"]
+  },
+  {
     "title": "react-docksmith",
-    "description": "React portfolio showing DevOps workflow: Docker multi-stage builds and CI.",
+    "description": "React portfolio showcasing DevOps workflow: Docker multi-stage builds and CI.",
     "repo": "https://github.com/jadeleke/react-docksmith",
     "demo": "",
     "tags": ["devops", "docker", "react"]
+  },
+  {
+    "title": "terraform-docker-nginx-app",
+    "description": "Infrastructure-as-code demo deploying an Nginx app with Terraform and Docker.",
+    "repo": "https://github.com/jadeleke/terraform-docker-nginx-app",
+    "demo": "",
+    "tags": ["devops", "terraform", "docker"]
+  },
+  {
+    "title": "docker-swarm-vagrant-demo",
+    "description": "Provisioning a Docker Swarm cluster on Windows using Vagrant and VirtualBox.",
+    "repo": "https://github.com/jadeleke/docker-swarm-vagrant-demo",
+    "demo": "",
+    "tags": ["devops", "docker", "vagrant"]
+  },
+  {
+    "title": "pdf2audiobook",
+    "description": "Python utility that converts PDF documents into audiobook format.",
+    "repo": "https://github.com/jadeleke/pdf2audiobook",
+    "demo": "",
+    "tags": ["python", "utility", "audio"]
   }
 ]
