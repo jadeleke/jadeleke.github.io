@@ -9,9 +9,9 @@
   }
 
   function icon(mode) {
-    if (mode === "dark") return "D";
-    if (mode === "light") return "L";
-    return "A";
+    if (mode === "dark") return "\u{1F319}";
+    if (mode === "light") return "\u2600\uFE0F";
+    return "\u25D0";
   }
 
   function describe(mode) {

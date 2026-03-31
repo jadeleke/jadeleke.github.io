@@ -1,9 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Essays and notes on MLOps, DevOps, Oracle, and Linux by Joseph Adeleke.">
+  <meta name="author" content="Joseph Adeleke">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0f172a">
   <title>Blog | Joseph Adeleke</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,19 +23,28 @@
         <span class="brand-icon">JA</span>
         <span>Joseph Adeleke</span>
       </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="menu-toggle-box" aria-hidden="true">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
       <nav aria-label="Primary">
-        <ul class="menu">
+        <ul id="primary-menu" class="menu">
           <li><a href="../index.html">Home</a></li>
           <li><a href="../about.html">About</a></li>
           <li><a href="../experience.html">Experience</a></li>
           <li><a href="../education.html">Education</a></li>
+          <li><a href="../certificates.html">Certificates</a></li>
           <li><a href="../featured.html">Featured</a></li>
           <li><a href="../projects.html">Projects</a></li>
           <li><a href="../skills.html">Skills</a></li>
           <li><a href="./">Blog</a></li>
           <li><a href="../resume.html">Resume</a></li>
           <li><a href="../contact.html">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button">A</button></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
         </ul>
       </nav>
     </div>
@@ -38,10 +52,11 @@
 
   <main id="content" class="section">
     <div class="container">
-      <div class="section-heading">
+      <header class="section-heading">
+        <span class="eyebrow">Insights</span>
         <h1 class="section-title">Blog</h1>
         <p class="section-lead">Essays and notes on MLOps, DevOps, Oracle, and Linux.</p>
-      </div>
+      </header>
       <div class="blog-list">
         <article class="blog-card">
           <h3><a href="posts/hello-mlops.html">Hello, MLOps!</a></h3>
@@ -59,7 +74,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2025 Joseph Adeleke. All rights reserved.</p>
+      <p>&copy; 2025&ndash;2026 Joseph Adeleke.</p>
     </div>
   </footer>
 

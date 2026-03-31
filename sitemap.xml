@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://jadeleke.github.io/</loc></url>
+  <url><loc>https://jadeleke.github.io/about.html</loc></url>
+  <url><loc>https://jadeleke.github.io/experience.html</loc></url>
+  <url><loc>https://jadeleke.github.io/education.html</loc></url>
+  <url><loc>https://jadeleke.github.io/certificates.html</loc></url>
+  <url><loc>https://jadeleke.github.io/featured.html</loc></url>
+  <url><loc>https://jadeleke.github.io/projects.html</loc></url>
+  <url><loc>https://jadeleke.github.io/skills.html</loc></url>
+  <url><loc>https://jadeleke.github.io/contact.html</loc></url>
+  <url><loc>https://jadeleke.github.io/resume.html</loc></url>
   <url><loc>https://jadeleke.github.io/blog/</loc></url>
   <url><loc>https://jadeleke.github.io/blog/posts/hello-mlops.html</loc></url>
   <url><loc>https://jadeleke.github.io/blog/posts/devops-mlops-oracle-linux.html</loc></url>
-  <url><loc>https://jadeleke.github.io/resume.html</loc></url>
-  <url><loc>https://jadeleke.github.io/404.html</loc></url>
 </urlset>
