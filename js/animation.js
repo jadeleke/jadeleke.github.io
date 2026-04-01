@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const preloader = document.getElementById("preloader");
     const siteContent = document.getElementById("site-content");
@@ -15,88 +14,51 @@ document.addEventListener("DOMContentLoaded", () => {
             siteContent.style.opacity = "1";
             siteContent.style.transform = "translateY(0)";
         }
+        
+        // Trigger Bento Grid Staggered Animation
+        const bentoCards = document.querySelectorAll(".bento-card");
+        bentoCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add("loaded");
+            }, 150 * index + 100); // 150ms stagger per card
+        });
     }, 2000);
 
-    // Hero section animations
-    const heroTitle = document.querySelector(".hero-title");
-    const heroSubtitle = document.querySelector(".hero-subtitle");
-    const heroBadges = document.querySelectorAll(".hero-badges .badge");
-    const heroActions = document.querySelector(".hero-actions");
-    const heroLinks = document.querySelector(".hero-links");
-    const heroCard = document.querySelector(".hero-card");
-
-    if (heroTitle) {
-        heroTitle.style.opacity = "0";
-        heroTitle.style.transform = "translateY(20px)";
-        setTimeout(() => {
-            heroTitle.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-            heroTitle.style.opacity = "1";
-            heroTitle.style.transform = "translateY(0)";
-        }, 2100);
-    }
-
-    if (heroSubtitle) {
-        heroSubtitle.style.opacity = "0";
-        heroSubtitle.style.transform = "translateY(20px)";
-        setTimeout(() => {
-            heroSubtitle.style.transition = "opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s";
-            heroSubtitle.style.opacity = "1";
-            heroSubtitle.style.transform = "translateY(0)";
-        }, 2100);
-    }
-
-    if (heroBadges.length > 0) {
-        heroBadges.forEach((badge, index) => {
-            badge.style.opacity = "0";
-            badge.style.transform = "translateY(20px)";
-            setTimeout(() => {
-                badge.style.transition = `opacity 0.5s ease ${0.4 + index * 0.1}s, transform 0.5s ease ${0.4 + index * 0.1}s`;
-                badge.style.opacity = "1";
-                badge.style.transform = "translateY(0)";
-            }, 2100);
-        });
-    }
-
-    if (heroActions) {
-        heroActions.style.opacity = "0";
-        heroActions.style.transform = "translateY(20px)";
-        setTimeout(() => {
-            heroActions.style.transition = "opacity 0.5s ease 0.6s, transform 0.5s ease 0.6s";
-            heroActions.style.opacity = "1";
-            heroActions.style.transform = "translateY(0)";
-        }, 2100);
-    }
-
-    if (heroLinks) {
-        heroLinks.style.opacity = "0";
-        heroLinks.style.transform = "translateY(20px)";
-        setTimeout(() => {
-            heroLinks.style.transition = "opacity 0.5s ease 0.8s, transform 0.5s ease 0.8s";
-            heroLinks.style.opacity = "1";
-            heroLinks.style.transform = "translateY(0)";
-        }, 2100);
-    }
-
-    if (heroCard) {
-        heroCard.style.opacity = "0";
-        heroCard.style.transform = "translateY(20px)";
-        setTimeout(() => {
-            heroCard.style.transition = "opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s";
-            heroCard.style.opacity = "1";
-            heroCard.style.transform = "translateY(0)";
-        }, 2100);
-
-        heroCard.addEventListener("mousemove", (e) => {
-            const rect = heroCard.getBoundingClientRect();
+    // ── Mouse Tracking Spotlight Effect ──
+    const cards = document.querySelectorAll(".bento-card");
+    const container = document.getElementById("site-content");
+    
+    // We bind the event to the document so the glow tracks smoothly even between cards
+    document.addEventListener("mousemove", (e) => {
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            // Calculate mouse position relative to the card's top-left corner
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            const rotateX = (y / rect.height - 0.5) * -20;
-            const rotateY = (x / rect.width - 0.5) * 20;
-            heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            
+            // Set CSS variables for the radial glow pseudo-element
+            card.style.setProperty("--mouse-x", `${x}px`);
+            card.style.setProperty("--mouse-y", `${y}px`);
         });
+    });
 
-        heroCard.addEventListener("mouseleave", () => {
-            heroCard.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
+    // ── Intersection Observer for Scroll Reveals ──
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15 // Fire when 15% of the element is visible
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // Stop observing once it's visible
+            }
         });
-    }
+    }, observerOptions);
+
+    // Watch all elements marked for scroll reveal
+    const revealElements = document.querySelectorAll(".reveal-on-scroll");
+    revealElements.forEach(el => scrollObserver.observe(el));
 });
