@@ -79,6 +79,26 @@
           </ul>
         </aside>
       </div>
+
+      <!-- Add the Reference Pipeline Section -->
+      <section class="card pipeline-card" style="margin-top: 40px; border-radius: 20px;">
+        <h2 style="margin-bottom: 24px;">Reference MLOps Architecture</h2>
+        <p style="color: var(--muted); margin-bottom: 30px;">This is my standard approach to producing reliable, observable AI systems from raw data to end-user serving.</p>
+        
+        <div class="pipeline-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>01.</strong> Data Sources</div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>02.</strong> Ingestion &amp; Validation <em>(Great Expectations)</em></div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>03.</strong> Feature Engineering <em>(PySpark, Polars)</em></div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>04.</strong> Train &amp; Evaluate</div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>05.</strong> Model Registry <em>(MLflow, DVC)</em></div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>06.</strong> CI/CD Build &amp; Test <em>(GitHub Actions)</em></div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>07.</strong> Containerize &amp; Deploy <em>(Docker, Kubernetes, Azure)</em></div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>08.</strong> Online Serving <em>(REST/gRPC, Triton)</em></div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>09.</strong> Monitoring &amp; Logging <em>(Grafana, Datadog)</em></div>
+            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>10.</strong> Drift Detection &amp; Retrain</div>
+        </div>
+      </section>
+
     </div>
   </main>
 
