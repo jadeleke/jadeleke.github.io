@@ -1654,6 +1654,22 @@ button {
   text-align: center;
 }
 
+.activity-card {
+  grid-column: span 2;
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.trophies-card {
+  grid-column: span 2;
+  grid-row: span 1;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 255, 136, 0.02); /* Very subtle themed tint */
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
