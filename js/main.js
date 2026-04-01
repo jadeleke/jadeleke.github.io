@@ -30,16 +30,12 @@
   update(current);
 
   button.addEventListener("click", () => {
-    const active = root.getAttribute("data-theme") || "auto";
-    const next = active === "dark" ? "light" : active === "light" ? "auto" : "dark";
-    if (next === "auto") {
-      root.removeAttribute("data-theme");
-      localStorage.removeItem("theme");
-    } else {
-      root.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-    }
-    update(root.getAttribute("data-theme") || "auto");
+    const active = root.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    const next = active === "dark" ? "light" : "dark";
+    
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    update(next);
   });
 })();
 
