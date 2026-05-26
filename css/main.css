@@ -1,29 +1,29 @@
 :root {
-  --bg: #000000;
-  --surface: #0a0a0a;
-  --surface-alt: #111111;
-  --overlay: rgba(0, 0, 0, 0.75);
-  --border: rgba(255, 255, 255, 0.08); /* Stark, sharp border */
-  --text: #ffffff; /* High contrast, pure white */
-  --muted: #888888; /* Gunmetal grey */
-  --accent: #00ff88; /* Cyber mint / Matrix green */
-  --accent-strong: #00e676;
-  --accent-glow: rgba(0, 255, 136, 0.35);
-  --success: #00ff88;
-  --shadow: 0 28px 60px rgba(0, 0, 0, 0.9);
+  --bg: #0f172a;
+  --surface: #111927;
+  --surface-alt: #152238;
+  --overlay: rgba(15, 23, 42, 0.65);
+  --border: rgba(148, 163, 184, 0.16);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --accent-glow: rgba(56, 189, 248, 0.55);
+  --success: #22c55e;
+  --shadow: 0 28px 60px rgba(8, 15, 32, 0.45);
 }
 
 [data-theme="light"] {
-  --bg: #f8fafc; /* Slightly more neutral contrast for cleaner look */
+  --bg: #f5f7fb;
   --surface: #ffffff;
   --surface-alt: #f1f5f9;
-  --overlay: rgba(15, 23, 42, 0.1);
-  --border: rgba(15, 23, 42, 0.08); /* More subtle borders in light mode */
-  --text: #0f172a;
-  --muted: #64748b;
-  --accent: #4f46e5;
-  --accent-strong: #4338ca;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --overlay: rgba(15, 23, 42, 0.35);
+  --border: rgba(15, 23, 42, 0.12);
+  --text: #1f2937;
+  --muted: #4b5565;
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
 }
 
 * {
@@ -44,7 +44,7 @@ body {
   line-height: 1.65;
   min-height: 100vh;
   padding-top: 88px;
-  transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 body::before {
@@ -52,18 +52,11 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at 12% 18%, rgba(0, 255, 136, 0.12), transparent 55%), /* Cyber green */
-    radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.1), transparent 58%), /* Synthwave purple */
-    radial-gradient(circle at 30% 85%, rgba(6, 182, 212, 0.1), transparent 55%);  /* Cyan */
+    radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.16), transparent 55%),
+    radial-gradient(circle at 85% 20%, rgba(14, 165, 233, 0.12), transparent 58%),
+    radial-gradient(circle at 30% 85%, rgba(37, 99, 235, 0.12), transparent 55%);
   pointer-events: none;
   z-index: -2;
-}
-
-[data-theme="light"] body::before {
-  background:
-    radial-gradient(circle at 12% 18%, rgba(79, 70, 229, 0.08), transparent 55%),
-    radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.06), transparent 58%),
-    radial-gradient(circle at 30% 85%, rgba(14, 165, 233, 0.08), transparent 55%);
 }
 
 body.menu-open {
@@ -1610,11 +1603,9 @@ button {
 }
 
 [data-theme="light"] .bento-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.75);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
 }
 
 .intro-card {
@@ -1652,29 +1643,6 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.activity-card {
-  grid-column: span 2;
-  grid-row: span 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.trophies-card {
-  grid-column: span 2;
-  grid-row: span 1;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 255, 136, 0.02); /* Very subtle themed tint */
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px; /* Increased from 16px/prev fix for better breathing room */
-  margin-top: 40px; /* Better separation from body text */
 }
 
 .status-badge {
@@ -1715,14 +1683,14 @@ button {
   letter-spacing: -0.03em;
   font-weight: 700;
   margin-bottom: 20px;
-  background: linear-gradient(135deg, #ffffff 20%, #555555 100%);
+  background: linear-gradient(135deg, #fff 20%, #94a3b8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 [data-theme="light"] .bento-title {
-  background: linear-gradient(135deg, #000000 20%, #333333 100%);
+  background: linear-gradient(135deg, #0f172a 20%, #4b5565 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1854,44 +1822,23 @@ button {
   100% { transform: translateX(calc(-50% - 16px)); }
 }
 
-/* ── Mobile Responsiveness ────────────────── */
+/* Mobile Responsiveness */
 @media (max-width: 980px) {
-  .bento-hero {
-    padding-top: 100px;
-    padding-bottom: 40px;
-  }
-
   .bento-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    gap: 16px;
-  }
-  
-  .bento-card {
-    padding: 24px;
-    border-radius: 20px;
   }
   
   .intro-card, .avatar-card, .stack-card, .facts-card, .connect-card {
     grid-column: span 1;
   }
   
-  .bento-title {
-    font-size: 2rem; /* Hard limit for very small screens to avoid overflow */
-  }
-  
   .avatar-card {
-    aspect-ratio: auto;
-    height: 300px;
+    aspect-ratio: 1/1;
   }
   
   .stack-card {
-    height: 90px;
-    padding: 0;
-  }
-
-  .bento-fact h2 {
-    font-size: 1.8rem !important; /* Forces shrinkage below the clamp minimum */
+    height: 100px;
   }
 }
 
