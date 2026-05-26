@@ -435,16 +435,24 @@ button {
 }
 
 .hero-actions .btn.primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  border-color: transparent;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  border: 1px solid rgba(56, 189, 248, 0.4);
   color: #081225;
-  box-shadow: 0 18px 34px rgba(14, 165, 233, 0.18);
+  box-shadow: 
+    0 10px 25px rgba(14, 165, 233, 0.25),
+    0 0 0 1px rgba(56, 189, 248, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  font-weight: 600;
 }
 
 .hero-actions .btn.primary:hover,
 .hero-actions .btn.primary:focus-visible {
   color: #081225;
-  box-shadow: 0 22px 38px rgba(14, 165, 233, 0.24);
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  box-shadow: 
+    0 12px 30px rgba(14, 165, 233, 0.35),
+    0 0 0 2px rgba(56, 189, 248, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 /* ── Hero Badges ───────────────────────────── */
@@ -1778,6 +1786,14 @@ button {
 /* Marquee Stack */
 .stack-card {
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+}
+
+[data-theme="light"] .stack-card {
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
 }
 
 .marquee-track {
@@ -1787,8 +1803,8 @@ button {
   display: flex;
   align-items: center;
   height: 100%;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .marquee-list {
@@ -1822,23 +1838,488 @@ button {
   100% { transform: translateX(calc(-50% - 16px)); }
 }
 
-/* Mobile Responsiveness */
+/* ── Network Card ──────────────────────────── */
+
+.network-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.network-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.network-item:hover,
+.network-item:focus-visible {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.2);
+  transform: translateX(4px);
+  text-decoration: none;
+}
+
+[data-theme="light"] .network-item:hover,
+[data-theme="light"] .network-item:focus-visible {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: rgba(37, 99, 235, 0.15);
+}
+
+.network-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.network-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.network-item-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.network-item-val {
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── GitHub Stats (Native) ────────────────── */
+
+.native-gh-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gh-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.gh-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 8px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="light"] .gh-stat-item {
+  background: var(--surface-alt);
+}
+
+.gh-stat-val {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.gh-stat-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.gh-langs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gh-lang-bar {
+  display: flex;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface-alt);
+}
+
+.gh-lang-progress {
+  display: block;
+  height: 100%;
+  transition: width 0.6s ease;
+}
+
+.gh-lang-progress:first-child {
+  border-radius: 999px 0 0 999px;
+}
+
+.gh-lang-progress:last-child {
+  border-radius: 0 999px 999px 0;
+}
+
+.gh-lang-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.gh-lang-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+}
+
+.gh-lang-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ── Achievements ─────────────────────────── */
+
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.achievement-item:hover {
+  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.04);
+}
+
+[data-theme="light"] .achievement-item {
+  background: var(--surface-alt);
+}
+
+.achievement-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.achievement-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.achievement-content h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.achievement-content p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── Activity & Trophies Grid Placement ───── */
+
+.activity-card {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.trophies-card {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+/* ── Bento Grid Responsive ────────────────── */
+
 @media (max-width: 980px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .intro-card {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .avatar-card {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .stack-card {
+    grid-column: span 2;
+  }
+
+  .facts-card {
+    grid-column: span 1;
+  }
+
+  .connect-card {
+    grid-column: span 1;
+  }
+
+  .activity-card {
+    grid-column: span 2;
+  }
+
+  .trophies-card {
+    grid-column: span 2;
+  }
+
+  .gh-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .bento-hero {
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
   .bento-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+    gap: 16px;
   }
-  
-  .intro-card, .avatar-card, .stack-card, .facts-card, .connect-card {
+
+  .intro-card,
+  .avatar-card,
+  .stack-card,
+  .facts-card,
+  .connect-card,
+  .activity-card,
+  .trophies-card {
     grid-column: span 1;
+    grid-row: span 1;
   }
-  
+
+  /* ── Mobile Avatar: Centered Circular Profile ── */
   .avatar-card {
-    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 24px 28px;
+    min-height: auto;
+    aspect-ratio: auto;
   }
-  
+
+  .avatar-card .avatar-glass-overlay {
+    background: none;
+  }
+
+  .avatar-card .bento-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(56, 189, 248, 0.35);
+    box-shadow:
+      0 0 0 6px rgba(56, 189, 248, 0.08),
+      0 0 50px rgba(56, 189, 248, 0.12),
+      0 20px 40px rgba(0, 0, 0, 0.25);
+    animation: avatarGlow 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes avatarGlow {
+    0% {
+      box-shadow:
+        0 0 0 6px rgba(56, 189, 248, 0.08),
+        0 0 50px rgba(56, 189, 248, 0.12),
+        0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+    100% {
+      box-shadow:
+        0 0 0 6px rgba(56, 189, 248, 0.15),
+        0 0 60px rgba(56, 189, 248, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .avatar-card:hover .bento-avatar {
+    transform: scale(1.03);
+  }
+
+  .avatar-card .avatar-meta {
+    position: static;
+    text-align: center;
+    align-items: center;
+    margin-top: 18px;
+    text-shadow: none;
+    color: var(--text);
+  }
+
+  .avatar-card .avatar-meta strong {
+    font-size: 0.95rem;
+    display: block;
+  }
+
+  .avatar-card .avatar-meta span {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  /* ── Mobile Intro Card ── */
+  .bento-title {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+
+  .bento-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-actions {
+    margin: 16px 0 12px;
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .hero-actions .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+
+  /* ── Mobile Stack Card ── */
   .stack-card {
-    height: 100px;
+    height: 95px;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(17, 25, 39, 0.55) !important;
+  }
+
+  .marquee-list span {
+    font-size: 1.05rem;
+  }
+
+  /* ── Mobile Facts Card ── */
+  .facts-card {
+    padding: 20px 16px;
+  }
+
+  .bento-fact h2 {
+    font-size: 1.7rem;
+  }
+
+  /* ── Mobile Network Card ── */
+  .connect-card {
+    padding: 20px !important;
+  }
+
+  .network-item {
+    padding: 10px 12px;
+  }
+
+  .network-item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  /* ── Mobile GitHub Stats ── */
+  .gh-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .gh-stat-val {
+    font-size: 1.3rem;
+  }
+
+  /* ── Mobile Achievements ── */
+  .achievement-item {
+    padding: 12px;
+  }
+
+  .achievement-icon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bento-hero {
+    padding-top: 80px;
+    padding-bottom: 24px;
+  }
+
+  .bento-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .bento-title {
+    font-size: 1.55rem;
+  }
+
+  .bento-fact h2 {
+    font-size: 1.4rem;
+  }
+
+  .avatar-card .bento-avatar {
+    width: 130px;
+    height: 130px;
+  }
+
+  .stack-card {
+    height: 85px;
+  }
+
+  .marquee-list span {
+    font-size: 0.95rem;
+  }
+
+  .gh-stat-item {
+    padding: 10px 6px;
+  }
+
+  .gh-stat-val {
+    font-size: 1.1rem;
   }
 }
 

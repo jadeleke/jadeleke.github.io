@@ -256,3 +256,179 @@
     navigator.serviceWorker.register("/sw.js").catch(() => {});
   });
 })();
+
+/* ── Native GitHub Stats Fetcher ── */
+(async function loadGitHubStats() {
+  const container = document.getElementById("github-stats-native");
+  if (!container) return;
+
+  const username = "jadeleke";
+  const fallbacks = {
+    public_repos: 44,
+    stars: 21,
+    followers: 19,
+    following: 40,
+    languages: [
+      { name: "Python", count: 11, pct: 32 },
+      { name: "Java", count: 11, pct: 32 },
+      { name: "JavaScript", count: 7, pct: 20 },
+      { name: "Others", count: 5, pct: 16 }
+    ]
+  };
+
+  function render(stats) {
+    let langBars = "";
+    let langList = "";
+    const colors = ["#0ea5e9", "#a855f7", "#eab308", "#10b981", "#f43f5e"];
+
+    stats.languages.forEach((lang, i) => {
+      const color = colors[i % colors.length];
+      langBars += `<span class="gh-lang-progress" style="width: ${lang.pct}%; background-color: ${color};" title="${lang.name}: ${lang.pct}%"></span>`;
+      langList += `
+        <span class="gh-lang-badge">
+          <span class="gh-lang-color" style="background-color: ${color};"></span>
+          <span class="muted">${lang.name}</span>
+          <strong>${lang.pct}%</strong>
+        </span>
+      `;
+    });
+
+    container.innerHTML = `
+      <div class="gh-stats-grid">
+        <div class="gh-stat-item">
+          <span class="gh-stat-val">${stats.public_repos}</span>
+          <span class="gh-stat-label">Repositories</span>
+        </div>
+        <div class="gh-stat-item">
+          <span class="gh-stat-val">${stats.stars}</span>
+          <span class="gh-stat-label">Stars</span>
+        </div>
+        <div class="gh-stat-item">
+          <span class="gh-stat-val">${stats.followers}</span>
+          <span class="gh-stat-label">Followers</span>
+        </div>
+        <div class="gh-stat-item">
+          <span class="gh-stat-val">${stats.following}</span>
+          <span class="gh-stat-label">Following</span>
+        </div>
+      </div>
+      <div class="gh-langs-container">
+        <span class="gh-stat-label" style="margin-bottom: 4px;">Top Languages</span>
+        <div class="gh-lang-bar">
+          ${langBars}
+        </div>
+        <div class="gh-lang-list">
+          ${langList}
+        </div>
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
+        <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="font-size: 0.8rem; padding: 6px 12px; border-radius: 12px;">
+          Profile &rarr;
+        </a>
+      </div>
+    `;
+  }
+
+  try {
+    let userRes = await fetch(`https://api.github.com/users/${username}`);
+    if (!userRes.ok) throw new Error("API Limit reached");
+    let userData = await userRes.json();
+
+    let reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+    if (!reposRes.ok) throw new Error("API Limit reached");
+    let reposData = await reposRes.json();
+
+    const stars = reposData.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
+    
+    const langCounts = {};
+    let totalLangs = 0;
+    reposData.forEach(repo => {
+      const lang = repo.language;
+      if (lang) {
+        langCounts[lang] = (langCounts[lang] || 0) + 1;
+        totalLangs++;
+      }
+    });
+
+    const sortedLangs = Object.entries(langCounts)
+      .map(([name, count]) => ({
+        name,
+        count,
+        pct: Math.round((count / totalLangs) * 100)
+      }))
+      .sort((a, b) => b.count - a.count);
+
+    let topLangs = sortedLangs.slice(0, 3);
+    const othersCount = sortedLangs.slice(3).reduce((acc, l) => acc + l.count, 0);
+    if (othersCount > 0) {
+      const othersPct = 100 - topLangs.reduce((acc, l) => acc + l.pct, 0);
+      topLangs.push({
+        name: "Others",
+        count: othersCount,
+        pct: Math.max(0, othersPct)
+      });
+    }
+
+    render({
+      public_repos: userData.public_repos || fallbacks.public_repos,
+      stars: stars || fallbacks.stars,
+      followers: userData.followers || fallbacks.followers,
+      following: userData.following || fallbacks.following,
+      languages: topLangs.length ? topLangs : fallbacks.languages
+    });
+
+  } catch (err) {
+    render(fallbacks);
+  }
+})();
+
+/* ── Scroll Animations & Glassmorphism Glow ── */
+(function initializeAnimations() {
+  // 1. Mouse tracking for Bento Cards
+  const cards = document.querySelectorAll('.bento-card, .card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  // 2. Intersection Observer for Scroll Reveals
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, observerOptions);
+
+  // Apply reveal class to elements dynamically and observe them
+  const elementsToReveal = document.querySelectorAll('.card, .bento-card, .section-heading');
+  elementsToReveal.forEach((el, index) => {
+    // Staggered delay for bento grid items if needed
+    el.classList.add('reveal');
+    if (el.closest('.bento-grid')) {
+      el.style.transitionDelay = `${index * 0.05}s`;
+    }
+    observer.observe(el);
+  });
+
+  // Initial reveal for site content wrapper
+  setTimeout(() => {
+    const siteContent = document.getElementById('site-content');
+    if (siteContent) {
+      siteContent.style.opacity = '1';
+      siteContent.style.transform = 'translateY(0)';
+    }
+  }, 100);
+})();
