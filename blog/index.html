@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="blog.css">
   <link rel="manifest" href="../manifest.webmanifest">
 </head>
 <body>
@@ -57,17 +58,9 @@
         <h1 class="section-title">Blog</h1>
         <p class="section-lead">Essays and notes on MLOps, DevOps, Oracle, and Linux.</p>
       </header>
-      <div class="blog-list">
-        <article class="blog-card">
-          <h3><a href="posts/hello-mlops.html">Hello, MLOps!</a></h3>
-          <div class="meta">January 1, 2025 - MLOps, DevOps</div>
-          <p class="muted">Why MLOps matters for reliable ML, and what topics I plan to explore.</p>
-        </article>
-        <article class="blog-card">
-          <h3><a href="posts/devops-mlops-oracle-linux.html">DevOps, MLOps, Oracle DBA, and Linux Sysadmin</a></h3>
-          <div class="meta">January 5, 2025 - Platform, Databases</div>
-          <p class="muted">How my skillset combines to deliver end-to-end ML and data platforms.</p>
-        </article>
+
+      <div id="blog-list" class="blog-list" aria-live="polite">
+        <div class="blog-loading">Loading posts&hellip;</div>
       </div>
     </div>
   </main>
@@ -79,5 +72,30 @@
   </footer>
 
   <script src="../js/main.js" defer></script>
+  <script type="module">
+    import { fetchPosts, formatDate } from './blog.js';
+
+    const list = document.getElementById('blog-list');
+
+    fetchPosts().then(posts => {
+      if (!posts || posts.length === 0) {
+        list.innerHTML = '<p class="muted">No posts yet. Check back soon.</p>';
+        return;
+      }
+      list.innerHTML = posts.map(p => `
+        <article class="blog-card">
+          <div class="blog-card-meta">
+            ${p.tags.length ? `<span class="blog-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</span>` : ''}
+            <time datetime="${p.created_at}">${formatDate(p.created_at)}</time>
+          </div>
+          <h2><a href="post.html?slug=${encodeURIComponent(p.slug)}">${p.title}</a></h2>
+          ${p.excerpt ? `<p class="muted">${p.excerpt}</p>` : ''}
+          <a class="blog-read-more" href="post.html?slug=${encodeURIComponent(p.slug)}">Read &rarr;</a>
+        </article>
+      `).join('');
+    }).catch(err => {
+      list.innerHTML = `<p class="muted">Could not load posts: ${err.message}</p>`;
+    });
+  </script>
 </body>
 </html>

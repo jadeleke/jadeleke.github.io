@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="dark light">
+  <title>Admin | Joseph Adeleke Blog</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="../index.html">
+        <span class="brand-icon">JA</span>
+        <span>Blog Admin</span>
+      </a>
+      <div class="admin-header-actions">
+        <a href="index.html" class="btn-ghost">View Blog</a>
+        <button id="logout-btn" class="btn-ghost" hidden>Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login screen -->
+  <main id="login-screen" class="section">
+    <div class="container admin-narrow">
+      <h1 class="section-title">Admin Login</h1>
+      <form id="login-form" class="admin-form" novalidate>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Enter admin password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-primary">Sign in</button>
+        <p id="login-error" class="form-status error" aria-live="polite"></p>
+      </form>
+    </div>
+  </main>
+
+  <!-- Admin dashboard -->
+  <main id="admin-screen" class="section" hidden>
+    <div class="container">
+      <div class="admin-toolbar">
+        <h1 class="section-title" style="margin-bottom:0">Posts</h1>
+        <button id="new-post-btn" class="btn-primary">+ New Post</button>
+      </div>
+
+      <div id="posts-table-wrap">
+        <div class="blog-loading">Loading posts&hellip;</div>
+      </div>
+
+      <!-- Post editor (shown inline) -->
+      <section id="editor-section" class="editor-section" hidden>
+        <div class="editor-header">
+          <h2 id="editor-title">New Post</h2>
+          <button id="editor-cancel" class="btn-ghost">Cancel</button>
+        </div>
+        <form id="post-form" class="admin-form" novalidate>
+          <input type="hidden" id="post-id">
+          <div class="form-row">
+            <div class="form-group form-group--grow">
+              <label for="post-title">Title</label>
+              <input id="post-title" type="text" required placeholder="Post title">
+            </div>
+            <div class="form-group form-group--slug">
+              <label for="post-slug">Slug</label>
+              <input id="post-slug" type="text" required placeholder="post-slug">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="post-excerpt">Excerpt</label>
+            <input id="post-excerpt" type="text" placeholder="Short description (shown on index)">
+          </div>
+          <div class="form-group">
+            <label for="post-tags">Tags <span class="muted">(comma-separated)</span></label>
+            <input id="post-tags" type="text" placeholder="MLOps, DevOps, Oracle">
+          </div>
+          <div class="form-group">
+            <label for="post-content">Content</label>
+            <div class="editor-toolbar" id="editor-toolbar">
+              <!-- Text style -->
+              <div class="toolbar-group">
+                <select id="tb-font-size" title="Font size" class="toolbar-select">
+                  <option value="">Size</option>
+                  <option value="small">Small</option>
+                  <option value="normal" selected>Normal</option>
+                  <option value="large">Large</option>
+                  <option value="xlarge">X-Large</option>
+                  <option value="huge">Huge</option>
+                </select>
+              </div>
+              <!-- Headings -->
+              <div class="toolbar-group">
+                <button type="button" class="tb-btn" data-wrap='["<h2>","</h2>"]' title="Heading 2">H2</button>
+                <button type="button" class="tb-btn" data-wrap='["<h3>","</h3>"]' title="Heading 3">H3</button>
+                <button type="button" class="tb-btn" data-wrap='["<h4>","</h4>"]' title="Heading 4">H4</button>
+              </div>
+              <!-- Formatting -->
+              <div class="toolbar-group">
+                <button type="button" class="tb-btn" data-wrap='["<strong>","</strong>"]' title="Bold"><b>B</b></button>
+                <button type="button" class="tb-btn" data-wrap='["<em>","</em>"]' title="Italic"><i>I</i></button>
+                <button type="button" class="tb-btn" data-wrap='["<code>","</code>"]' title="Inline code">&#60;&#47;&#62;</button>
+              </div>
+              <!-- Lists -->
+              <div class="toolbar-group">
+                <button type="button" class="tb-btn" data-block="ul" title="Bullet list">&#8226; List</button>
+                <button type="button" class="tb-btn" data-block="ol" title="Numbered list">1. List</button>
+              </div>
+              <!-- Block -->
+              <div class="toolbar-group">
+                <button type="button" class="tb-btn" data-wrap='["<blockquote>","</blockquote>"]' title="Blockquote">&ldquo;&rdquo;</button>
+                <button type="button" class="tb-btn" data-block="pre" title="Code block">Pre</button>
+                <button type="button" class="tb-btn" data-insert="<hr>" title="Divider">&#8213;</button>
+              </div>
+              <!-- Link -->
+              <div class="toolbar-group">
+                <button type="button" class="tb-btn" id="tb-link" title="Insert link">Link</button>
+              </div>
+              <!-- Image -->
+              <div class="toolbar-group">
+                <button type="button" class="tb-btn tb-btn--accent" id="tb-image-url" title="Insert image by URL">&#128247; URL</button>
+                <label class="tb-btn tb-btn--accent" title="Upload image from device">
+                  &#128247; Upload
+                  <input type="file" id="tb-image-upload" accept="image/*" style="display:none">
+                </label>
+              </div>
+            </div>
+            <!-- Image upload progress -->
+            <div id="upload-progress" class="upload-progress" hidden>
+              <div class="upload-bar"><div id="upload-bar-fill" class="upload-bar-fill"></div></div>
+              <span id="upload-status-text">Uploading…</span>
+            </div>
+            <textarea id="post-content" rows="22" required placeholder="Write your post here…"></textarea>
+          </div>
+          <div class="form-row form-row--actions">
+            <label class="toggle-label">
+              <input id="post-published" type="checkbox">
+              <span>Published</span>
+            </label>
+            <div class="editor-actions">
+              <button type="submit" name="action" value="save" class="btn-primary">Save</button>
+            </div>
+          </div>
+          <p id="post-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025&ndash;2026 Joseph Adeleke.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import {
+      adminLogin, getAdminToken, adminLogout,
+      adminFetchAllPosts, adminUpsertPost, adminDeletePost,
+      slugify, formatDate,
+    } from './blog.js';
+
+    const loginScreen  = document.getElementById('login-screen');
+    const adminScreen  = document.getElementById('admin-screen');
+    const logoutBtn    = document.getElementById('logout-btn');
+    const loginForm    = document.getElementById('login-form');
+    const loginError   = document.getElementById('login-error');
+    const newPostBtn   = document.getElementById('new-post-btn');
+    const editorSection = document.getElementById('editor-section');
+    const editorCancel = document.getElementById('editor-cancel');
+    const editorTitle  = document.getElementById('editor-title');
+    const postForm     = document.getElementById('post-form');
+    const postStatus   = document.getElementById('post-status');
+    const postsWrap    = document.getElementById('posts-table-wrap');
+
+    // ── Auth ──────────────────────────────────────────────────────────────────
+
+    function showAdmin() {
+      loginScreen.hidden = true;
+      adminScreen.hidden = false;
+      logoutBtn.hidden = false;
+      loadPosts();
+    }
+
+    if (getAdminToken()) showAdmin();
+
+    loginForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const pw = document.getElementById('password').value;
+      const btn = loginForm.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      loginError.textContent = '';
+      try {
+        await adminLogin(pw);
+        showAdmin();
+      } catch {
+        loginError.textContent = 'Invalid password.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      adminLogout();
+      location.reload();
+    });
+
+    // ── Posts list ────────────────────────────────────────────────────────────
+
+    let allPosts = [];
+
+    async function loadPosts() {
+      postsWrap.innerHTML = '<div class="blog-loading">Loading&hellip;</div>';
+      try {
+        allPosts = await adminFetchAllPosts();
+        renderPostsTable();
+      } catch (err) {
+        postsWrap.innerHTML = `<p class="muted">Error: ${err.message}</p>`;
+      }
+    }
+
+    function renderPostsTable() {
+      if (!allPosts.length) {
+        postsWrap.innerHTML = '<p class="muted">No posts yet. Create your first one.</p>';
+        return;
+      }
+      postsWrap.innerHTML = `
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Slug</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Updated</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${allPosts.map(p => `
+              <tr>
+                <td><strong>${p.title}</strong></td>
+                <td><code>${p.slug}</code></td>
+                <td><span class="status-badge ${p.published ? 'status-published' : 'status-draft'}">${p.published ? 'Published' : 'Draft'}</span></td>
+                <td>${formatDate(p.created_at)}</td>
+                <td>${p.edited ? `${formatDate(p.updated_at)} <span class="edited-badge">edited</span>` : '—'}</td>
+                <td class="table-actions">
+                  <a href="post.html?slug=${encodeURIComponent(p.slug)}" target="_blank" class="btn-ghost btn-sm">View</a>
+                  <button class="btn-ghost btn-sm" data-edit="${p.id}">Edit</button>
+                  <button class="btn-danger btn-sm" data-delete="${p.id}">Delete</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+
+      postsWrap.querySelectorAll('[data-edit]').forEach(btn => {
+        btn.addEventListener('click', () => openEditor(allPosts.find(p => p.id === btn.dataset.edit)));
+      });
+      postsWrap.querySelectorAll('[data-delete]').forEach(btn => {
+        btn.addEventListener('click', () => deletePost(btn.dataset.delete));
+      });
+    }
+
+    async function deletePost(id) {
+      if (!confirm('Delete this post and all its comments? This cannot be undone.')) return;
+      try {
+        await adminDeletePost(id);
+        loadPosts();
+      } catch (err) {
+        alert(`Delete failed: ${err.message}`);
+      }
+    }
+
+    // ── Editor ────────────────────────────────────────────────────────────────
+
+    newPostBtn.addEventListener('click', () => openEditor(null));
+    editorCancel.addEventListener('click', closeEditor);
+
+    // Auto-generate slug from title when creating a new post
+    document.getElementById('post-title').addEventListener('input', e => {
+      if (!document.getElementById('post-id').value) {
+        document.getElementById('post-slug').value = slugify(e.target.value);
+      }
+    });
+
+    function openEditor(post) {
+      editorTitle.textContent = post ? 'Edit Post' : 'New Post';
+      document.getElementById('post-id').value       = post?.id ?? '';
+      document.getElementById('post-title').value    = post?.title ?? '';
+      document.getElementById('post-slug').value     = post?.slug ?? '';
+      document.getElementById('post-excerpt').value  = post?.excerpt ?? '';
+      document.getElementById('post-tags').value     = (post?.tags ?? []).join(', ');
+      document.getElementById('post-content').value  = post?.content ?? '';
+      document.getElementById('post-published').checked = post?.published ?? false;
+      postStatus.textContent = '';
+      editorSection.hidden = false;
+      editorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function closeEditor() {
+      editorSection.hidden = true;
+      postForm.reset();
+    }
+
+    postForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = postForm.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      postStatus.textContent = 'Saving…';
+
+      const id      = document.getElementById('post-id').value || undefined;
+      const title   = document.getElementById('post-title').value.trim();
+      const slug    = document.getElementById('post-slug').value.trim();
+      const excerpt = document.getElementById('post-excerpt').value.trim();
+      const content = document.getElementById('post-content').value;
+      const tags    = document.getElementById('post-tags').value
+        .split(',').map(t => t.trim()).filter(Boolean);
+      const published = document.getElementById('post-published').checked;
+
+      try {
+        await adminUpsertPost({ id, title, slug, excerpt, content, tags, published });
+        postStatus.textContent = 'Saved!';
+        closeEditor();
+        loadPosts();
+      } catch (err) {
+        postStatus.textContent = `Error: ${err.message}`;
+        postStatus.classList.add('error');
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    // ── Toolbar ───────────────────────────────────────────────────────────────
+
+    const textarea = document.getElementById('post-content');
+
+    function insertAtCursor(before, after = '') {
+      const start = textarea.selectionStart;
+      const end   = textarea.selectionEnd;
+      const sel   = textarea.value.slice(start, end);
+      const text  = before + sel + after;
+      textarea.setRangeText(text, start, end, 'end');
+      if (sel.length === 0) {
+        textarea.selectionStart = textarea.selectionEnd = start + before.length;
+      }
+      textarea.focus();
+    }
+
+    // Font size map → inline style span
+    const fontSizeMap = {
+      small:  '0.8em',
+      normal: '1em',
+      large:  '1.3em',
+      xlarge: '1.7em',
+      huge:   '2.2em',
+    };
+
+    document.getElementById('tb-font-size').addEventListener('change', function () {
+      const size = fontSizeMap[this.value];
+      if (size) {
+        insertAtCursor(`<span style="font-size:${size}">`, '</span>');
+      }
+      this.value = '';
+    });
+
+    // Wrap buttons (bold, italic, code, blockquote, headings)
+    document.querySelectorAll('.tb-btn[data-wrap]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const [before, after] = JSON.parse(btn.dataset.wrap);
+        insertAtCursor(before, after);
+      });
+    });
+
+    // Block buttons (ul, ol, pre)
+    document.querySelectorAll('.tb-btn[data-block]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tag = btn.dataset.block;
+        if (tag === 'ul') insertAtCursor('<ul>\n  <li>', '</li>\n  <li></li>\n</ul>');
+        else if (tag === 'ol') insertAtCursor('<ol>\n  <li>', '</li>\n  <li></li>\n</ol>');
+        else if (tag === 'pre') insertAtCursor('<pre><code>', '</code></pre>');
+      });
+    });
+
+    // Insert (hr)
+    document.querySelectorAll('.tb-btn[data-insert]').forEach(btn => {
+      btn.addEventListener('click', () => insertAtCursor('\n' + btn.dataset.insert + '\n'));
+    });
+
+    // Link
+    document.getElementById('tb-link').addEventListener('click', () => {
+      const url = prompt('URL:');
+      if (!url) return;
+      const start = textarea.selectionStart;
+      const end   = textarea.selectionEnd;
+      const sel   = textarea.value.slice(start, end);
+      const label = sel || prompt('Link text:', url) || url;
+      textarea.setRangeText(`<a href="${url}">${label}</a>`, start, end, 'end');
+      textarea.focus();
+    });
+
+    // Image by URL
+    document.getElementById('tb-image-url').addEventListener('click', () => {
+      const url = prompt('Image URL:');
+      if (!url) return;
+      const alt = prompt('Alt text (description):', '') || '';
+      insertAtCursor(`<img src="${url}" alt="${alt}" style="max-width:100%;border-radius:8px;">`);
+    });
+
+    // Image upload → Supabase Storage
+    document.getElementById('tb-image-upload').addEventListener('change', async function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      const progress    = document.getElementById('upload-progress');
+      const barFill     = document.getElementById('upload-bar-fill');
+      const statusText  = document.getElementById('upload-status-text');
+      progress.hidden   = false;
+      barFill.style.width = '0%';
+      statusText.textContent = 'Uploading…';
+
+      try {
+        const ext      = file.name.split('.').pop();
+        const filename = `blog/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+        const SUPABASE_URL      = 'https://unwwxpovznnbdfkbcwph.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVud3d4cG92em5uYmRma2Jjd3BoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3NDE4MzQsImV4cCI6MjA5NTMxNzgzNH0.AN_792G7XP6ts9l-naGPOx4_WFPenr55BYXrXserdIw';
+
+        // Simulate progress (XHR gives real progress; fetch doesn't)
+        let pct = 0;
+        const ticker = setInterval(() => {
+          pct = Math.min(pct + 15, 85);
+          barFill.style.width = pct + '%';
+        }, 150);
+
+        const res = await fetch(`${SUPABASE_URL}/storage/v1/object/blog-images/${filename}`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Content-Type': file.type,
+            'x-upsert': 'true',
+          },
+          body: file,
+        });
+
+        clearInterval(ticker);
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || err.message || res.statusText);
+        }
+
+        barFill.style.width = '100%';
+        statusText.textContent = 'Done!';
+
+        const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/blog-images/${filename}`;
+        const alt = prompt('Alt text for image:', file.name.replace(/\.[^.]+$/, '')) || '';
+        insertAtCursor(`<img src="${publicUrl}" alt="${alt}" style="max-width:100%;border-radius:8px;">`);
+
+        setTimeout(() => { progress.hidden = true; }, 1500);
+      } catch (err) {
+        statusText.textContent = `Upload failed: ${err.message}`;
+        barFill.style.width = '0%';
+      }
+      this.value = '';
+    });
+  </script>
+</body>
+</html>

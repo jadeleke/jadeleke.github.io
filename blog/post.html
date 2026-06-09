@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0f172a">
+  <title>Post | Joseph Adeleke</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="blog.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="../index.html">
+        <span class="brand-icon">JA</span>
+        <span>Joseph Adeleke</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="menu-toggle-box" aria-hidden="true">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
+      <nav aria-label="Primary">
+        <ul id="primary-menu" class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../experience.html">Experience</a></li>
+          <li><a href="../education.html">Education</a></li>
+          <li><a href="../certificates.html">Certificates</a></li>
+          <li><a href="../featured.html">Featured</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="./">Blog</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="section">
+    <div class="container post-container">
+      <a class="back-link" href="index.html">&larr; All posts</a>
+
+      <article id="post-body" aria-live="polite">
+        <div class="blog-loading">Loading&hellip;</div>
+      </article>
+
+      <section id="comments-section" class="comments-section" hidden>
+        <h2 class="comments-title">Comments</h2>
+        <div id="comments-list" class="comments-list"></div>
+
+        <form id="comment-form" class="comment-form" novalidate>
+          <h3>Leave a comment</h3>
+          <div class="form-group">
+            <label for="author-name">Name</label>
+            <input id="author-name" type="text" placeholder="Your name" required maxlength="80">
+          </div>
+          <div class="form-group">
+            <label for="comment-content">Comment</label>
+            <textarea id="comment-content" rows="4" placeholder="Share your thoughts…" required maxlength="2000"></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Post comment</button>
+          <p id="comment-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025&ndash;2026 Joseph Adeleke.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script type="module">
+    import { fetchPost, fetchComments, addComment, formatDate } from './blog.js';
+
+    const slug = new URLSearchParams(location.search).get('slug');
+    const postBody = document.getElementById('post-body');
+    const commentsSection = document.getElementById('comments-section');
+    const commentsList = document.getElementById('comments-list');
+    const commentForm = document.getElementById('comment-form');
+    const commentStatus = document.getElementById('comment-status');
+
+    if (!slug) {
+      postBody.innerHTML = '<p class="muted">No post specified.</p>';
+    } else {
+      fetchPost(slug).then(post => {
+        if (!post) {
+          postBody.innerHTML = '<p class="muted">Post not found.</p>';
+          return;
+        }
+
+        document.title = `${post.title} | Joseph Adeleke`;
+        document.querySelector('meta[name="description"]')?.setAttribute('content', post.excerpt || post.title);
+
+        const editedNote = post.edited
+          ? `<span class="edited-note">&nbsp;&middot;&nbsp;Edited ${formatDate(post.updated_at)}</span>`
+          : '';
+
+        postBody.innerHTML = `
+          <header class="post-header">
+            ${post.tags.length ? `<div class="blog-tags">${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` : ''}
+            <h1 class="post-title">${post.title}</h1>
+            <div class="post-meta">
+              <time datetime="${post.created_at}">Published ${formatDate(post.created_at)}</time>
+              ${editedNote}
+            </div>
+          </header>
+          <div class="post-content">${post.content}</div>
+        `;
+
+        commentsSection.hidden = false;
+        loadComments(post.id);
+
+        commentForm.addEventListener('submit', async e => {
+          e.preventDefault();
+          const name = document.getElementById('author-name').value.trim();
+          const content = document.getElementById('comment-content').value.trim();
+          if (!name || !content) return;
+
+          const btn = commentForm.querySelector('button[type="submit"]');
+          btn.disabled = true;
+          commentStatus.textContent = 'Posting…';
+
+          try {
+            await addComment(post.id, name, content);
+            commentForm.reset();
+            commentStatus.textContent = 'Comment posted!';
+            loadComments(post.id);
+          } catch (err) {
+            commentStatus.textContent = `Error: ${err.message}`;
+          } finally {
+            btn.disabled = false;
+          }
+        });
+      }).catch(err => {
+        postBody.innerHTML = `<p class="muted">Failed to load post: ${err.message}</p>`;
+      });
+    }
+
+    async function loadComments(postId) {
+      const comments = await fetchComments(postId).catch(() => []);
+      if (!comments.length) {
+        commentsList.innerHTML = '<p class="muted no-comments">No comments yet. Be the first!</p>';
+        return;
+      }
+      commentsList.innerHTML = comments.map(c => `
+        <div class="comment">
+          <div class="comment-header">
+            <strong class="comment-author">${escHtml(c.author_name)}</strong>
+            <time class="comment-time" datetime="${c.created_at}">${formatDate(c.created_at)}</time>
+          </div>
+          <p class="comment-body">${escHtml(c.content)}</p>
+        </div>
+      `).join('');
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+  </script>
+</body>
+</html>
