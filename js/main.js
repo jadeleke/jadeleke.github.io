@@ -161,6 +161,10 @@
           else if (currentFilter === 'javascript') matchesLang = l === 'javascript' || l === 'typescript';
           else if (currentFilter === 'hcl') matchesLang = l === 'hcl';
           else if (currentFilter === 'shell') matchesLang = l === 'shell';
+          else if (currentFilter === 'testing') matchesLang =
+            (repo.topics || []).some(t => ['test','testing','pytest','jest','e2e','qa','tdd'].includes(t)) ||
+            (repo.name || '').toLowerCase().includes('test') ||
+            (repo.description || '').toLowerCase().includes('test');
         }
         return matchesSearch && matchesLang;
       });

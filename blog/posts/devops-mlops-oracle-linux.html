@@ -1,13 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How my skillset combines DevOps, MLOps, Oracle DBA, and Linux Sysadmin to deliver end-to-end ML and data platforms.">
+  <meta name="author" content="Joseph Adeleke">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0f172a">
   <title>DevOps, MLOps, Oracle DBA, and Linux Sysadmin | Joseph Adeleke</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../blog.css">
   <link rel="manifest" href="../../manifest.webmanifest">
 </head>
 <body>
@@ -18,30 +24,52 @@
         <span class="brand-icon">JA</span>
         <span>Joseph Adeleke</span>
       </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="menu-toggle-box" aria-hidden="true">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
       <nav aria-label="Primary">
-        <ul class="menu">
+        <ul id="primary-menu" class="menu">
           <li><a href="../../index.html">Home</a></li>
           <li><a href="../../about.html">About</a></li>
           <li><a href="../../experience.html">Experience</a></li>
           <li><a href="../../education.html">Education</a></li>
+          <li><a href="../../certificates.html">Certificates</a></li>
           <li><a href="../../featured.html">Featured</a></li>
           <li><a href="../../projects.html">Projects</a></li>
           <li><a href="../../skills.html">Skills</a></li>
           <li><a href="../index.html">Blog</a></li>
           <li><a href="../../resume.html">Resume</a></li>
           <li><a href="../../contact.html">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button">A</button></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
         </ul>
       </nav>
     </div>
   </header>
+
   <main id="content" class="section">
-    <div class="container">
-      <article class="card">
-        <h1>DevOps, MLOps, Oracle DBA, and Linux Sysadmin</h1>
-        <p class="meta">January 5, 2025 - Platform Engineering</p>
-        <div id="post-content">
+    <div class="container post-container">
+      <a class="back-link" href="../index.html">&larr; All posts</a>
+
+      <article>
+        <header class="post-header">
+          <div class="blog-tags">
+            <span class="tag">Platform Engineering</span>
+            <span class="tag">Databases</span>
+          </div>
+          <h1 class="post-title">DevOps, MLOps, Oracle DBA, and Linux Sysadmin</h1>
+          <div class="post-meta">
+            <time datetime="2025-01-05">Published 5 January 2025</time>
+          </div>
+        </header>
+
+        <div class="post-content">
           <p>I wear a few hats: DevOps engineer, MLOps engineer, Oracle database administrator, and Linux system administrator. This combination helps me design, build, and operate end-to-end systems that deliver reliable features and models.</p>
+
           <h2>DevOps meets MLOps</h2>
           <p>DevOps keeps software delivery fast and safe. MLOps extends those ideas to data workflows and model lifecycles. Together they cover:</p>
           <ul>
@@ -52,6 +80,7 @@
             <li>Serving, autoscaling, and safe rollout patterns</li>
             <li>Observability across data quality and model health</li>
           </ul>
+
           <h2>Oracle DBA foundations</h2>
           <p>Many production systems still rely on Oracle. Knowing how to keep databases healthy means:</p>
           <ul>
@@ -60,6 +89,7 @@
             <li>Performance tuning and query optimization</li>
             <li>Security, auditing, and high availability</li>
           </ul>
+
           <h2>Linux administration</h2>
           <p>Most of the stack runs on Linux. Strong administration skills cover:</p>
           <ul>
@@ -68,16 +98,19 @@
             <li>Troubleshooting with built-in tooling</li>
             <li>Automation with shell and Python scripts</li>
           </ul>
+
           <p>These skills align toward a single goal: robust platforms that support data-driven products. I focus on reproducibility, reliability, and speed from database to deployment, from feature pipelines to production inference.</p>
         </div>
       </article>
     </div>
   </main>
+
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2026 Joseph Adeleke. All rights reserved.</p>
+      <p>&copy; 2025&ndash;2026 Joseph Adeleke.</p>
     </div>
   </footer>
+
   <script src="../../js/main.js" defer></script>
 </body>
 </html>

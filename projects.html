@@ -14,6 +14,241 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    /* ── Research hub ── */
+    .research-hub { margin-bottom: 60px; }
+
+    .research-hub-title {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 600;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-grid { display: grid; gap: 24px; }
+    .card-grid.two   { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .card-grid.three { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card-grid.flagship-grid { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+
+    .repo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .repo-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), var(--shadow);
+      transform: translateY(-2px);
+    }
+    .repo-card.flagship {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.04);
+    }
+    .repo-card.flagship:hover {
+      box-shadow: 0 0 0 2px var(--accent), 0 12px 40px rgba(56, 189, 248, 0.15);
+    }
+
+    .repo-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .repo-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .repo-title a { color: var(--text); transition: color 0.2s; }
+    .repo-title a:hover { color: var(--accent); text-decoration: none; }
+
+    .flagship-badge {
+      flex-shrink: 0;
+      font-size: 0.68rem;
+      background: var(--accent);
+      color: #081225;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .repo-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .repo-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .repo-lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lang-dot, .repo-lang-color {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .repo-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: auto;
+    }
+
+    .repo-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    a.repo-stat:hover { color: var(--accent); text-decoration: none; }
+
+    .repo-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .btn-sm {
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      border-radius: 8px;
+    }
+
+    /* ── Filter bar ── */
+    .filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .search-wrapper { flex: 1 1 220px; }
+
+    .search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.9rem;
+      padding: 0.55rem 1rem;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus { outline: none; border-color: var(--accent); }
+
+    .pill-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 5px 14px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .filter-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #081225;
+    }
+
+    .section-divider {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 56px 0;
+    }
+
+    .open-source-title {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    /* Testing section highlight */
+    .testing-section { margin-top: 48px; }
+    .testing-section-title {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+    .testing-section-title svg { color: var(--accent); }
+
+    .test-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .test-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), var(--shadow);
+      transform: translateY(-2px);
+    }
+    .test-card h3 { font-size: 1rem; font-weight: 600; margin: 0; }
+    .test-card .muted { font-size: 0.88rem; }
+
+    .test-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .test-badge.unit    { background: rgba(34, 197, 94, 0.12);  color: #22c55e;  border: 1px solid rgba(34,197,94,0.25); }
+    .test-badge.integ   { background: rgba(56, 189, 248, 0.12); color: var(--accent); border: 1px solid rgba(56,189,248,0.25); }
+    .test-badge.e2e     { background: rgba(168, 85, 247, 0.12); color: #a855f7;  border: 1px solid rgba(168,85,247,0.25); }
+    .test-badge.perf    { background: rgba(234, 179, 8, 0.12);  color: #eab308;  border: 1px solid rgba(234,179,8,0.25); }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -55,70 +290,128 @@
       <header class="section-heading">
         <span class="eyebrow">Projects</span>
         <h1 class="section-title">MSc Research &bull; MLOps Portfolio</h1>
-        <p class="section-lead">Combining academic Machine Learning research with production-grade MLOps and infrastructure automated tooling.</p>
+        <p class="section-lead">Combining academic Machine Learning research with production-grade MLOps, infrastructure automation, and rigorous testing practices.</p>
       </header>
 
-      <!-- MSc Flagship Research Hub -->
-      <section class="research-hub" style="margin-bottom: 60px;">
-        <h2 style="margin-bottom: 24px; font-size: 1.8rem; display: flex; align-items: center; gap: 12px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      <!-- ── Flagship Research ── -->
+      <section class="research-hub">
+        <h2 class="research-hub-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
           Flagship Research &amp; Applied ML
         </h2>
-        <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
-          
-          <div class="repo-card flagship" style="display: flex; flex-direction: column; justify-content: space-between; border-color: var(--accent); background: rgba(0,255,136,0.03);">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                <h3 class="repo-title" style="margin: 0; color: var(--accent);">Audio Transcription: Wav2Vec2</h3>
-                <span style="font-size: 0.7rem; background: var(--accent); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase;">Star Signal</span>
-              </div>
-              <p class="repo-desc">End-to-end ASR pipeline utilizing Wav2Vec2 for high-fidelity English audio transcription with custom fine-tuning logic.</p>
+        <div class="card-grid flagship-grid">
+
+          <div class="repo-card flagship">
+            <div class="repo-card-header">
+              <h3 class="repo-title">Audio Transcription: Wav2Vec2</h3>
+              <span class="flagship-badge">Star Signal</span>
             </div>
-            <div class="repo-meta" style="margin-top: 20px;">
+            <p class="repo-desc">End-to-end ASR pipeline utilizing Wav2Vec2 for high-fidelity English audio transcription with custom fine-tuning logic.</p>
+            <div class="repo-meta">
               <span class="repo-lang"><span class="lang-dot" style="background:#38bdf8;"></span>HuggingFace / PyTorch</span>
             </div>
+            <div class="repo-actions">
+              <a class="btn btn-sm" href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
           </div>
 
-          <div class="repo-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <h3 class="repo-title" style="margin-bottom: 8px;">Ghanaian NLP: Language Detection</h3>
-              <p class="repo-desc">Lightweight NLP model identifying low-resource Ghanaian dialects with high accuracy using PyTorch.</p>
+          <div class="repo-card">
+            <div class="repo-card-header">
+              <h3 class="repo-title">Ghanaian NLP: Language Detection</h3>
             </div>
-            <div class="repo-meta" style="margin-top: 16px;">
+            <p class="repo-desc">Lightweight NLP model identifying low-resource Ghanaian dialects with high accuracy using PyTorch.</p>
+            <div class="repo-meta">
               <span class="repo-lang"><span class="lang-dot" style="background:#38bdf8;"></span>NLP Research</span>
             </div>
+            <div class="repo-actions">
+              <a class="btn btn-sm" href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
           </div>
 
-          <div class="repo-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <h3 class="repo-title" style="margin-bottom: 8px;">Visual CNN in Akan Twi</h3>
-              <p class="repo-desc">Dataset curation and supervised training for a localized CNN image classification model focused on Ghanaian context.</p>
+          <div class="repo-card">
+            <div class="repo-card-header">
+              <h3 class="repo-title">Visual CNN in Akan Twi</h3>
             </div>
-            <div class="repo-meta" style="margin-top: 16px;">
+            <p class="repo-desc">Dataset curation and supervised training for a localized CNN image classification model focused on Ghanaian context.</p>
+            <div class="repo-meta">
               <span class="repo-lang"><span class="lang-dot" style="background:#22c55e;"></span>Computer Vision</span>
             </div>
+            <div class="repo-actions">
+              <a class="btn btn-sm" href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
           </div>
 
-          <div class="repo-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <h3 class="repo-title" style="margin-bottom: 8px;">Brain Tumor Federated Learning</h3>
-              <p class="repo-desc">Decentralized model training architecture for medical imaging, ensuring data privacy across localized nodes.</p>
+          <div class="repo-card">
+            <div class="repo-card-header">
+              <h3 class="repo-title">Brain Tumor Federated Learning</h3>
             </div>
-            <div class="repo-meta" style="margin-top: 16px;">
+            <p class="repo-desc">Decentralized model training architecture for medical imaging, ensuring data privacy across localized nodes.</p>
+            <div class="repo-meta">
               <span class="repo-lang"><span class="lang-dot" style="background:#8b5cf6;"></span>Federated Learning</span>
+            </div>
+            <div class="repo-actions">
+              <a class="btn btn-sm" href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
 
         </div>
       </section>
 
-      <hr style="border:0; border-top:1px solid var(--border); margin: 60px 0;">
+      <!-- ── Testing & QA ── -->
+      <section class="testing-section">
+        <h2 class="testing-section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+          Testing &amp; Quality Engineering
+        </h2>
+        <div class="card-grid two">
 
-      <h2 style="margin-bottom: 24px; font-size: 1.8rem;">Open Source Tooling</h2>
+          <div class="test-card">
+            <span class="test-badge unit">&#10003; Unit Tests</span>
+            <h3>ML Model Unit Testing</h3>
+            <p class="muted">Pytest-based unit test suites for data preprocessing transforms, feature engineering functions, and model inference outputs — catching regressions before they reach CI.</p>
+            <div class="repo-meta">
+              <span class="repo-lang"><span class="lang-dot" style="background:#38bdf8;"></span>Python / pytest</span>
+            </div>
+          </div>
+
+          <div class="test-card">
+            <span class="test-badge integ">&#8694; Integration Tests</span>
+            <h3>Pipeline Integration Testing</h3>
+            <p class="muted">End-to-end integration tests for MLOps pipelines — validating data ingestion, model training, evaluation thresholds, and artifact storage in isolated environments.</p>
+            <div class="repo-meta">
+              <span class="repo-lang"><span class="lang-dot" style="background:#22c55e;"></span>GitHub Actions / Docker</span>
+            </div>
+          </div>
+
+          <div class="test-card">
+            <span class="test-badge e2e">&#9654; E2E Tests</span>
+            <h3>Model Serving E2E Tests</h3>
+            <p class="muted">Automated end-to-end smoke and contract tests against deployed REST endpoints — verifying latency, response schema, and model output distributions in staging.</p>
+            <div class="repo-meta">
+              <span class="repo-lang"><span class="lang-dot" style="background:#a855f7;"></span>Python / httpx / Locust</span>
+            </div>
+          </div>
+
+          <div class="test-card">
+            <span class="test-badge perf">&#9651; Performance Tests</span>
+            <h3>Load &amp; Stress Testing</h3>
+            <p class="muted">Locust and k6 load tests against inference APIs, measuring throughput and p95 latency under realistic traffic patterns, with automated alerts on regression.</p>
+            <div class="repo-meta">
+              <span class="repo-lang"><span class="lang-dot" style="background:#eab308;"></span>k6 / Locust / Grafana</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- ── Open Source Tooling ── -->
+      <h2 class="open-source-title">Open Source Tooling</h2>
       <div class="filter">
         <div class="search-wrapper">
           <label class="visually-hidden" for="projects-filter">Filter projects</label>
-          <input id="projects-filter" class="search-input" type="search" placeholder="Search by name, topic, or language...">
+          <input id="projects-filter" class="search-input" type="search" placeholder="Search by name, topic, or language…">
         </div>
         <div class="pill-filters" id="language-filters" aria-label="Filter by language">
           <button class="filter-pill active" data-lang="all">All</button>
@@ -126,22 +419,26 @@
           <button class="filter-pill" data-lang="javascript">JS / TS</button>
           <button class="filter-pill" data-lang="hcl">Terraform / HCL</button>
           <button class="filter-pill" data-lang="shell">Shell</button>
+          <button class="filter-pill" data-lang="testing">Testing</button>
         </div>
       </div>
 
       <div id="projects-list" class="card-grid three">
-        <article class="card">
-          <h3>Loading</h3>
-          <p class="muted">Fetching repositories...</p>
+        <article class="repo-card">
+          <h3 class="repo-title">Loading…</h3>
+          <p class="muted repo-desc">Fetching repositories…</p>
         </article>
         <noscript>
-          <article class="card">
-            <h3>JavaScript Required</h3>
-            <p class="muted">This page requires JavaScript to load projects from GitHub. Please enable JavaScript in your browser and refresh the page.</p>
-            <p class="muted">Alternatively, you can view my projects directly on <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+          <article class="repo-card">
+            <h3 class="repo-title">JavaScript Required</h3>
+            <p class="muted">This page requires JavaScript to load projects from GitHub.</p>
+            <div class="repo-actions">
+              <a class="btn btn-sm" href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">View GitHub</a>
+            </div>
           </article>
         </noscript>
       </div>
+
     </div>
   </main>
 
