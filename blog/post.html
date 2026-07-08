@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Essays and notes on MLOps, DevOps, Oracle, and Linux by Joseph Adeleke.">
+  <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0f172a">
   <title>Post | Joseph Adeleke</title>
@@ -113,7 +115,7 @@
 
         postBody.innerHTML = `
           <header class="post-header">
-            ${post.tags.length ? `<div class="blog-tags">${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` : ''}
+            ${(post.tags || []).length ? `<div class="blog-tags">${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` : ''}
             <h1 class="post-title">${post.title}</h1>
             <div class="post-meta">
               <time datetime="${post.created_at}">Published ${formatDate(post.created_at)}</time>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-v19';
+const CACHE_NAME = 'site-cache-v21';
 const ASSETS = [
   '/',
   '/index.html',
@@ -27,11 +27,33 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const { request } = event;
   if (request.method !== 'GET') return;
+  // Leave cross-origin requests (fonts, GitHub API, Supabase) to the browser
+  if (new URL(request.url).origin !== self.location.origin) return;
+
+  // Network-first for page navigations so deploys show up without a cache bump
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request).then(response => {
+        if (response.ok) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
+        }
+        return response;
+      }).catch(() =>
+        caches.match(request).then(cached => cached || caches.match('/404.html'))
+      )
+    );
+    return;
+  }
+
+  // Cache-first for static assets
   event.respondWith(
     caches.match(request).then(cached => cached || fetch(request).then(response => {
-      const clone = response.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
+      if (response.ok) {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
+      }
       return response;
-    }).catch(() => cached))
+    }))
   );
 });

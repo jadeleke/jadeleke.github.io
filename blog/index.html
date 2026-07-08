@@ -85,7 +85,7 @@
       list.innerHTML = posts.map(p => `
         <article class="blog-card">
           <div class="blog-card-meta">
-            ${p.tags.length ? `<span class="blog-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</span>` : ''}
+            ${(p.tags || []).length ? `<span class="blog-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</span>` : ''}
             <time datetime="${p.created_at}">${formatDate(p.created_at)}</time>
           </div>
           <h2><a href="post.html?slug=${encodeURIComponent(p.slug)}">${p.title}</a></h2>

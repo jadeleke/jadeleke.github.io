@@ -92,7 +92,6 @@
 
     list.forEach(repo => {
       const card = document.createElement("article");
-      card.className = "card";
       card.className = "card repo-card";
 
       card.innerHTML = `

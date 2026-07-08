@@ -2,8 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const preloader = document.getElementById("preloader");
     const siteContent = document.getElementById("site-content");
 
-    // Hide preloader after 2 seconds
-    setTimeout(() => {
+    // Hide preloader once the page has finished loading
+    let revealed = false;
+    function revealSite() {
+        if (revealed) return;
+        revealed = true;
         if (preloader) {
             preloader.style.opacity = "0";
             preloader.addEventListener("transitionend", () => {
@@ -14,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             siteContent.style.opacity = "1";
             siteContent.style.transform = "translateY(0)";
         }
-        
+
         // Trigger Bento Grid Staggered Animation
         const bentoCards = document.querySelectorAll(".bento-card");
         bentoCards.forEach((card, index) => {
@@ -22,7 +25,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.classList.add("loaded");
             }, 150 * index + 100); // 150ms stagger per card
         });
-    }, 2000);
+    }
+
+    if (document.readyState === "complete") {
+        revealSite();
+    } else {
+        window.addEventListener("load", revealSite, { once: true });
+        // Failsafe: never keep the preloader up longer than 2s
+        setTimeout(revealSite, 2000);
+    }
 
     // ── Mouse Tracking Spotlight Effect ──
     const cards = document.querySelectorAll(".bento-card");
