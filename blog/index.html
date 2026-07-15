@@ -53,11 +53,17 @@
 
   <main id="content" class="section">
     <div class="container">
-      <header class="section-heading">
-        <span class="eyebrow">Insights</span>
-        <h1 class="section-title">Blog</h1>
-        <p class="section-lead">Essays and notes on MLOps, DevOps, Oracle, and Linux.</p>
-      </header>
+      <section class="blog-hero" aria-labelledby="blog-title">
+        <header class="section-heading blog-hero-copy">
+          <span class="eyebrow">Insights from the field</span>
+          <h1 id="blog-title" class="section-title">Building reliable systems, one lesson at a time.</h1>
+          <p class="section-lead">Practical essays on MLOps, DevOps, cloud infrastructure, Oracle, and Linux&mdash;drawn from real projects and hands-on experiments.</p>
+          <a class="blog-hero-link" href="#blog-list">Explore the latest posts <span aria-hidden="true">&darr;</span></a>
+        </header>
+        <div class="blog-hero-visual">
+          <img src="../assets/blog-mlops-hero.svg" alt="A model pipeline connecting code, cloud infrastructure, analytics, and deployment" width="720" height="520">
+        </div>
+      </section>
 
       <div id="blog-list" class="blog-list" aria-live="polite">
         <div class="blog-loading">Loading posts&hellip;</div>
