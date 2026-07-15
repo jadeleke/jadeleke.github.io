@@ -1,5 +1,12 @@
 [
   {
+    "title": "OpenMed MLOps",
+    "description": "A resource-conscious healthcare MLOps demo running a synthetic readmission pipeline on Kubernetes with Kubeflow Pipelines and MLflow experiment tracking.",
+    "repo": "https://github.com/jadeleke/openmed-mlops",
+    "demo": "",
+    "tags": ["mlops", "kubeflow", "mlflow", "kubernetes"]
+  },
+  {
     "title": "GhanaVoice",
     "description": "Speech classification for Ghanaian languages using CNN models.",
     "repo": "https://github.com/jadeleke/GhanaVoice",
