@@ -1,6 +1,6 @@
 # Joseph Adeleke - Research & Engineering
 
-A static personal website for Joseph Adeleke, PhD student in Computer Science and DevSecOps & MLOps engineer. Semantic HTML, CSS, and small browser scripts; hosted on GitHub Pages.
+A static personal website for Joseph Adeleke, PhD student in Computer Science, DevSecOps & MLOps engineer, and Database Administrator. Semantic HTML, CSS, and small browser scripts; hosted on GitHub Pages.
 
 ## Design
 
