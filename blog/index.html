@@ -3,99 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/theme.js"></script>
   <meta name="description" content="Essays and notes on MLOps, DevOps, Oracle, and Linux by Joseph Adeleke.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#f5f3ed">
   <title>Blog | Joseph Adeleke</title>
+  <link rel="canonical" href="https://jadeleke.github.io/blog/">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="blog.css">
   <link rel="manifest" href="../manifest.webmanifest">
+  <meta property="og:title" content="Blog | Joseph Adeleke">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Joseph Adeleke">
+  <meta property="og:image" content="https://jadeleke.github.io/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:description" content="Essays and notes on MLOps, DevOps, Oracle, and Linux by Joseph Adeleke.">
+  <meta property="og:url" content="https://jadeleke.github.io/blog/">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-bar">
-      <a class="brand" href="../index.html">
-        <span class="brand-icon">JA</span>
-        <span>Joseph Adeleke</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
-        <span class="menu-toggle-box" aria-hidden="true">
-          <span class="menu-toggle-line"></span>
-          <span class="menu-toggle-line"></span>
-          <span class="menu-toggle-line"></span>
-        </span>
-        <span class="menu-toggle-label">Menu</span>
-      </button>
-      <nav aria-label="Primary">
-        <ul id="primary-menu" class="menu">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../about.html">About</a></li>
-          <li><a href="../experience.html">Experience</a></li>
-          <li><a href="../education.html">Education</a></li>
-          <li><a href="../certificates.html">Certificates</a></li>
-          <li><a href="../featured.html">Featured</a></li>
-          <li><a href="../projects.html">Projects</a></li>
-          <li><a href="../skills.html">Skills</a></li>
-          <li><a href="./">Blog</a></li>
-          <li><a href="../resume.html">Resume</a></li>
-          <li><a href="../contact.html">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
-        </ul>
-      </nav>
+      <a class="brand" href="../index.html" aria-label="Joseph Adeleke, home"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a>
+      <nav aria-label="Primary"><ul id="primary-menu" class="menu"><li><a href="../research.html">Research</a></li>
+<li><a href="../projects.html">Work</a></li>
+<li><a href="../experience.html">Experience</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../blog/">Writing</a></li>
+<li><a href="../contact.html">Contact</a></li></ul></nav>
+      <div class="nav-controls"><a class="nav-contact" href="../resume.html">View résumé <span aria-hidden="true">&nearr;</span></a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch colour theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="menu-toggle-box" aria-hidden="true"><span class="menu-toggle-line"></span><span class="menu-toggle-line"></span></span><span>Menu</span></button></div>
     </div>
   </header>
 
   <main id="content" class="section">
     <div class="container">
       <header class="section-heading">
-        <span class="eyebrow">Insights</span>
-        <h1 class="section-title">Blog</h1>
-        <p class="section-lead">Essays and notes on MLOps, DevOps, Oracle, and Linux.</p>
+        <span class="eyebrow">Field notes</span>
+        <h1 class="section-title">Thinking through<br>the systems we build.</h1>
+        <p class="section-lead">Notes from the intersection of cloud infrastructure, machine learning operations, and dependable software delivery.</p>
       </header>
 
-      <div id="blog-list" class="blog-list" aria-live="polite">
-        <div class="blog-loading">Loading posts&hellip;</div>
+      <div id="blog-list" class="blog-list">
+        <article class="blog-card" data-post-slug="devops-mlops-oracle-linux" data-reveal>
+          <div class="blog-card-meta">
+            <span class="blog-tags"><span class="tag">Platform Engineering</span><span class="tag">Databases</span></span>
+            <time datetime="2025-01-05">5 January 2025</time>
+          </div>
+          <h2><a href="posts/devops-mlops-oracle-linux.html">DevOps, MLOps, Oracle DBA, and Linux Sysadmin</a></h2>
+          <p class="muted">Connecting software delivery, model lifecycles, database reliability, and Linux administration to build dependable platforms from database to deployment.</p>
+          <a class="blog-read-more" href="posts/devops-mlops-oracle-linux.html" aria-label="Read DevOps, MLOps, Oracle DBA, and Linux Sysadmin">Read the field note <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="blog-card" data-post-slug="hello-mlops" data-reveal>
+          <div class="blog-card-meta">
+            <span class="blog-tags"><span class="tag">MLOps</span><span class="tag">DevOps</span></span>
+            <time datetime="2025-01-01">1 January 2025</time>
+          </div>
+          <h2><a href="posts/hello-mlops.html">Hello, MLOps!</a></h2>
+          <p class="muted">An introduction to my interests in production machine learning: containerised serving, experiment tracking, feature pipelines, and CI/CD for reliable models.</p>
+          <a class="blog-read-more" href="posts/hello-mlops.html" aria-label="Read Hello, MLOps!">Read the field note <span aria-hidden="true">&rarr;</span></a>
+        </article>
       </div>
+      <p id="blog-status" class="muted" role="status" aria-live="polite"></p>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025&ndash;2026 Joseph Adeleke.</p>
-    </div>
+    <div class="container"><div class="footer-main"><div class="footer-intro"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a><p>Exploring uncertainty.<br>Engineering dependability.<br>Based in Accra. Thinking beyond.</p></div><div class="footer-group"><h2>Explore</h2><ul><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../research.html">Research</a></li><li><a href="../blog/">Writing</a></li></ul></div><div class="footer-group"><h2>The practice</h2><ul><li><a href="../projects.html">Projects</a></li><li><a href="../featured.html">Featured work</a></li><li><a href="../experience.html">Experience</a></li><li><a href="../skills.html">Skills</a></li></ul></div><div class="footer-group"><h2>The background</h2><ul><li><a href="../education.html">Education</a></li><li><a href="../certificates.html">Credentials</a></li><li><a href="../resume.html">Résumé</a></li><li><a href="../contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025–2026 Joseph Adeleke</p><span>BUILT WITH CURIOSITY &amp; INTENTION</span><div class="footer-utilities"><a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a><a href="https://www.linkedin.com/in/joseph-adeleke-msc-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path class="pause-lines" d="M6 5v6m4-6v6"/></svg><span data-motion-label>Motion on</span></button></div></div></div>
   </footer>
 
   <script src="../js/main.js" defer></script>
+  <script src="../js/animation.js" defer></script>
   <script type="module">
-    import { fetchPosts, formatDate } from './blog.js';
-
     const list = document.getElementById('blog-list');
+    const status = document.getElementById('blog-status');
+    const knownSlugs = new Set(Array.from(list.querySelectorAll('[data-post-slug]'), article => article.dataset.postSlug));
 
-    fetchPosts().then(posts => {
-      if (!posts || posts.length === 0) {
-        list.innerHTML = '<p class="muted">No posts yet. Check back soon.</p>';
-        return;
+    function element(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text) node.textContent = text;
+      return node;
+    }
+
+    function renderPost(post, formatDate) {
+      if (!post || typeof post.slug !== 'string' || typeof post.title !== 'string') return;
+      const slug = post.slug.trim();
+      const title = post.title.trim();
+      if (!slug || !title || knownSlugs.has(slug)) return;
+      knownSlugs.add(slug);
+
+      const href = `post.html?slug=${encodeURIComponent(slug)}`;
+      const article = element('article', 'blog-card');
+      article.dataset.postSlug = slug;
+      article.setAttribute('data-reveal', '');
+      const meta = element('div', 'blog-card-meta');
+      const tags = Array.isArray(post.tags) ? post.tags.filter(tag => typeof tag === 'string' && tag.trim()) : [];
+      if (tags.length) {
+        const group = element('span', 'blog-tags');
+        tags.forEach(tag => group.append(element('span', 'tag', tag)));
+        meta.append(group);
       }
-      list.innerHTML = posts.map(p => `
-        <article class="blog-card">
-          <div class="blog-card-meta">
-            ${(p.tags || []).length ? `<span class="blog-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</span>` : ''}
-            <time datetime="${p.created_at}">${formatDate(p.created_at)}</time>
-          </div>
-          <h2><a href="post.html?slug=${encodeURIComponent(p.slug)}">${p.title}</a></h2>
-          ${p.excerpt ? `<p class="muted">${p.excerpt}</p>` : ''}
-          <a class="blog-read-more" href="post.html?slug=${encodeURIComponent(p.slug)}">Read &rarr;</a>
-        </article>
-      `).join('');
-    }).catch(err => {
-      list.innerHTML = `<p class="muted">Could not load posts: ${err.message}</p>`;
-    });
+      const date = typeof post.created_at === 'string' ? new Date(post.created_at) : null;
+      if (date && Number.isFinite(date.getTime())) {
+        try {
+          const time = element('time', '', formatDate(post.created_at));
+          time.dateTime = date.toISOString();
+          meta.append(time);
+        } catch (_) {
+          // A malformed timestamp should never hide an otherwise readable post.
+        }
+      }
+      const heading = element('h2');
+      const link = element('a', '', title);
+      link.href = href;
+      heading.append(link);
+      article.append(meta, heading);
+      if (typeof post.excerpt === 'string' && post.excerpt.trim()) {
+        article.append(element('p', 'muted', post.excerpt));
+      }
+      const readMore = element('a', 'blog-read-more', 'Read the field note →');
+      readMore.href = href;
+      readMore.setAttribute('aria-label', `Read ${title}`);
+      article.append(readMore);
+      list.append(article);
+    }
+
+    try {
+      const { fetchPosts, formatDate } = await import('./blog.js');
+      const posts = await fetchPosts();
+      if (Array.isArray(posts)) posts.forEach(post => renderPost(post, formatDate));
+    } catch (_) {
+      status.textContent = 'The latest notes are temporarily unavailable. You can still read the field notes above.';
+    }
   </script>
 </body>
 </html>

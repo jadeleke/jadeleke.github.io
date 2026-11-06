@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="12" fill="#0ea5e9" />
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Fira Sans, Arial" font-size="28" fill="#0f172a">JA</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#19362c"/><text x="30" y="43" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="42" letter-spacing="-4" fill="#e7eddb">ja.</text></svg>

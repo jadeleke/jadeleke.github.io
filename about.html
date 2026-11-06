@@ -3,111 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn more about Joseph Adeleke, MSc — a DevOps and MLOps engineer building reliable machine learning platforms and infrastructure.">
+  <script src="js/theme.js"></script>
+  <meta name="description" content="Learn more about Joseph Adeleke, a PhD student in Computer Science and DevOps and MLOps engineer building reliable machine learning platforms and infrastructure.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#f5f3ed">
   <title>About | Joseph Adeleke</title>
+  <link rel="canonical" href="https://jadeleke.github.io/about.html">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:title" content="About | Joseph Adeleke">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Joseph Adeleke">
+  <meta property="og:image" content="https://jadeleke.github.io/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:description" content="Learn more about Joseph Adeleke, a PhD student in Computer Science and DevOps and MLOps engineer building reliable machine learning platforms and infrastructure.">
+  <meta property="og:url" content="https://jadeleke.github.io/about.html">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-bar">
-      <a class="brand" href="index.html">
-        <span class="brand-icon">JA</span>
-        <span>Joseph Adeleke</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
-        <span class="menu-toggle-box" aria-hidden="true">
-          <span class="menu-toggle-line"></span>
-          <span class="menu-toggle-line"></span>
-          <span class="menu-toggle-line"></span>
-        </span>
-        <span class="menu-toggle-label">Menu</span>
-      </button>
-      <nav aria-label="Primary">
-        <ul id="primary-menu" class="menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="experience.html">Experience</a></li>
-          <li><a href="education.html">Education</a></li>
-          <li><a href="certificates.html">Certificates</a></li>
-          <li><a href="featured.html">Featured</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="blog/">Blog</a></li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
-        </ul>
-      </nav>
+      <a class="brand" href="index.html" aria-label="Joseph Adeleke, home"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a>
+      <nav aria-label="Primary"><ul id="primary-menu" class="menu"><li><a href="research.html">Research</a></li>
+<li><a href="projects.html">Work</a></li>
+<li><a href="experience.html">Experience</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/">Writing</a></li>
+<li><a href="contact.html">Contact</a></li></ul></nav>
+      <div class="nav-controls"><a class="nav-contact" href="resume.html">View résumé <span aria-hidden="true">&nearr;</span></a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch colour theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="menu-toggle-box" aria-hidden="true"><span class="menu-toggle-line"></span><span class="menu-toggle-line"></span></span><span>Menu</span></button></div>
     </div>
   </header>
 
   <main id="content" class="section">
     <div class="container">
-      <header class="section-heading">
-        <span class="eyebrow">Profile</span>
-        <h1 class="section-title">About Joseph Adeleke, MSc</h1>
-        <p class="section-lead"><em>"To be, is to do."</em> &mdash; Versatile engineer specializing in Multi-Cloud DevSecOps and MLOps. Focuses on secure, scalable cloud architectures and AI-driven workflows, with a strong enthusiasm for automation and bridging the gap between development and operations.</p>
+      <header class="page-intro" data-reveal>
+        <span class="eyebrow">About / Joseph Adeleke</span>
+        <h1 class="section-title">A systems thinker.<br>A builder at heart.</h1>
+        <p class="section-lead">I am a PhD student in Computer Science and a DevSecOps &amp; MLOps engineer. I work across cloud infrastructure, machine learning platforms, and the operational details that make systems dependable.</p>
       </header>
 
       <div class="about-grid">
-        <article class="card highlight-card">
-          <h2>What I bring</h2>
+        <section class="card" aria-labelledby="about-practice" data-reveal>
+          <span class="page-index">01 / In practice</span>
+          <h2 id="about-practice">From infrastructure to impact.</h2>
+          <p>My professional work connects development, operations, and security. At MTN Ghana and enterprise clients, I own end-to-end DevSecOps and MLOps delivery across 150+ CI/CD pipelines.</p>
           <ul>
-            <li>Currently owning end-to-end DevSecOps and MLOps delivery for MTN Ghana and enterprise clients, managing 150+ CI/CD pipelines.</li>
-            <li>Expertise in building and managing GPU-enabled MLOps infrastructure on AKS using Ollama, Kubeflow, and MLflow for rapid LLM/ML deployment.</li>
-            <li>Deep experience managing 10 Kubernetes clusters across dev, UAT, and production environments, enforcing strict RBAC and zero-trust policies.</li>
-            <li>Proven integration of automated security gates (Trivy, SonarQube, Azure Key Vault) within CI/CD workflows at national telecom scale.</li>
+            <li>GPU-enabled MLOps infrastructure on AKS with Ollama, Kubeflow, and MLflow for LLM and ML deployment.</li>
+            <li>10 Kubernetes clusters across development, UAT, and production, with RBAC, namespace isolation, and zero-trust policies.</li>
+            <li>Automated security gates using Trivy, SonarQube, and Azure Key Vault within enterprise delivery workflows.</li>
           </ul>
-        </article>
-
-        <aside class="card">
-          <h2>Quick facts</h2>
-          <ul class="list-plain">
-            <li>MSc Computer Science (2025) from the University of Ghana.</li>
-            <li>Currently securing and scaling infrastructure for millions of users at MTN Ghana.</li>
-            <li>Certified in Azure (AZ-104), AWS (DevOps Engineer &ndash; Professional), Kubernetes (KCNA), and Oracle Cloud.</li>
-            <li>Passionate about African NLP research and automated DevSecOps pipelines.</li>
+          <a class="text-link" href="experience.html">Explore my experience <span aria-hidden="true">&nearr;</span></a>
+        </section>
+        <aside class="card" aria-labelledby="about-background" data-reveal>
+          <span class="page-index">02 / Background</span>
+          <h2 id="about-background">Learning, then building.</h2>
+          <ul>
+            <li>Currently pursuing a PhD in Computer Science.</li>
+            <li>MSc Computer Science, University of Ghana, 2025.</li>
+            <li>Based in Accra, Ghana, with a focus on cloud and enterprise platforms.</li>
+            <li>Certifications across Azure, AWS, Kubernetes, and Oracle Cloud.</li>
           </ul>
+          <p class="editorial-note"><em>&ldquo;To be, is to do.&rdquo;</em></p>
+          <a class="text-link" href="education.html">Follow my learning journey <span aria-hidden="true">&nearr;</span></a>
         </aside>
       </div>
 
-      <!-- Add the Reference Pipeline Section -->
-      <section class="card pipeline-card" style="margin-top: 40px; border-radius: 20px;">
-        <h2 style="margin-bottom: 24px;">Reference MLOps Architecture</h2>
-        <p style="color: var(--muted); margin-bottom: 30px;">This is my standard approach to producing reliable, observable AI systems from raw data to end-user serving.</p>
-        
-        <div class="pipeline-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>01.</strong> Data Sources</div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>02.</strong> Ingestion &amp; Validation <em>(Great Expectations)</em></div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>03.</strong> Feature Engineering <em>(PySpark, Polars)</em></div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>04.</strong> Train &amp; Evaluate</div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>05.</strong> Model Registry <em>(MLflow, DVC)</em></div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>06.</strong> CI/CD Build &amp; Test <em>(GitHub Actions)</em></div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>07.</strong> Containerize &amp; Deploy <em>(Docker, Kubernetes, Azure)</em></div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>08.</strong> Online Serving <em>(REST/gRPC, Triton)</em></div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>09.</strong> Monitoring &amp; Logging <em>(Grafana, Datadog)</em></div>
-            <div style="background: var(--surface-alt); padding: 16px; border-radius: 12px; border-left: 3px solid var(--accent);"><strong>10.</strong> Drift Detection &amp; Retrain</div>
-        </div>
+      <section id="research-interests" class="card research-preview" aria-labelledby="research-heading" data-reveal>
+        <span class="eyebrow">The academic direction</span>
+        <h2 id="research-heading">Cloud Computing and Distributed Systems</h2>
+        <p class="research-specialisation">Uncertainty-Aware Workflow Scheduling, Statistical Risk Control, and Cloud Resource Optimisation</p>
+        <p>My research interests connect statistical learning, uncertainty quantification, and optimisation to explore reliable, cost-efficient cloud workflow scheduling.</p>
+        <a class="text-link" href="research.html">Explore my research interests <span aria-hidden="true">&nearr;</span></a>
       </section>
 
+      <section class="section-divider" aria-labelledby="pipeline-heading">
+        <header class="section-heading" data-reveal>
+          <span class="eyebrow">An engineering perspective</span>
+          <h2 id="pipeline-heading" class="section-title">From raw data to reliable systems.</h2>
+          <p class="section-lead">A reference MLOps architecture: the stages I bring together to make AI systems reproducible, observable, and ready to operate.</p>
+        </header>
+        <ol class="pipeline-grid">
+          <li class="card pipeline-step" data-reveal><span class="page-index">01</span><h3>Data sources</h3><p>Establish inputs and access.</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">02</span><h3>Ingestion &amp; validation</h3><p>Great Expectations</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">03</span><h3>Feature engineering</h3><p>PySpark &amp; Polars</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">04</span><h3>Train &amp; evaluate</h3><p>Compare model behaviour.</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">05</span><h3>Model registry</h3><p>MLflow &amp; DVC</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">06</span><h3>Build &amp; test</h3><p>GitHub Actions</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">07</span><h3>Containerise &amp; deploy</h3><p>Docker, Kubernetes &amp; Azure</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">08</span><h3>Online serving</h3><p>REST, gRPC &amp; Triton</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">09</span><h3>Monitoring &amp; logging</h3><p>Grafana &amp; Datadog</p></li>
+          <li class="card pipeline-step" data-reveal><span class="page-index">10</span><h3>Drift detection</h3><p>Close the feedback loop.</p></li>
+        </ol>
+      </section>
+      <section class="page-cta" data-reveal><h2>Have a systems problem in mind?</h2><a class="btn primary" href="contact.html">Let's talk <span aria-hidden="true">&nearr;</span></a></section>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025&ndash;2026 Joseph Adeleke.</p>
-    </div>
+    <div class="container"><div class="footer-main"><div class="footer-intro"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a><p>Exploring uncertainty.<br>Engineering dependability.<br>Based in Accra. Thinking beyond.</p></div><div class="footer-group"><h2>Explore</h2><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="research.html">Research</a></li><li><a href="blog/">Writing</a></li></ul></div><div class="footer-group"><h2>The practice</h2><ul><li><a href="projects.html">Projects</a></li><li><a href="featured.html">Featured work</a></li><li><a href="experience.html">Experience</a></li><li><a href="skills.html">Skills</a></li></ul></div><div class="footer-group"><h2>The background</h2><ul><li><a href="education.html">Education</a></li><li><a href="certificates.html">Credentials</a></li><li><a href="resume.html">Résumé</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025–2026 Joseph Adeleke</p><span>BUILT WITH CURIOSITY &amp; INTENTION</span><div class="footer-utilities"><a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a><a href="https://www.linkedin.com/in/joseph-adeleke-msc-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path class="pause-lines" d="M6 5v6m4-6v6"/></svg><span data-motion-label>Motion on</span></button></div></div></div>
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script src="js/animation.js" defer></script>
 </body>
 </html>

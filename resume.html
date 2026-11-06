@@ -3,65 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Resume of Joseph Adeleke highlighting DevOps, MLOps, and database engineering experience.">
+  <script src="js/theme.js"></script>
+  <meta name="description" content="Resume of Joseph Adeleke, PhD student in Computer Science, highlighting DevOps, MLOps, and database engineering experience.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#f5f3ed">
   <title>Resume | Joseph Adeleke</title>
+  <link rel="canonical" href="https://jadeleke.github.io/resume.html">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:title" content="Resume | Joseph Adeleke">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Joseph Adeleke">
+  <meta property="og:image" content="https://jadeleke.github.io/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:description" content="Resume of Joseph Adeleke, PhD student in Computer Science, highlighting DevOps, MLOps, and database engineering experience.">
+  <meta property="og:url" content="https://jadeleke.github.io/resume.html">
 </head>
 <body class="resume-page">
   <a class="skip-link" href="#content">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-bar">
-      <a class="brand" href="index.html">
-        <span class="brand-icon">JA</span>
-        <span>Joseph Adeleke</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
-        <span class="menu-toggle-box" aria-hidden="true">
-          <span class="menu-toggle-line"></span>
-          <span class="menu-toggle-line"></span>
-          <span class="menu-toggle-line"></span>
-        </span>
-        <span class="menu-toggle-label">Menu</span>
-      </button>
-      <nav aria-label="Primary">
-        <ul id="primary-menu" class="menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#summary">Summary</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">A</button></li>
-        </ul>
-      </nav>
+      <a class="brand" href="index.html" aria-label="Joseph Adeleke, home"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a>
+      <nav aria-label="Primary"><ul id="primary-menu" class="menu"><li><a href="research.html">Research</a></li>
+<li><a href="projects.html">Work</a></li>
+<li><a href="experience.html">Experience</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/">Writing</a></li>
+<li><a href="contact.html">Contact</a></li></ul></nav>
+      <div class="nav-controls"><a class="nav-contact" href="resume.html">View résumé <span aria-hidden="true">&nearr;</span></a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch colour theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="menu-toggle-box" aria-hidden="true"><span class="menu-toggle-line"></span><span class="menu-toggle-line"></span></span><span>Menu</span></button></div>
     </div>
   </header>
 
   <main id="content" class="section">
     <div class="container">
-      <section class="card resume-callout">
-        <header>
-          <h1 class="section-title">Resume</h1>
-          <p class="section-lead">Download the PDF or skim the highlights curated for quick evaluation.</p>
-        </header>
-        <div class="hero-actions">
-          <a class="btn primary" href="assets/Joseph-Adeleke.pdf" download>Download PDF</a>
-          <a class="btn" href="assets/Joseph-Adeleke.pdf" target="_blank" rel="noopener">Open PDF</a>
-        </div>
-      </section>
+      <header class="page-intro" data-reveal>
+        <span class="eyebrow">Resume / Joseph Adeleke</span>
+        <h1 class="section-title">The experience.<br>The wider perspective.</h1>
+        <p class="section-lead">PhD student in Computer Science. DevSecOps &amp; MLOps engineer. A concise view of my professional work, academic background, and technical capabilities.</p>
+        <div class="hero-actions"><a class="btn primary" href="assets/Joseph-Adeleke.pdf" download>Download resume <span aria-hidden="true">&darr;</span></a><a class="btn" href="assets/Joseph-Adeleke.pdf" target="_blank" rel="noopener">Open PDF <span aria-hidden="true">&nearr;</span></a></div>
+      </header>
 
       <div class="resume-grid">
-        <section id="summary" class="card resume-section">
-          <h2>Summary</h2>
-          <p class="skill-note">DevSecOps &amp; MLOps Engineer with 5+ years of enterprise experience architecting secure, scalable cloud infrastructure across telecom, fintech and AI platforms.</p>
+        <section id="summary" class="card resume-section" data-reveal>
+          <span class="page-index">01 / Profile</span><h2>At a glance.</h2>
+          <p class="skill-note">PhD student in Computer Science and DevSecOps &amp; MLOps Engineer with 5+ years of enterprise experience architecting secure, scalable cloud infrastructure across telecom, fintech and AI platforms.</p>
           <ul>
             <li>Currently owning end-to-end DevSecOps and MLOps delivery for MTN Ghana and enterprise clients.</li>
             <li>Managing 150+ CI/CD pipelines, 10 Kubernetes clusters, and GPU-enabled AI infrastructure on Azure.</li>
@@ -69,8 +60,8 @@
           </ul>
         </section>
 
-        <section id="experience" class="card resume-section">
-          <h2>Experience</h2>
+        <section id="experience" class="card resume-section" data-reveal>
+          <span class="page-index">02 / Professional journey</span><h2>Experience</h2>
           <div class="timeline" aria-label="Roles">
             <div class="timeline-item">
               <h3>DevSecOps &amp; MLOps Engineer</h3>
@@ -90,8 +81,8 @@
           </div>
         </section>
 
-        <section id="skills" class="card resume-section">
-          <h2>Skills</h2>
+        <section id="skills" class="card resume-section" data-reveal>
+          <span class="page-index">03 / Capabilities</span><h2>The working toolkit.</h2>
           <div class="resume-pill-list">
             <span class="resume-pill">Kubernetes (KCNA)</span>
             <span class="resume-pill">Terraform &amp; Ansible</span>
@@ -110,9 +101,14 @@
           </div>
         </section>
 
-        <section id="education" class="card resume-section">
-          <h2>Education</h2>
+        <section id="education" class="card resume-section" data-reveal>
+          <span class="page-index">04 / Academic background</span><h2>Education</h2>
           <div class="timeline" aria-label="Education">
+            <div class="timeline-item">
+              <h3>PhD in Computer Science</h3>
+              <span>In progress</span>
+              <p class="skill-note">Currently pursuing a PhD in Computer Science. Research interests in cloud computing, distributed systems, and uncertainty-aware workflow scheduling.</p>
+            </div>
             <div class="timeline-item">
               <h3>MSc Computer Science</h3>
               <span>University of Ghana, Legon &bull; 2025</span>
@@ -125,8 +121,15 @@
           </div>
         </section>
 
-        <section id="contact" class="card resume-section">
-          <h2>Contact</h2>
+        <section class="card resume-section" aria-labelledby="resume-research" data-reveal>
+          <span class="eyebrow">Research direction</span>
+          <h2 id="resume-research">Cloud Computing &amp; Distributed Systems</h2>
+          <p class="skill-note">Research interests in uncertainty-aware workflow scheduling, statistical risk control, and cloud resource optimisation.</p>
+          <a class="text-link" href="research.html">Explore my research interests <span aria-hidden="true">&nearr;</span></a>
+        </section>
+
+        <section id="contact" class="card resume-section" data-reveal>
+          <span class="page-index">05 / Get in touch</span><h2>Contact</h2>
           <p class="skill-note">Email <a href="mailto:akdeljoseph@outlook.com">akdeljoseph@outlook.com</a> for availability, project scoping, or referrals.</p>
           <p class="skill-note">LinkedIn <a href="https://www.linkedin.com/in/joseph-adeleke-msc-27b433149/" target="_blank" rel="noopener">joseph-adeleke</a> &bull; GitHub <a href="https://github.com/jadeleke" target="_blank" rel="noopener">@jadeleke</a>.</p>
         </section>
@@ -135,11 +138,10 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025&ndash;2026 Joseph Adeleke.</p>
-    </div>
+    <div class="container"><div class="footer-main"><div class="footer-intro"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a><p>Exploring uncertainty.<br>Engineering dependability.<br>Based in Accra. Thinking beyond.</p></div><div class="footer-group"><h2>Explore</h2><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="research.html">Research</a></li><li><a href="blog/">Writing</a></li></ul></div><div class="footer-group"><h2>The practice</h2><ul><li><a href="projects.html">Projects</a></li><li><a href="featured.html">Featured work</a></li><li><a href="experience.html">Experience</a></li><li><a href="skills.html">Skills</a></li></ul></div><div class="footer-group"><h2>The background</h2><ul><li><a href="education.html">Education</a></li><li><a href="certificates.html">Credentials</a></li><li><a href="resume.html">Résumé</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025–2026 Joseph Adeleke</p><span>BUILT WITH CURIOSITY &amp; INTENTION</span><div class="footer-utilities"><a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a><a href="https://www.linkedin.com/in/joseph-adeleke-msc-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path class="pause-lines" d="M6 5v6m4-6v6"/></svg><span data-motion-label>Motion on</span></button></div></div></div>
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script src="js/animation.js" defer></script>
 </body>
 </html>

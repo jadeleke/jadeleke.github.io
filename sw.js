@@ -1,15 +1,30 @@
-const CACHE_NAME = 'site-cache-v21';
+const CACHE_NAME = 'site-cache-v23';
 const ASSETS = [
   '/',
   '/index.html',
+  '/about.html',
+  '/research.html',
+  '/experience.html',
+  '/education.html',
+  '/certificates.html',
+  '/projects.html',
+  '/featured.html',
+  '/skills.html',
+  '/contact.html',
+  '/resume.html',
+  '/404.html',
   '/css/main.css',
+  '/css/projects.css',
   '/js/main.js',
+  '/js/theme.js',
+  '/js/animation.js',
   '/blog/',
   '/blog/index.html',
+  '/blog/blog.css',
   '/blog/posts/hello-mlops.html',
   '/blog/posts/devops-mlops-oracle-linux.html',
-  '/resume.html',
-  '/404.html'
+  '/data/featured.json',
+  '/assets/favicon.svg'
 ];
 
 self.addEventListener('install', event => {

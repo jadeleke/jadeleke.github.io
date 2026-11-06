@@ -1,437 +1,325 @@
 (function themeToggle() {
   const root = document.documentElement;
-  const button = document.getElementById("theme-toggle");
+  const button = document.getElementById('theme-toggle');
   if (!button) return;
-
-  const saved = localStorage.getItem("theme");
-  if (saved === "light" || saved === "dark") {
-    root.setAttribute("data-theme", saved);
+  const icons = {
+    light: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg>',
+    dark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>'
+  };
+  function update() {
+    const mode = root.dataset.theme || 'light';
+    button.innerHTML = icons[mode];
+    button.setAttribute('aria-label', 'Switch to ' + (mode === 'light' ? 'dark' : 'light') + ' theme');
+    button.title = button.getAttribute('aria-label');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', mode === 'light' ? '#f5f3ed' : '#111c19');
   }
-
-  function icon(mode) {
-    if (mode === "dark") return "\u{1F319}";
-    if (mode === "light") return "\u2600\uFE0F";
-    return "\u25D0";
-  }
-
-  function describe(mode) {
-    if (mode === "dark") return "dark";
-    if (mode === "light") return "light";
-    return "auto";
-  }
-
-  function update(mode) {
-    button.textContent = icon(mode);
-    button.setAttribute("aria-label", `Toggle theme (current ${describe(mode)})`);
-    button.setAttribute("title", `Theme: ${describe(mode)}`);
-  }
-
-  const current = root.getAttribute("data-theme") || "auto";
-  update(current);
-
-  button.addEventListener("click", () => {
-    const active = root.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-    const next = active === "dark" ? "light" : "dark";
-    
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    update(next);
+  update();
+  button.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (_) {}
+    update();
   });
 })();
 
-(function primaryNavigation() {
-  const toggle = document.querySelector(".menu-toggle");
-  const menu = document.getElementById("primary-menu");
-  const body = document.body;
-  if (!toggle || !menu) return;
+(function siteInteractions() {
+  'use strict';
 
-  function closeMenu() {
-    body.classList.remove("menu-open");
-    toggle.setAttribute("aria-expanded", "false");
+  function element(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined && text !== null) node.textContent = String(text);
+    return node;
   }
 
-  toggle.addEventListener("click", () => {
-    const open = body.classList.toggle("menu-open");
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-
-  menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && body.classList.contains("menu-open")) {
-      closeMenu();
-      toggle.focus();
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 900 && body.classList.contains("menu-open")) {
-      closeMenu();
-    }
-  });
-})();
-
-(async function loadProjects() {
-  const container = document.getElementById("projects-list");
-  if (!container) return;
-  const filterInput = document.getElementById("projects-filter");
-  const username = "jadeleke";
-  let repos = [];
-
-  function render(list) {
-    container.innerHTML = "";
-    if (!list.length) {
-      const empty = document.createElement("article");
-      empty.className = "card";
-      empty.innerHTML = "<h3>No repositories found</h3><p class=\"muted\">Try a different filter or browse GitHub directly.</p>";
-      container.appendChild(empty);
-      return;
-    }
-
-    list.forEach(repo => {
-      const card = document.createElement("article");
-      card.className = "card repo-card";
-
-      card.innerHTML = `
-        <div class="repo-card-header">
-          <svg class="repo-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537l-1.04-2.08a.75.75 0 0 0-1.343 0l-1.04 2.08-2.295.334a.75.75 0 0 0-.416 1.28l1.66 1.618-.391 2.285a.75.75 0 0 0 1.088.791l2.053-1.08 2.053 1.08a.75.75 0 0 0 1.088-.79l-.392-2.286 1.66-1.618a.75.75 0 0 0-.416-1.28l-2.294-.334Z"></path></svg>
-          <h3 class="repo-title">
-            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a>
-          </h3>
-        </div>
-        ${repo.description ? `<p class="muted repo-desc">${repo.description}</p>` : '<p class="muted repo-desc"></p>'}
-        <div class="repo-stats">
-          ${repo.language ? `<span class="repo-lang"><span class="repo-lang-color" data-lang="${repo.language}"></span>${repo.language}</span>` : ''}
-          ${repo.stargazers_count ? `
-          <a class="repo-stat" href="${repo.html_url}/stargazers" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></svg>
-            ${repo.stargazers_count}
-          </a>` : ''}
-          ${repo.forks_count ? `<span class="repo-stat"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.5a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path></svg>${repo.forks_count}</span>` : ''}
-          <span class="repo-stat">Updated ${new Date(repo.updated_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-        </div>
-        ${repo.homepage && /^https?:\/\//i.test(repo.homepage) ? `
-          <div class="repo-actions">
-            <a class="btn primary btn-sm" href="${repo.homepage}" target="_blank" rel="noopener noreferrer">View Live Demo</a>
-          </div>` : ''}
-      `;
-      container.appendChild(card);
-    });
-  }
-
-  try {
-    let data = [];
+  function safeURL(value) {
+    if (typeof value !== 'string' || !value.trim()) return '';
     try {
-      const cached = await fetch("data/repos-cache.json", { cache: "no-cache" });
-      if (cached.ok) data = await cached.json();
-    } catch (_) {}
+      const url = new URL(value);
+      return ['https:', 'http:'].includes(url.protocol) ? url.href : '';
+    } catch (_) { return ''; }
+  }
 
-    if (!Array.isArray(data) || !data.length) {
-      const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, {
-        headers: { Accept: "application/vnd.github+json" }
-      });
-      if (!res.ok) throw new Error("GitHub API error");
-      data = await res.json();
+  function externalLink(url, label, className) {
+    const link = element('a', className, label);
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    return link;
+  }
+
+  const scriptURL = document.querySelector('script[src$="js/main.js"]')?.src;
+  const siteURL = scriptURL ? new URL('../', scriptURL) : new URL('./', location.href);
+
+  async function getJSON(url) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch(url, { cache: 'no-cache', signal: controller.signal });
+      if (!response.ok) throw new Error('Request unavailable');
+      return await response.json();
+    } finally { clearTimeout(timeout); }
+  }
+
+  (function primaryNavigation() {
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('primary-menu');
+    if (!toggle || !menu) return;
+    const body = document.body;
+    const isOpen = () => body.classList.contains('menu-open');
+    function closeMenu() {
+      body.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
     }
+    toggle.addEventListener('click', () => {
+      const open = !isOpen();
+      body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('click', event => {
+      if (isOpen() && !menu.contains(event.target) && !toggle.contains(event.target)) closeMenu();
+    });
+    document.addEventListener('keydown', event => {
+      if (!isOpen()) return;
+      if (event.key === 'Escape') {
+        closeMenu();
+        toggle.focus();
+      } else if (event.key === 'Tab') {
+        const focusable = [toggle, ...menu.querySelectorAll('a[href], button, summary')]
+          .filter(node => node.getClientRects().length && !node.disabled);
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault(); first.focus();
+        }
+      }
+    });
+    window.addEventListener('resize', () => { if (innerWidth > 900 && isOpen()) closeMenu(); });
+    const normalizePath = value => value.replace(/index\.html$/, '').replace(/\/$/, '');
+    const currentPath = normalizePath(location.pathname);
+    const writingPath = normalizePath(new URL('blog/', siteURL).pathname);
+    menu.querySelectorAll('a[href]').forEach(link => {
+      const path = normalizePath(new URL(link.href).pathname);
+      if (path === currentPath || (path === writingPath && currentPath.startsWith(writingPath + '/'))) {
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  })();
 
-    repos = data
-      .filter(repo => !repo.fork && !repo.archived)
-      .sort((a, b) => b.stargazers_count - a.stargazers_count)
-      .slice(0, 12);
-
-    render(repos);
-
+  (async function loadProjects() {
+    const container = document.getElementById('projects-list');
+    if (!container) return;
+    const filterInput = document.getElementById('projects-filter');
+    const pills = [...document.querySelectorAll('.filter-pill')];
+    let count = document.getElementById('projects-count');
+    if (!count) {
+      count = element('p', 'skill-note');
+      count.id = 'projects-count';
+      count.setAttribute('role', 'status');
+      count.setAttribute('aria-live', 'polite');
+      container.before(count);
+    }
+    pills.forEach(pill => pill.setAttribute('aria-pressed', String(pill.dataset.lang === 'all')));
+    let repos = [];
     let currentFilter = 'all';
 
-    function applyFilters() {
-      const q = filterInput ? filterInput.value.trim().toLowerCase() : '';
-      const filtered = repos.filter(repo => {
-        const matchesSearch = !q || (
-          (repo.name || "").toLowerCase().includes(q) ||
-          (repo.description || "").toLowerCase().includes(q) ||
-          (repo.language || "").toLowerCase().includes(q)
-        );
-        let matchesLang = true;
-        if (currentFilter !== 'all') {
-          const l = (repo.language || "").toLowerCase();
-          if (currentFilter === 'python') matchesLang = l === 'python' || l === 'jupyter notebook';
-          else if (currentFilter === 'javascript') matchesLang = l === 'javascript' || l === 'typescript';
-          else if (currentFilter === 'hcl') matchesLang = l === 'hcl';
-          else if (currentFilter === 'shell') matchesLang = l === 'shell';
-          else if (currentFilter === 'testing') matchesLang =
-            (repo.topics || []).some(t => ['test','testing','pytest','jest','e2e','qa','tdd'].includes(t)) ||
-            (repo.name || '').toLowerCase().includes('test') ||
-            (repo.description || '').toLowerCase().includes('test');
+    function render(list) {
+      const fragment = document.createDocumentFragment();
+      count.textContent = `${list.length} ${list.length === 1 ? 'repository' : 'repositories'} shown`;
+      if (!list.length) {
+        const empty = element('article', 'card');
+        empty.append(element('h3', '', 'No repositories found'), element('p', 'muted', 'Try another search or language filter.'));
+        fragment.append(empty);
+      }
+      list.forEach(repo => {
+        const card = element('article', 'card repo-card');
+        const header = element('div', 'repo-card-header');
+        const title = element('h3', 'repo-title');
+        const repoURL = safeURL(repo.html_url);
+        title.append(repoURL ? externalLink(repoURL, repo.name || 'Repository') : element('span', '', repo.name || 'Repository'));
+        header.append(title);
+        card.append(header);
+        card.append(element('p', 'muted repo-desc', repo.description || 'Explore the source and project documentation on GitHub.'));
+        const stats = element('div', 'repo-stats');
+        if (repo.language) {
+          const language = element('span', 'repo-lang');
+          const dot = element('span', 'repo-lang-color');
+          dot.dataset.lang = String(repo.language);
+          language.append(dot, document.createTextNode(String(repo.language)));
+          stats.append(language);
         }
-        return matchesSearch && matchesLang;
+        if (Number.isFinite(repo.stargazers_count) && repo.stargazers_count > 0) {
+          stats.append(element('span', 'repo-stat', `${repo.stargazers_count} stars`));
+        }
+        if (Number.isFinite(repo.forks_count) && repo.forks_count > 0) {
+          stats.append(element('span', 'repo-stat', `${repo.forks_count} forks`));
+        }
+        const updated = new Date(repo.updated_at);
+        if (!Number.isNaN(updated.getTime())) {
+          stats.append(element('span', 'repo-stat', `Updated ${updated.toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })}`));
+        }
+        card.append(stats);
+        const demoURL = safeURL(repo.homepage);
+        if (demoURL) {
+          const actions = element('div', 'repo-actions');
+          actions.append(externalLink(demoURL, 'View live demo', 'btn primary btn-sm'));
+          card.append(actions);
+        }
+        fragment.append(card);
       });
-      render(filtered);
+      container.replaceChildren(fragment);
     }
 
-    if (filterInput) {
-      filterInput.addEventListener("input", applyFilters);
+    function applyFilters() {
+      const q = filterInput?.value.trim().toLowerCase() || '';
+      const matches = repos.filter(repo => {
+        const name = String(repo.name || '').toLowerCase();
+        const description = String(repo.description || '').toLowerCase();
+        const language = String(repo.language || '').toLowerCase();
+        const topics = Array.isArray(repo.topics) ? repo.topics.map(t => String(t).toLowerCase()) : [];
+        const searchMatch = !q || [name, description, language, ...topics].some(value => value.includes(q));
+        let languageMatch = currentFilter === 'all';
+        if (currentFilter === 'python') languageMatch = ['python', 'jupyter notebook'].includes(language);
+        if (currentFilter === 'javascript') languageMatch = ['javascript', 'typescript'].includes(language);
+        if (currentFilter === 'hcl') languageMatch = language === 'hcl';
+        if (currentFilter === 'shell') languageMatch = language === 'shell';
+        if (currentFilter === 'testing') languageMatch = topics.some(t => ['test', 'testing', 'pytest', 'jest', 'e2e', 'qa', 'tdd'].includes(t)) || name.includes('test') || description.includes('test');
+        return searchMatch && languageMatch;
+      });
+      render(matches);
     }
 
-    const pills = document.querySelectorAll(".filter-pill");
-    pills.forEach(pill => {
-      pill.addEventListener("click", () => {
-        pills.forEach(p => p.classList.remove("active"));
-        pill.classList.add("active");
-        currentFilter = pill.getAttribute("data-lang") || 'all';
-        applyFilters();
+    filterInput?.addEventListener('input', applyFilters);
+    pills.forEach(pill => pill.addEventListener('click', () => {
+      currentFilter = pill.dataset.lang || 'all';
+      pills.forEach(item => {
+        const active = item === pill;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-pressed', String(active));
       });
-    });
-  } catch (err) {
-    container.innerHTML = `<article class="card"><h3>GitHub unavailable</h3><p class="muted">Could not load repositories. <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer">View my GitHub profile</a>.</p></article>`;
-  }
-})();
+      applyFilters();
+    }));
 
-(async function loadFeatured() {
-  const container = document.getElementById("featured-list");
-  if (!container) return;
-
-  try {
-    let featured = [];
-    const response = await fetch("data/featured.json", { cache: "no-cache" });
-    if (response.ok) featured = await response.json();
-
-    if (!featured.length) {
-      const fallback = await fetch("https://api.github.com/users/jadeleke/repos?per_page=100&sort=updated", {
-        headers: { Accept: "application/vnd.github+json" }
-      });
-      if (fallback.ok) {
-        const repos = (await fallback.json())
-          .filter(repo => !repo.fork && !repo.archived)
-          .sort((a, b) => b.stargazers_count - a.stargazers_count)
-          .slice(0, 3);
-        featured = repos.map(repo => ({
-          title: repo.name,
-          description: repo.description || "",
-          tags: [repo.language || "project"],
-          repo: repo.html_url,
-          demo: repo.homepage || ""
-        }));
-      }
+    try {
+      let data = [];
+      try { data = await getJSON(new URL('data/repos-cache.json', siteURL)); } catch (_) {}
+      if (!Array.isArray(data) || !data.length) data = await getJSON('https://api.github.com/users/jadeleke/repos?per_page=100&sort=updated');
+      if (!Array.isArray(data)) throw new Error('Repository list unavailable');
+      repos = data.filter(repo => repo && typeof repo === 'object' && !repo.fork && !repo.archived)
+        .sort((a, b) => (Number(b.stargazers_count) || 0) - (Number(a.stargazers_count) || 0)).slice(0, 12);
+      applyFilters();
+    } catch (_) {
+      count.textContent = 'Live repository listing is temporarily unavailable.';
+      const card = element('article', 'card');
+      card.append(element('h3', '', 'Explore the repositories on GitHub'), element('p', 'muted', 'The live listing could not be loaded. The selected projects above are still available.'));
+      card.append(externalLink('https://github.com/jadeleke', 'View GitHub profile', 'btn'));
+      container.replaceChildren(card);
     }
+  })();
 
-    container.innerHTML = "";
+  (async function loadFeatured() {
+    const container = document.getElementById('featured-list');
+    if (!container) return;
+    // Verified selections from data/featured.json remain useful when the network is unavailable.
+    const selections = [
+      { title: 'GhanaVoice', description: 'Speech classification for Ghanaian languages using CNN models.', repo: 'https://github.com/jadeleke/GhanaVoice', tags: ['ML', 'Python', 'Speech'] },
+      { title: 'Melanoma-Classification-Pipeline', description: 'End-to-end ML pipeline for melanoma classification with model training, evaluation, and deployment.', repo: 'https://github.com/jadeleke/Melanoma-Classification-Pipeline', tags: ['ML', 'Python', 'Pipeline'] },
+      { title: 'terraform-docker-nginx-app', description: 'Infrastructure-as-code demo deploying an Nginx app with Terraform and Docker.', repo: 'https://github.com/jadeleke/terraform-docker-nginx-app', tags: ['DevOps', 'Terraform', 'Docker'] }
+    ];
+    function render(items) {
+      const fragment = document.createDocumentFragment();
+      items.filter(item => item && typeof item === 'object').forEach(item => {
+        const card = element('article', 'card repo-card');
+        const header = element('div', 'repo-card-header');
+        const title = element('h3', 'repo-title');
+        const repoURL = safeURL(item.repo);
+        const demoURL = safeURL(item.demo);
+        title.append(repoURL ? externalLink(repoURL, item.title || 'Project') : element('span', '', item.title || 'Project'));
+        header.append(title);
+        card.append(header, element('p', 'muted repo-desc', item.description || 'Explore the project and source code.'));
+        if (Array.isArray(item.tags) && item.tags.length) {
+          const tags = element('div', 'tag-strip');
+          item.tags.forEach(tag => tags.append(element('span', 'tag-pill', tag)));
+          card.append(tags);
+        }
+        if (repoURL || demoURL) {
+          const actions = element('div', 'repo-actions');
+          if (repoURL) actions.append(externalLink(repoURL, 'GitHub', 'btn'));
+          if (demoURL) actions.append(externalLink(demoURL, 'Live demo', 'btn primary'));
+          card.append(actions);
+        }
+        fragment.append(card);
+      });
+      container.replaceChildren(fragment);
+    }
+    render(selections);
+    try {
+      const data = await getJSON(new URL('data/featured.json', siteURL));
+      if (Array.isArray(data) && data.some(item => item && typeof item === 'object')) render(data);
+    } catch (_) { /* Keep the verified static selections. */ }
+  })();
 
-    featured.forEach(item => {
-      const card = document.createElement("article");
-      card.className = "card repo-card";
+  (function workflowExplorer() {
+    const explorer = document.getElementById('workflow-explorer');
+    if (!explorer) return;
+    const title = document.getElementById('workflow-title');
+    const description = document.getElementById('workflow-description');
+    const buttons = [...explorer.querySelectorAll('button[data-workflow-mode]')];
+    const modes = {
+      schedule: { title: 'Map the dependencies', description: 'Scientific workflows form a directed acyclic graph: each task must respect the outputs and ordering of the tasks before it.' },
+      risk: { title: 'Plan for uncertainty', description: 'My research interests explore runtime uncertainty and statistical risk control to support more dependable deadline-constrained scheduling.' },
+      resources: { title: 'Balance cost and capacity', description: 'Cloud resource allocation is a trade-off between cost, performance, and reliability. My research direction investigates how scheduling decisions can balance these goals.' }
+    };
+    if (description) description.setAttribute('aria-live', 'polite');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const mode = button.dataset.workflowMode;
+      if (!modes[mode]) return;
+      explorer.dataset.mode = mode;
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      if (title) title.textContent = modes[mode].title;
+      if (description) description.textContent = modes[mode].description;
+    }));
+  })();
 
-      const tagsHtml = (Array.isArray(item.tags) && item.tags.length) 
-        ? `<div class="tag-strip" style="margin-bottom: 16px;">
-            ${item.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
-           </div>`
-        : '';
-        
-      const actionsHtml = (item.repo || item.demo) 
-        ? `<div class="repo-actions" style="display: flex; gap: 12px; border-top: none; padding-top: 0;">
-            ${item.repo ? `<a class="btn" href="${item.repo}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ''}
-            ${item.demo ? `<a class="btn primary" href="${item.demo}" target="_blank" rel="noopener noreferrer">Live Demo</a>` : ''}
-           </div>`
-        : '';
-
-      card.innerHTML = `
-        <div class="repo-card-header">
-          <h3 class="repo-title">
-            ${item.repo ? `<a href="${item.repo}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
-          </h3>
-        </div>
-        ${item.description ? `<p class="muted repo-desc">${item.description}</p>` : '<p class="muted repo-desc"></p>'}
-        ${tagsHtml}
-        ${actionsHtml}
-      `;
-
-      container.appendChild(card);
-    });
-  } catch (_) {
-    container.innerHTML = "<article class=\"card\"><h3>Could not load featured projects</h3><p class=\"muted\">Please retry later.</p></article>";
-  }
-})();
-
-(function registerServiceWorker() {
-  if (!("serviceWorker" in navigator)) return;
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").catch(() => {});
-  });
-})();
-
-/* ── Native GitHub Stats Fetcher ── */
-(async function loadGitHubStats() {
-  const container = document.getElementById("github-stats-native");
-  if (!container) return;
-
-  const username = "jadeleke";
-  const fallbacks = {
-    public_repos: 44,
-    stars: 21,
-    followers: 19,
-    following: 40,
-    languages: [
-      { name: "Python", count: 11, pct: 32 },
-      { name: "Java", count: 11, pct: 32 },
-      { name: "JavaScript", count: 7, pct: 20 },
-      { name: "Others", count: 5, pct: 16 }
-    ]
-  };
-
-  function render(stats) {
-    let langBars = "";
-    let langList = "";
-    const colors = ["#0ea5e9", "#a855f7", "#eab308", "#10b981", "#f43f5e"];
-
-    stats.languages.forEach((lang, i) => {
-      const color = colors[i % colors.length];
-      langBars += `<span class="gh-lang-progress" style="width: ${lang.pct}%; background-color: ${color};" title="${lang.name}: ${lang.pct}%"></span>`;
-      langList += `
-        <span class="gh-lang-badge">
-          <span class="gh-lang-color" style="background-color: ${color};"></span>
-          <span class="muted">${lang.name}</span>
-          <strong>${lang.pct}%</strong>
-        </span>
-      `;
-    });
-
-    container.innerHTML = `
-      <div class="gh-stats-grid">
-        <div class="gh-stat-item">
-          <span class="gh-stat-val">${stats.public_repos}</span>
-          <span class="gh-stat-label">Repositories</span>
-        </div>
-        <div class="gh-stat-item">
-          <span class="gh-stat-val">${stats.stars}</span>
-          <span class="gh-stat-label">Stars</span>
-        </div>
-        <div class="gh-stat-item">
-          <span class="gh-stat-val">${stats.followers}</span>
-          <span class="gh-stat-label">Followers</span>
-        </div>
-        <div class="gh-stat-item">
-          <span class="gh-stat-val">${stats.following}</span>
-          <span class="gh-stat-label">Following</span>
-        </div>
-      </div>
-      <div class="gh-langs-container">
-        <span class="gh-stat-label" style="margin-bottom: 4px;">Top Languages</span>
-        <div class="gh-lang-bar">
-          ${langBars}
-        </div>
-        <div class="gh-lang-list">
-          ${langList}
-        </div>
-      </div>
-      <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-        <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="font-size: 0.8rem; padding: 6px 12px; border-radius: 12px;">
-          Profile &rarr;
-        </a>
-      </div>
-    `;
-  }
-
-  try {
-    let userRes = await fetch(`https://api.github.com/users/${username}`);
-    if (!userRes.ok) throw new Error("API Limit reached");
-    let userData = await userRes.json();
-
-    let reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-    if (!reposRes.ok) throw new Error("API Limit reached");
-    let reposData = await reposRes.json();
-
-    const stars = reposData.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
-    
-    const langCounts = {};
-    let totalLangs = 0;
-    reposData.forEach(repo => {
-      const lang = repo.language;
-      if (lang) {
-        langCounts[lang] = (langCounts[lang] || 0) + 1;
-        totalLangs++;
+  (function copyEmail() {
+    const button = document.getElementById('copy-email');
+    const status = document.getElementById('copy-status');
+    if (!button || !status) return;
+    button.addEventListener('click', async () => {
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText('akdeljoseph@outlook.com');
+        status.textContent = 'Email address copied.';
+      } catch (_) {
+        status.textContent = 'Copy this address: akdeljoseph@outlook.com. You can select the address directly or use the email link.';
       }
     });
+  })();
 
-    const sortedLangs = Object.entries(langCounts)
-      .map(([name, count]) => ({
-        name,
-        count,
-        pct: Math.round((count / totalLangs) * 100)
-      }))
-      .sort((a, b) => b.count - a.count);
-
-    let topLangs = sortedLangs.slice(0, 3);
-    const othersCount = sortedLangs.slice(3).reduce((acc, l) => acc + l.count, 0);
-    if (othersCount > 0) {
-      const othersPct = 100 - topLangs.reduce((acc, l) => acc + l.pct, 0);
-      topLangs.push({
-        name: "Others",
-        count: othersCount,
-        pct: Math.max(0, othersPct)
-      });
-    }
-
-    render({
-      public_repos: userData.public_repos || fallbacks.public_repos,
-      stars: stars || fallbacks.stars,
-      followers: userData.followers || fallbacks.followers,
-      following: userData.following || fallbacks.following,
-      languages: topLangs.length ? topLangs : fallbacks.languages
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register(new URL('sw.js', siteURL)).catch(() => {});
     });
-
-  } catch (err) {
-    render(fallbacks);
   }
 })();
 
-/* ── Scroll Animations & Glassmorphism Glow ── */
-(function initializeAnimations() {
-  // 1. Mouse tracking for Bento Cards
-  const cards = document.querySelectorAll('.bento-card, .card');
-  cards.forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
+(function filterCredentials() {
+  const input = document.getElementById('credentials-filter');
+  const list = document.getElementById('credentials-list');
+  const count = document.getElementById('credentials-count');
+  if (!input || !list || !count) return;
+  const cards = [...list.children];
+  function filter() {
+    const query = input.value.trim().toLocaleLowerCase();
+    let visible = 0;
+    cards.forEach(card => {
+      card.hidden = !card.textContent.toLocaleLowerCase().includes(query);
+      if (!card.hidden) { visible++; card.classList.add('is-visible'); }
     });
-  });
-
-  // 2. Intersection Observer for Scroll Reveals
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15
-  };
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target); // Only animate once
-      }
-    });
-  }, observerOptions);
-
-  // Apply reveal class to elements dynamically and observe them
-  const elementsToReveal = document.querySelectorAll('.card, .bento-card, .section-heading');
-  elementsToReveal.forEach((el, index) => {
-    // Staggered delay for bento grid items if needed
-    el.classList.add('reveal');
-    if (el.closest('.bento-grid')) {
-      el.style.transitionDelay = `${index * 0.05}s`;
-    }
-    observer.observe(el);
-  });
-
-  // Initial reveal for site content wrapper
-  setTimeout(() => {
-    const siteContent = document.getElementById('site-content');
-    if (siteContent) {
-      siteContent.style.opacity = '1';
-      siteContent.style.transform = 'translateY(0)';
-    }
-  }, 100);
+    count.textContent = visible + ' of ' + cards.length + ' credentials' + (visible ? '' : '. Try another search.');
+  }
+  input.addEventListener('input', filter);
+  filter();
 })();

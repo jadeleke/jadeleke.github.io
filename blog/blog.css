@@ -565,3 +565,26 @@
   font-size: 1.2rem;
   font-weight: 600;
 }
+
+/* Editorial writing and controls share the portfolio's paper/forest palette. */
+.blog-list { gap: 22px; }
+.blog-card { border-radius: 5px; padding: 32px; box-shadow: none; }
+.blog-card:hover { border-color: var(--accent); box-shadow: none; }
+.blog-card h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.2; margin-block: 20px 16px; }
+.blog-card-meta { font: .65rem/1.6 var(--mono); }
+.blog-card .muted { font-size: .9rem; line-height: 1.8; max-width: 850px; }
+.tag { background: var(--surface-alt); border: 1px solid var(--border); border-radius: 3px; color: var(--accent); font: .6rem/1.5 var(--mono); padding: 4px 8px; }
+.blog-read-more { display: inline-flex; gap: 20px; color: var(--text); margin-top: 10px; font-size: .8rem; }
+#blog-status { font-size: .8rem; margin-top: 25px; }
+.post-container { max-width: 800px; }
+.post-title { font: 400 clamp(2.8rem, 5vw, 4.3rem)/1.08 var(--serif); letter-spacing: -.025em; margin-block: 22px; }
+.post-header { border-bottom: 1px solid var(--border); padding-bottom: 35px; margin-bottom: 35px; }
+.post-meta { font: .65rem/1.8 var(--mono); }
+.post-content { font-size: 1.04rem; line-height: 1.9; }
+.post-content h2 { font: 2.2rem var(--serif); }
+.post-content h3 { font: 1.7rem var(--serif); }
+.post-content a { overflow-wrap: anywhere; }
+.post-content blockquote { border-left-color: var(--accent); }
+.comment, .comment-form, .comments-section { border-color: var(--border); }
+.admin-toolbar { display: flex; gap: 14px; justify-content: flex-end; align-items: center; padding-block: 20px; }
+@media (max-width: 680px) { .blog-card { padding: 25px; } .post-content { font-size: .98rem; } .post-title { font-size: 2.8rem; } .post-container { width: calc(100% - 48px); } }

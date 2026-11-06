@@ -1,0 +1,38 @@
+/* Projects: applied work, quality practices, and an explorable source index. */
+.projects-page .research-hub { margin-bottom: 70px; }
+.projects-page .section-heading { margin-bottom: 30px; }
+.project-section-title { font: clamp(2rem, 3.4vw, 3rem)/1.12 var(--serif); letter-spacing: -.025em; }
+.projects-page .card-grid.flagship-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.projects-page .repo-card { gap: 20px; padding: 32px; }
+.projects-page .repo-title { font-size: 1.2rem; line-height: 1.35; }
+.projects-page .repo-card.flagship { background: var(--surface-alt); border-color: var(--accent); }
+.project-card-top { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.flagship-badge, .test-badge { font: .57rem/1.5 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--accent); border: 1px solid var(--border); padding: 4px 8px; border-radius: 3px; width: fit-content; }
+.test-badge { background: var(--surface-alt); }
+.projects-page .repo-meta { margin-top: auto; }
+.lang-dot { width: 6px; height: 6px; flex: 0 0 6px; background: var(--accent); border-radius: 50%; }
+.test-card { gap: 18px; }
+.test-card .repo-meta { padding-top: 14px; border-top: 1px solid var(--border); }
+.projects-page .filter { display: grid; max-width: none; gap: 22px; margin-block: 28px 20px; }
+.search-wrapper { width: min(100%, 520px); min-width: 0; display: grid; gap: 10px; }
+.search-wrapper label { font: .65rem/1.5 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.projects-page #projects-filter { min-height: 48px; }
+.pill-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-pill { font-size: .76rem; line-height: 1.4; min-height: 44px; padding: 10px 16px; border-radius: 3px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); transition: background .2s, border-color .2s, color .2s; }
+.filter-pill:hover { border-color: var(--accent); color: var(--accent); }
+.filter-pill.active, .filter-pill[aria-pressed="true"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+.projects-page .repo-card-header { flex-wrap: wrap; }
+.projects-page .repo-title, .projects-page .repo-desc, .projects-page .repo-meta { overflow-wrap: anywhere; }
+.projects-page .repo-title a { text-decoration-thickness: 1px; }
+.projects-page .repo-actions .btn { font-size: .75rem; padding: 10px 15px; }
+@media (max-width: 680px) {
+ .projects-page .card-grid.flagship-grid { grid-template-columns: minmax(0, 1fr); }
+ .projects-page .research-hub { margin-bottom: 50px; }
+ .projects-page .repo-card { padding: 25px; }
+ .project-card-top { align-items: start; }
+ .filter-pill { padding-inline: 12px; }
+}
+@media (max-width: 360px) {
+ .projects-page .section-title { font-size: 2.8rem; }
+ .projects-page .repo-card, .projects-page .test-card { padding: 21px; }
+}

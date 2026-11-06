@@ -3,8 +3,8 @@
   "short_name": "JA",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#f5f3ed",
+  "theme_color": "#19362c",
   "icons": [
     {
       "src": "/assets/favicon.svg",
