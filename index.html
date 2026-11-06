@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/theme.js"></script>
+  <script src="js/theme.js?v=20261106-2"></script>
   <meta name="description" content="Joseph Adeleke, PhD student in Computer Science, DevSecOps &amp; MLOps engineer, and Database Administrator. Research interests in cloud computing, distributed systems, and uncertainty-aware workflow scheduling.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="light dark">
@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=20261106-2">
   <link rel="manifest" href="manifest.webmanifest">
   <meta property="og:title" content="Joseph Adeleke | Cloud Systems Research &amp; Engineering">
   <meta property="og:type" content="website">
@@ -30,14 +30,41 @@
   <div class="reading-progress" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-bar">
-      <a class="brand" href="index.html" aria-label="Joseph Adeleke, home"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a>
-      <nav aria-label="Primary"><ul id="primary-menu" class="menu"><li><a href="research.html">Research</a></li>
-<li><a href="projects.html">Work</a></li>
-<li><a href="experience.html">Experience</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="blog/">Writing</a></li>
-<li><a href="contact.html">Contact</a></li></ul></nav>
-      <div class="nav-controls"><a class="nav-contact" href="resume.html">View résumé <span aria-hidden="true">&nearr;</span></a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch colour theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="menu-toggle-box" aria-hidden="true"><span class="menu-toggle-line"></span><span class="menu-toggle-line"></span></span><span>Menu</span></button></div>
+      <a class="brand" href="index.html" aria-label="Joseph Adeleke, home">
+        <span class="brand-icon" aria-hidden="true">ja.</span>
+        <span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul id="primary-menu" class="menu">
+          <li><a href="research.html">Research</a></li>
+          <li><a href="projects.html">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog/">Writing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <details class="nav-explore">
+              <summary>Explore <span aria-hidden="true">+</span></summary>
+              <ul class="explore-menu">
+                <li><a href="resume.html">Résumé</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="certificates.html">Credentials</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="featured.html">Featured projects</a></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch colour theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+          <span class="menu-toggle-box" aria-hidden="true"><span class="menu-toggle-line"></span><span class="menu-toggle-line"></span></span>
+          <span>Menu</span>
+        </button>
+      </div>
     </div>
   </header>
   <main id="content">
@@ -50,8 +77,18 @@
           <a class="btn primary" href="research.html">Explore my research <span aria-hidden="true">&nearr;</span></a>
           <a class="text-link" href="projects.html">Selected work <span aria-hidden="true">&rarr;</span></a>
         </div>
-        <div class="hero-signature"><img class="hero-portrait" src="assets/joseph-adeleke.jpg" alt="Joseph Adeleke" width="460" height="460" decoding="async"><div><strong>Joseph Adeleke</strong><span>Cloud systems. Considered.</span><span>Accra, Ghana &middot; Working across boundaries</span></div></div>
       </div>
+      <figure class="hero-profile" aria-labelledby="portrait-name">
+        <img src="assets/joseph-adeleke.jpg" alt="Portrait of Joseph Adeleke" width="460" height="460" fetchpriority="high" decoding="async">
+        <figcaption><strong id="portrait-name">Joseph Adeleke</strong><span>PhD student in Computer Science</span><p>DevSecOps &amp; MLOps<br>Database Administration</p><span class="portrait-location">Accra, Ghana</span></figcaption>
+      </figure>
+      <div class="hero-baseline"><span class="mono">CLOUD COMPUTING &amp; DISTRIBUTED SYSTEMS</span><a href="#research">A closer look <span aria-hidden="true">&darr;</span></a></div>
+    </section>
+    <section class="home-section research-home" id="research" aria-labelledby="research-home-title">
+      <div class="container">
+        <div class="section-topline"><span class="eyebrow">01 / The inquiry</span><span class="mono section-side-note">RESEARCH DIRECTION</span></div>
+        <div class="editorial-grid" data-reveal><h2 class="display-heading" id="research-home-title">Less uncertainty.<br><em>More possibility.</em></h2><div class="editorial-body"><p class="large-copy">How can complex cloud workflows stay reliable when execution conditions don’t?</p><p>My research interests connect distributed systems, statistical learning, and optimisation to explore cost-efficient workflow scheduling under runtime uncertainty.</p><a class="text-link" href="research.html">Read my research profile <span aria-hidden="true">&nearr;</span></a></div></div>
+        <div class="research-workbench">
       <figure id="workflow-explorer" class="workflow-panel" data-mode="schedule" aria-labelledby="workflow-caption">
         <div class="diagram-topline"><span><span class="status-dot" aria-hidden="true"></span> A systems perspective</span><span class="mono">FIG. 01</span></div>
         <svg class="workflow-scene" viewBox="0 0 520 350" role="img" aria-labelledby="dag-title dag-desc">
@@ -63,7 +100,7 @@
           </defs>
           <rect width="520" height="350" fill="url(#dot-grid)"/>
           <text x="30" y="34" class="diagram-label">SCIENTIFIC WORKFLOW / DAG</text>
-          <g class="dag-paths" fill="none" stroke="#4f7968" stroke-width="1.5">
+          <g class="dag-paths" fill="none" stroke="#6f947f" stroke-width="1.5">
             <path d="M89 161H122Q139 161 139 144V109Q139 92 158 92H190"/><path d="M89 161H156Q173 161 173 178V216Q173 233 190 233"/><path d="M230 92H269Q288 92 288 110V144Q288 161 306 161H333"/><path d="M230 233H269Q288 233 288 215V178Q288 161 306 161H333"/><path d="M373 161H432"/>
           </g>
           <g class="dag-flow" fill="none" stroke="#c5e7a4" stroke-width="2" stroke-dasharray="6 145">
@@ -75,19 +112,14 @@
           <g class="diagram-node-label"><text x="69" y="203">INPUT</text><text x="210" y="133">TASK A</text><text x="210" y="275">TASK B</text><text x="353" y="203">MERGE</text><text x="452" y="203">OUTPUT</text></g>
           <g class="resource-layer"><path d="M69 291V306H452V220M210 281V306M353 220V306" fill="none" stroke="#4f7968" stroke-dasharray="3 4"/><rect x="166" y="294" width="188" height="30" rx="5" fill="#203b32" stroke="#52725d"/><text x="260" y="313" text-anchor="middle" class="diagram-label">SHARED CLOUD RESOURCES</text></g>
         </svg>
-        <div class="workflow-controls" role="group" aria-label="Explore the research perspectives"><button type="button" data-workflow-mode="schedule" aria-pressed="true">01 Scheduling</button><button type="button" data-workflow-mode="risk" aria-pressed="false">02 Uncertainty</button><button type="button" data-workflow-mode="resources" aria-pressed="false">03 Resources</button></div>
+        <div class="workflow-controls" role="group" aria-label="Explore the research perspectives"><button type="button" data-workflow-mode="schedule" aria-pressed="true"><span class="workflow-step" aria-hidden="true">01 </span>Scheduling</button><button type="button" data-workflow-mode="risk" aria-pressed="false"><span class="workflow-step" aria-hidden="true">02 </span>Uncertainty</button><button type="button" data-workflow-mode="resources" aria-pressed="false"><span class="workflow-step" aria-hidden="true">03 </span>Resources</button></div>
         <figcaption id="workflow-caption" class="workflow-caption"><div aria-live="polite" aria-atomic="true"><strong id="workflow-title">Map the dependencies.</strong><p id="workflow-description">Complex jobs become connected tasks. My research interests explore how to schedule them efficiently under deadline constraints.</p></div><span class="diagram-disclaimer">Conceptual illustration &middot; Research direction</span></figcaption>
       </figure>
-      <div class="hero-baseline"><span class="mono">CLOUD COMPUTING &amp; DISTRIBUTED SYSTEMS</span><a href="#research">A closer look <span aria-hidden="true">&darr;</span></a></div>
-    </section>
-    <section class="home-section research-home" id="research" aria-labelledby="research-home-title">
-      <div class="container">
-        <div class="section-topline"><span class="eyebrow">01 / The inquiry</span><span class="mono section-side-note">RESEARCH DIRECTION</span></div>
-        <div class="editorial-grid" data-reveal><h2 class="display-heading" id="research-home-title">Less uncertainty.<br><em>More possibility.</em></h2><div class="editorial-body"><p class="large-copy">How can complex cloud workflows stay reliable when execution conditions don’t?</p><p>My research interests connect distributed systems, statistical learning, and optimisation to explore cost-efficient workflow scheduling under runtime uncertainty.</p><a class="text-link" href="research.html">Read my research profile <span aria-hidden="true">&nearr;</span></a></div></div>
         <div class="focus-grid">
           <a class="focus-card" href="research.html#research-systems" data-reveal><span class="focus-number">01</span><h3>Workflow<br> scheduling</h3><p>Dependencies, deadlines, and the decisions that connect them.</p><span class="focus-arrow" aria-hidden="true">&nearr;</span></a>
           <a class="focus-card" href="research.html#research-uncertainty" data-reveal><span class="focus-number">02</span><h3>Uncertainty<br>&amp; statistical risk</h3><p>Planning for variable runtimes and imperfect models.</p><span class="focus-arrow" aria-hidden="true">&nearr;</span></a>
           <a class="focus-card" href="research.html#research-reliability" data-reveal><span class="focus-number">03</span><h3>Resource<br> optimisation</h3><p>Finding a considered balance of cost, capacity, and reliability.</p><span class="focus-arrow" aria-hidden="true">&nearr;</span></a>
+        </div>
         </div>
       </div>
     </section>
@@ -96,7 +128,7 @@
         <div class="section-topline"><span class="eyebrow">02 / In practice</span><a class="text-link" href="projects.html">All projects <span aria-hidden="true">&nearr;</span></a></div>
         <h2 class="display-heading" id="work-title" data-reveal>Ideas, put to work.</h2><p class="section-intro">Selected projects across machine learning and infrastructure automation.</p>
         <div class="work-grid">
-          <article class="work-card" data-reveal><a class="work-art pipeline-art" href="https://github.com/jadeleke/openmed-mlops" target="_blank" rel="noopener noreferrer" aria-label="Explore OpenMed MLOps on GitHub (opens in a new tab)"><div class="mini-pipeline" aria-hidden="true"><span><b>01</b>Data</span><i>&rarr;</i><span><b>02</b>Train</span><i>&rarr;</i><span><b>03</b>Track</span></div><span class="art-label">OPENMED / REPRODUCIBLE ML WORKFLOWS</span><span class="art-arrow" aria-hidden="true">&nearr;</span></a><div class="work-meta"><span class="mono">01 / MLOPS &amp; MACHINE LEARNING</span><span>Kubeflow &middot; MLflow</span></div><h3><a href="https://github.com/jadeleke/openmed-mlops" target="_blank" rel="noopener noreferrer">OpenMed MLOps <span aria-hidden="true">&nearr;</span></a></h3><p>A resource-conscious healthcare MLOps demo: synthetic readmission modelling on Kubernetes, with reproducible pipelines and experiment tracking.</p></article>
+          <article class="work-card" data-reveal><a class="work-art pipeline-art" href="openmed.html" aria-label="Read the OpenMed MLOps project brief"><div class="mini-pipeline" aria-hidden="true"><span><b>01</b>Data</span><i>&rarr;</i><span><b>02</b>Train</span><i>&rarr;</i><span><b>03</b>Track</span></div><span class="art-label">OPENMED / REPRODUCIBLE ML WORKFLOWS</span><span class="art-arrow" aria-hidden="true">&nearr;</span></a><div class="work-meta"><span class="mono">01 / MLOPS &amp; MACHINE LEARNING</span><span>Kubeflow &middot; MLflow</span></div><h3><a href="openmed.html">OpenMed MLOps <span aria-hidden="true">&nearr;</span></a></h3><p>A resource-conscious healthcare MLOps demo: synthetic readmission modelling on Kubernetes, with reproducible pipelines and experiment tracking.</p></article>
           <article class="work-card" data-reveal><a class="work-art infra-art" href="https://github.com/jadeleke/terraform-docker-nginx-app" target="_blank" rel="noopener noreferrer" aria-label="Explore Terraform Docker Nginx on GitHub (opens in a new tab)"><div class="infra-blocks" aria-hidden="true"><span>tf<b></b></span><i>&rarr;</i><span>&lt;/&gt;<b></b></span><i>&rarr;</i><span>nginx<b></b></span></div><span class="art-label">INFRASTRUCTURE / DEFINED IN CODE</span><span class="art-arrow" aria-hidden="true">&nearr;</span></a><div class="work-meta"><span class="mono">02 / CLOUD INFRASTRUCTURE</span><span>Terraform &middot; Docker</span></div><h3><a href="https://github.com/jadeleke/terraform-docker-nginx-app" target="_blank" rel="noopener noreferrer">Infrastructure as code <span aria-hidden="true">&nearr;</span></a></h3><p>A reproducible Nginx deployment, provisioned with Terraform and containerised with Docker.</p></article>
         </div>
       </div>
@@ -106,9 +138,36 @@
     <section class="container collaboration" data-reveal aria-labelledby="collab-title"><span class="eyebrow">Good systems start with a conversation</span><h2 id="collab-title">Let’s connect<br>the <em>possibilities.</em></h2><div class="collaboration-bottom"><p>Research ideas, thoughtful collaborations,<br>and ambitious engineering challenges.</p><a class="btn primary" href="contact.html">Start a conversation <span aria-hidden="true">&nearr;</span></a></div></section>
   </main>
   <footer class="site-footer">
-    <div class="container"><div class="footer-main"><div class="footer-intro"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a><p>Exploring uncertainty.<br>Engineering dependability.<br>Based in Accra. Thinking beyond.</p></div><div class="footer-group"><h2>Explore</h2><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="research.html">Research</a></li><li><a href="blog/">Writing</a></li></ul></div><div class="footer-group"><h2>The practice</h2><ul><li><a href="projects.html">Projects</a></li><li><a href="featured.html">Featured work</a></li><li><a href="experience.html">Experience</a></li><li><a href="skills.html">Skills</a></li></ul></div><div class="footer-group"><h2>The background</h2><ul><li><a href="education.html">Education</a></li><li><a href="certificates.html">Credentials</a></li><li><a href="resume.html">Résumé</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025–2026 Joseph Adeleke</p><span>BUILT WITH CURIOSITY &amp; INTENTION</span><div class="footer-utilities"><a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a><a href="https://www.linkedin.com/in/joseph-adeleke-msc-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path class="pause-lines" d="M6 5v6m4-6v6"/></svg><span data-motion-label>Motion on</span></button></div></div></div>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-intro">
+          <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a>
+          <p>Exploring uncertainty.<br>Engineering dependability.<br>Based in Accra. Thinking beyond.</p>
+        </div>
+        <div class="footer-group">
+          <h2>Explore</h2>
+          <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="research.html">Research</a></li><li><a href="blog/">Writing</a></li></ul>
+        </div>
+        <div class="footer-group">
+          <h2>The practice</h2>
+          <ul><li><a href="projects.html">Projects</a></li><li><a href="featured.html">Featured work</a></li><li><a href="experience.html">Experience</a></li><li><a href="skills.html">Skills</a></li></ul>
+        </div>
+        <div class="footer-group">
+          <h2>The background</h2>
+          <ul><li><a href="education.html">Education</a></li><li><a href="certificates.html">Credentials</a></li><li><a href="resume.html">Résumé</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025–2026 Joseph Adeleke</p><span>BUILT WITH CURIOSITY &amp; INTENTION</span>
+        <div class="footer-utilities">
+          <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+          <a href="https://www.linkedin.com/in/joseph-adeleke-msc-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a>
+          <button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path class="pause-lines" d="M6 5v6m4-6v6"/></svg><span data-motion-label>Motion on</span></button>
+        </div>
+      </div>
+    </div>
   </footer>
-  <script src="js/main.js" defer></script>
-  <script src="js/animation.js" defer></script>
+  <script src="js/main.js?v=20261106-2" defer></script>
+  <script src="js/animation.js?v=20261106-2" defer></script>
 </body>
 </html>

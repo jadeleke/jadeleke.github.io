@@ -1,65 +1,223 @@
 [
   {
     "title": "OpenMed MLOps",
-    "description": "A resource-conscious healthcare MLOps demo running a synthetic readmission pipeline on Kubernetes with Kubeflow Pipelines and MLflow experiment tracking.",
+    "description": "An educational MLOps demonstration that trains a classifier on synthetic patient data with Kubeflow Pipelines and records experiments in MLflow on Kubernetes.",
     "repo": "https://github.com/jadeleke/openmed-mlops",
     "demo": "",
-    "tags": ["mlops", "kubeflow", "mlflow", "kubernetes"]
+    "tags": [
+      "Python",
+      "Kubernetes",
+      "Kubeflow",
+      "MLflow"
+    ],
+    "category": "Cloud & MLOps",
+    "source": "https://github.com/jadeleke/openmed-mlops/blob/main/README.md",
+    "brief": "openmed.html"
   },
   {
-    "title": "GhanaVoice",
-    "description": "Speech classification for Ghanaian languages using CNN models.",
-    "repo": "https://github.com/jadeleke/GhanaVoice",
+    "title": "Local Platform Infrastructure",
+    "description": "Terraform-managed local Docker environments with isolated application and PostgreSQL networks, MinIO remote state, and reviewed infrastructure delivery workflows.",
+    "repo": "https://github.com/jadeleke/local-platform-infra",
     "demo": "",
-    "tags": ["ml", "python", "speech"]
+    "tags": [
+      "Terraform",
+      "Docker",
+      "PostgreSQL",
+      "MinIO"
+    ],
+    "category": "Cloud & MLOps",
+    "source": "https://github.com/jadeleke/local-platform-infra/blob/main/README.md"
+  },
+  {
+    "title": "Recall MCP",
+    "description": "Persistent, searchable memory for MCP-capable AI agents, with SQLite full-text search and tools for saving, retrieving, and managing memories across sessions.",
+    "repo": "https://github.com/jadeleke/recall-mcp",
+    "demo": "",
+    "tags": [
+      "TypeScript",
+      "Node.js",
+      "MCP",
+      "SQLite"
+    ],
+    "category": "Apps & Tools",
+    "source": "https://github.com/jadeleke/recall-mcp/blob/main/README.md"
+  },
+  {
+    "title": "PAL Tech Learning Hub",
+    "description": "An offline-first technology learning application with interactive labs, quizzes, coding games, local learner profiles, and facilitator tools.",
+    "repo": "https://github.com/jadeleke/pal-tech",
+    "demo": "",
+    "tags": [
+      "TypeScript",
+      "React",
+      "PWA",
+      "Vite"
+    ],
+    "category": "Apps & Tools",
+    "source": "https://github.com/jadeleke/pal-tech/blob/main/README.md"
+  },
+  {
+    "title": "LocalTongue Audio Classifier",
+    "description": "A Flask application that classifies uploaded audio as Akan, Dagbani, or Ikposo using mel-spectrogram features and a TensorFlow/Keras model.",
+    "repo": "https://github.com/jadeleke/LocalTongue-Audio-Classifier",
+    "demo": "",
+    "tags": [
+      "Python",
+      "Flask",
+      "TensorFlow",
+      "librosa"
+    ],
+    "category": "AI & Data",
+    "source": "https://github.com/jadeleke/LocalTongue-Audio-Classifier/blob/main/README.md"
+  },
+  {
+    "title": "Loop Engineering Studio",
+    "description": "A browser-based planning tool for repeatable AI agent loops, including verification gates, human review, retry policies, and JSON, YAML, or Markdown export.",
+    "repo": "https://github.com/jadeleke/loop-engineering-studio",
+    "demo": "",
+    "tags": [
+      "JavaScript",
+      "Agent tooling",
+      "Workflow design"
+    ],
+    "category": "Apps & Tools",
+    "source": "https://github.com/jadeleke/loop-engineering-studio/blob/main/README.md"
+  },
+  {
+    "title": "Health Sentinel",
+    "description": "A personal wellness prototype that reads Android Health Connect summaries, stores them locally, and compares daily signals with a recent baseline.",
+    "repo": "https://github.com/jadeleke/Health-Sentinel",
+    "demo": "",
+    "tags": [
+      "Kotlin",
+      "Jetpack Compose",
+      "FastAPI",
+      "SQLite"
+    ],
+    "category": "Apps & Tools",
+    "source": "https://github.com/jadeleke/Health-Sentinel/blob/main/README.md"
+  },
+  {
+    "title": "PAL Evaluation",
+    "description": "A volunteer reporting and cohort evaluation pilot with role-based access, session reports, attendance summaries, dashboards, and CSV exports.",
+    "repo": "https://github.com/jadeleke/pal-evaluation",
+    "demo": "",
+    "tags": [
+      "JavaScript",
+      "Supabase",
+      "PostgreSQL",
+      "RLS"
+    ],
+    "category": "Apps & Tools",
+    "source": "https://github.com/jadeleke/pal-evaluation/blob/main/README.md"
+  },
+  {
+    "title": "English Audio Transcription (Wav2Vec2)",
+    "description": "An English speech transcription script using pretrained Wav2Vec2, audio resampling and normalisation, and optional GPU inference.",
+    "repo": "https://github.com/jadeleke/English-Audio-Transcription-Wav2Vec2",
+    "demo": "",
+    "tags": [
+      "Python",
+      "PyTorch",
+      "Hugging Face",
+      "ASR"
+    ],
+    "category": "AI & Data",
+    "source": "https://github.com/jadeleke/English-Audio-Transcription-Wav2Vec2/blob/main/english_transcribed.py"
   },
   {
     "title": "Melanoma-Classification-Pipeline",
-    "description": "End-to-end ML pipeline for melanoma classification with model training, evaluation, and deployment.",
+    "description": "A PyTorch skin-lesion classification project with data preparation, EfficientNet-B3 training, validation reports, and experiment visualisations.",
     "repo": "https://github.com/jadeleke/Melanoma-Classification-Pipeline",
     "demo": "",
-    "tags": ["ml", "python", "pipeline"]
+    "tags": [
+      "Python",
+      "PyTorch",
+      "Computer vision",
+      "Evaluation"
+    ],
+    "source": "https://github.com/jadeleke/Melanoma-Classification-Pipeline/blob/main/IMPLEMENTATION.md",
+    "category": "AI & Data"
   },
   {
     "title": "Akan-Whisper-Transcription",
-    "description": "Automatic speech recognition for the Akan language using OpenAI Whisper.",
+    "description": "An Asante Twi speech transcription script using a pretrained Akan Whisper model with audio resampling and optional GPU inference.",
     "repo": "https://github.com/jadeleke/Akan-Whisper-Transcription",
     "demo": "",
-    "tags": ["ml", "python", "nlp"]
+    "tags": [
+      "Python",
+      "PyTorch",
+      "Whisper",
+      "ASR"
+    ],
+    "source": "https://github.com/jadeleke/Akan-Whisper-Transcription/blob/main/README.md",
+    "category": "AI & Data"
   },
   {
     "title": "Multi-Language-Classifier",
-    "description": "NLP classifier supporting multiple languages for text categorisation.",
+    "description": "A Streamlit audio classifier for Akan, Dagbani, and Ikposo, using mel-spectrogram preprocessing and a TensorFlow/Keras model.",
     "repo": "https://github.com/jadeleke/Multi-Language-Classifier",
     "demo": "",
-    "tags": ["ml", "python", "nlp"]
+    "tags": [
+      "Python",
+      "Streamlit",
+      "TensorFlow",
+      "Audio"
+    ],
+    "source": "https://github.com/jadeleke/Multi-Language-Classifier/blob/main/app.py",
+    "category": "AI & Data"
   },
   {
     "title": "react-docksmith",
-    "description": "React portfolio showcasing DevOps workflow: Docker multi-stage builds and CI.",
+    "description": "A containerised React portfolio demonstrating multi-stage Docker builds and Nginx serving.",
     "repo": "https://github.com/jadeleke/react-docksmith",
     "demo": "",
-    "tags": ["devops", "docker", "react"]
+    "tags": [
+      "React",
+      "Docker",
+      "Nginx"
+    ],
+    "source": "https://github.com/jadeleke/react-docksmith/blob/main/README.md",
+    "category": "Cloud & MLOps"
   },
   {
     "title": "terraform-docker-nginx-app",
     "description": "Infrastructure-as-code demo deploying an Nginx app with Terraform and Docker.",
     "repo": "https://github.com/jadeleke/terraform-docker-nginx-app",
     "demo": "",
-    "tags": ["devops", "terraform", "docker"]
+    "tags": [
+      "Terraform",
+      "Docker",
+      "Nginx"
+    ],
+    "source": "https://github.com/jadeleke/terraform-docker-nginx-app/blob/main/README.md",
+    "category": "Cloud & MLOps"
   },
   {
     "title": "docker-swarm-vagrant-demo",
     "description": "Provisioning a Docker Swarm cluster on Windows using Vagrant and VirtualBox.",
     "repo": "https://github.com/jadeleke/docker-swarm-vagrant-demo",
     "demo": "",
-    "tags": ["devops", "docker", "vagrant"]
+    "tags": [
+      "Docker Swarm",
+      "Vagrant",
+      "VirtualBox"
+    ],
+    "source": "https://github.com/jadeleke/docker-swarm-vagrant-demo/blob/main/README.md",
+    "category": "Cloud & MLOps"
   },
   {
     "title": "pdf2audiobook",
-    "description": "Python utility that converts PDF documents into audiobook format.",
+    "description": "A local PDF-to-audiobook command-line tool with chapter audio, merged outputs, and Piper or Coqui text-to-speech backends.",
     "repo": "https://github.com/jadeleke/pdf2audiobook",
     "demo": "",
-    "tags": ["python", "utility", "audio"]
+    "tags": [
+      "Python",
+      "Text-to-speech",
+      "FFmpeg",
+      "CLI"
+    ],
+    "source": "https://github.com/jadeleke/pdf2audiobook/blob/main/README.md",
+    "category": "Apps & Tools"
   }
 ]

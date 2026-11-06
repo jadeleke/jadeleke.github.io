@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/theme.js"></script>
+  <script src="js/theme.js?v=20261106-2"></script>
   <meta name="description" content="Featured open source projects by Joseph Adeleke.">
   <meta name="author" content="Joseph Adeleke">
   <meta name="color-scheme" content="dark light">
@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=20261106-2">
   <link rel="manifest" href="manifest.webmanifest">
   <meta property="og:title" content="Featured Projects | Joseph Adeleke">
   <meta property="og:type" content="website">
@@ -29,14 +29,41 @@
   <div class="reading-progress" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-bar">
-      <a class="brand" href="index.html" aria-label="Joseph Adeleke, home"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a>
-      <nav aria-label="Primary"><ul id="primary-menu" class="menu"><li><a href="research.html">Research</a></li>
-<li><a href="projects.html">Work</a></li>
-<li><a href="experience.html">Experience</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="blog/">Writing</a></li>
-<li><a href="contact.html">Contact</a></li></ul></nav>
-      <div class="nav-controls"><a class="nav-contact" href="resume.html">View résumé <span aria-hidden="true">&nearr;</span></a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch colour theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="menu-toggle-box" aria-hidden="true"><span class="menu-toggle-line"></span><span class="menu-toggle-line"></span></span><span>Menu</span></button></div>
+      <a class="brand" href="index.html" aria-label="Joseph Adeleke, home">
+        <span class="brand-icon" aria-hidden="true">ja.</span>
+        <span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul id="primary-menu" class="menu">
+          <li><a href="research.html">Research</a></li>
+          <li><a href="projects.html">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog/">Writing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <details class="nav-explore">
+              <summary>Explore <span aria-hidden="true">+</span></summary>
+              <ul class="explore-menu">
+                <li><a href="resume.html">Résumé</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="certificates.html">Credentials</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="featured.html">Featured projects</a></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch colour theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+          <span class="menu-toggle-box" aria-hidden="true"><span class="menu-toggle-line"></span><span class="menu-toggle-line"></span></span>
+          <span>Menu</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -46,27 +73,174 @@
         <span class="eyebrow">Open source</span>
         <h1 class="section-title">A closer look<br>at the work.</h1>
         <p class="section-lead">Selected repositories across applied machine learning, language technology, developer tools, and reproducible infrastructure. Explore the source and the ideas behind each project.</p>
+        <p class="skill-note" data-featured-summary>16 selected projects across cloud infrastructure, applied AI, and useful software.</p>
       </header>
 
       <div id="featured-list" class="card-grid three">
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 01</span><h3 class="repo-title"><a href="https://github.com/jadeleke/openmed-mlops" target="_blank" rel="noopener noreferrer">OpenMed MLOps</a></h3><p class="muted repo-desc">A resource-conscious healthcare MLOps demo running a synthetic readmission pipeline on Kubernetes with Kubeflow Pipelines and MLflow experiment tracking.</p><div class="tag-strip"><span class="tag-pill">mlops</span><span class="tag-pill">kubeflow</span><span class="tag-pill">mlflow</span><span class="tag-pill">kubernetes</span></div><a class="text-link" href="https://github.com/jadeleke/openmed-mlops" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 02</span><h3 class="repo-title"><a href="https://github.com/jadeleke/GhanaVoice" target="_blank" rel="noopener noreferrer">GhanaVoice</a></h3><p class="muted repo-desc">Speech classification for Ghanaian languages using CNN models.</p><div class="tag-strip"><span class="tag-pill">ml</span><span class="tag-pill">python</span><span class="tag-pill">speech</span></div><a class="text-link" href="https://github.com/jadeleke/GhanaVoice" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 03</span><h3 class="repo-title"><a href="https://github.com/jadeleke/Melanoma-Classification-Pipeline" target="_blank" rel="noopener noreferrer">Melanoma-Classification-Pipeline</a></h3><p class="muted repo-desc">End-to-end ML pipeline for melanoma classification with model training, evaluation, and deployment.</p><div class="tag-strip"><span class="tag-pill">ml</span><span class="tag-pill">python</span><span class="tag-pill">pipeline</span></div><a class="text-link" href="https://github.com/jadeleke/Melanoma-Classification-Pipeline" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 04</span><h3 class="repo-title"><a href="https://github.com/jadeleke/Akan-Whisper-Transcription" target="_blank" rel="noopener noreferrer">Akan-Whisper-Transcription</a></h3><p class="muted repo-desc">Automatic speech recognition for the Akan language using OpenAI Whisper.</p><div class="tag-strip"><span class="tag-pill">ml</span><span class="tag-pill">python</span><span class="tag-pill">nlp</span></div><a class="text-link" href="https://github.com/jadeleke/Akan-Whisper-Transcription" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 05</span><h3 class="repo-title"><a href="https://github.com/jadeleke/Multi-Language-Classifier" target="_blank" rel="noopener noreferrer">Multi-Language-Classifier</a></h3><p class="muted repo-desc">NLP classifier supporting multiple languages for text categorisation.</p><div class="tag-strip"><span class="tag-pill">ml</span><span class="tag-pill">python</span><span class="tag-pill">nlp</span></div><a class="text-link" href="https://github.com/jadeleke/Multi-Language-Classifier" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 06</span><h3 class="repo-title"><a href="https://github.com/jadeleke/react-docksmith" target="_blank" rel="noopener noreferrer">react-docksmith</a></h3><p class="muted repo-desc">React portfolio showcasing DevOps workflow: Docker multi-stage builds and CI.</p><div class="tag-strip"><span class="tag-pill">devops</span><span class="tag-pill">docker</span><span class="tag-pill">react</span></div><a class="text-link" href="https://github.com/jadeleke/react-docksmith" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 07</span><h3 class="repo-title"><a href="https://github.com/jadeleke/terraform-docker-nginx-app" target="_blank" rel="noopener noreferrer">terraform-docker-nginx-app</a></h3><p class="muted repo-desc">Infrastructure-as-code demo deploying an Nginx app with Terraform and Docker.</p><div class="tag-strip"><span class="tag-pill">devops</span><span class="tag-pill">terraform</span><span class="tag-pill">docker</span></div><a class="text-link" href="https://github.com/jadeleke/terraform-docker-nginx-app" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 08</span><h3 class="repo-title"><a href="https://github.com/jadeleke/docker-swarm-vagrant-demo" target="_blank" rel="noopener noreferrer">docker-swarm-vagrant-demo</a></h3><p class="muted repo-desc">Provisioning a Docker Swarm cluster on Windows using Vagrant and VirtualBox.</p><div class="tag-strip"><span class="tag-pill">devops</span><span class="tag-pill">docker</span><span class="tag-pill">vagrant</span></div><a class="text-link" href="https://github.com/jadeleke/docker-swarm-vagrant-demo" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
-<article class="card repo-card" data-reveal><span class="eyebrow">Selected work / 09</span><h3 class="repo-title"><a href="https://github.com/jadeleke/pdf2audiobook" target="_blank" rel="noopener noreferrer">pdf2audiobook</a></h3><p class="muted repo-desc">Python utility that converts PDF documents into audiobook format.</p><div class="tag-strip"><span class="tag-pill">python</span><span class="tag-pill">utility</span><span class="tag-pill">audio</span></div><a class="text-link" href="https://github.com/jadeleke/pdf2audiobook" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">&nearr;</span></a></article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 01 / Cloud &amp; MLOps</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/openmed-mlops" target="_blank" rel="noopener noreferrer">OpenMed MLOps</a></h3>
+          <p class="muted repo-desc">An educational MLOps demonstration that trains a classifier on synthetic patient data with Kubeflow Pipelines and records experiments in MLflow on Kubernetes.</p>
+          <div class="tag-strip"><span class="tag-pill">Python</span><span class="tag-pill">Kubernetes</span><span class="tag-pill">Kubeflow</span><span class="tag-pill">MLflow</span></div>
+          <div class="repo-actions"><a class="btn primary" href="openmed.html">Project brief <span aria-hidden="true">&nearr;</span></a><a class="btn" href="https://github.com/jadeleke/openmed-mlops" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/openmed-mlops/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 02 / Cloud &amp; MLOps</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/local-platform-infra" target="_blank" rel="noopener noreferrer">Local Platform Infrastructure</a></h3>
+          <p class="muted repo-desc">Terraform-managed local Docker environments with isolated application and PostgreSQL networks, MinIO remote state, and reviewed infrastructure delivery workflows.</p>
+          <div class="tag-strip"><span class="tag-pill">Terraform</span><span class="tag-pill">Docker</span><span class="tag-pill">PostgreSQL</span><span class="tag-pill">MinIO</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/local-platform-infra" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/local-platform-infra/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 03 / Apps &amp; Tools</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/recall-mcp" target="_blank" rel="noopener noreferrer">Recall MCP</a></h3>
+          <p class="muted repo-desc">Persistent, searchable memory for MCP-capable AI agents, with SQLite full-text search and tools for saving, retrieving, and managing memories across sessions.</p>
+          <div class="tag-strip"><span class="tag-pill">TypeScript</span><span class="tag-pill">Node.js</span><span class="tag-pill">MCP</span><span class="tag-pill">SQLite</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/recall-mcp" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/recall-mcp/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 04 / Apps &amp; Tools</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/pal-tech" target="_blank" rel="noopener noreferrer">PAL Tech Learning Hub</a></h3>
+          <p class="muted repo-desc">An offline-first technology learning application with interactive labs, quizzes, coding games, local learner profiles, and facilitator tools.</p>
+          <div class="tag-strip"><span class="tag-pill">TypeScript</span><span class="tag-pill">React</span><span class="tag-pill">PWA</span><span class="tag-pill">Vite</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/pal-tech" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/pal-tech/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 05 / AI &amp; Data</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/LocalTongue-Audio-Classifier" target="_blank" rel="noopener noreferrer">LocalTongue Audio Classifier</a></h3>
+          <p class="muted repo-desc">A Flask application that classifies uploaded audio as Akan, Dagbani, or Ikposo using mel-spectrogram features and a TensorFlow/Keras model.</p>
+          <div class="tag-strip"><span class="tag-pill">Python</span><span class="tag-pill">Flask</span><span class="tag-pill">TensorFlow</span><span class="tag-pill">librosa</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/LocalTongue-Audio-Classifier" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/LocalTongue-Audio-Classifier/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 06 / Apps &amp; Tools</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/loop-engineering-studio" target="_blank" rel="noopener noreferrer">Loop Engineering Studio</a></h3>
+          <p class="muted repo-desc">A browser-based planning tool for repeatable AI agent loops, including verification gates, human review, retry policies, and JSON, YAML, or Markdown export.</p>
+          <div class="tag-strip"><span class="tag-pill">JavaScript</span><span class="tag-pill">Agent tooling</span><span class="tag-pill">Workflow design</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/loop-engineering-studio" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/loop-engineering-studio/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 07 / Apps &amp; Tools</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/Health-Sentinel" target="_blank" rel="noopener noreferrer">Health Sentinel</a></h3>
+          <p class="muted repo-desc">A personal wellness prototype that reads Android Health Connect summaries, stores them locally, and compares daily signals with a recent baseline.</p>
+          <div class="tag-strip"><span class="tag-pill">Kotlin</span><span class="tag-pill">Jetpack Compose</span><span class="tag-pill">FastAPI</span><span class="tag-pill">SQLite</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/Health-Sentinel" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/Health-Sentinel/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 08 / Apps &amp; Tools</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/pal-evaluation" target="_blank" rel="noopener noreferrer">PAL Evaluation</a></h3>
+          <p class="muted repo-desc">A volunteer reporting and cohort evaluation pilot with role-based access, session reports, attendance summaries, dashboards, and CSV exports.</p>
+          <div class="tag-strip"><span class="tag-pill">JavaScript</span><span class="tag-pill">Supabase</span><span class="tag-pill">PostgreSQL</span><span class="tag-pill">RLS</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/pal-evaluation" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/pal-evaluation/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 09 / AI &amp; Data</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/English-Audio-Transcription-Wav2Vec2" target="_blank" rel="noopener noreferrer">English Audio Transcription (Wav2Vec2)</a></h3>
+          <p class="muted repo-desc">An English speech transcription script using pretrained Wav2Vec2, audio resampling and normalisation, and optional GPU inference.</p>
+          <div class="tag-strip"><span class="tag-pill">Python</span><span class="tag-pill">PyTorch</span><span class="tag-pill">Hugging Face</span><span class="tag-pill">ASR</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/English-Audio-Transcription-Wav2Vec2" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/English-Audio-Transcription-Wav2Vec2/blob/main/english_transcribed.py" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 10 / AI &amp; Data</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/Melanoma-Classification-Pipeline" target="_blank" rel="noopener noreferrer">Melanoma-Classification-Pipeline</a></h3>
+          <p class="muted repo-desc">A PyTorch skin-lesion classification project with data preparation, EfficientNet-B3 training, validation reports, and experiment visualisations.</p>
+          <div class="tag-strip"><span class="tag-pill">Python</span><span class="tag-pill">PyTorch</span><span class="tag-pill">Computer vision</span><span class="tag-pill">Evaluation</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/Melanoma-Classification-Pipeline" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/Melanoma-Classification-Pipeline/blob/main/IMPLEMENTATION.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 11 / AI &amp; Data</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/Akan-Whisper-Transcription" target="_blank" rel="noopener noreferrer">Akan-Whisper-Transcription</a></h3>
+          <p class="muted repo-desc">An Asante Twi speech transcription script using a pretrained Akan Whisper model with audio resampling and optional GPU inference.</p>
+          <div class="tag-strip"><span class="tag-pill">Python</span><span class="tag-pill">PyTorch</span><span class="tag-pill">Whisper</span><span class="tag-pill">ASR</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/Akan-Whisper-Transcription" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/Akan-Whisper-Transcription/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 12 / AI &amp; Data</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/Multi-Language-Classifier" target="_blank" rel="noopener noreferrer">Multi-Language-Classifier</a></h3>
+          <p class="muted repo-desc">A Streamlit audio classifier for Akan, Dagbani, and Ikposo, using mel-spectrogram preprocessing and a TensorFlow/Keras model.</p>
+          <div class="tag-strip"><span class="tag-pill">Python</span><span class="tag-pill">Streamlit</span><span class="tag-pill">TensorFlow</span><span class="tag-pill">Audio</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/Multi-Language-Classifier" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/Multi-Language-Classifier/blob/main/app.py" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 13 / Cloud &amp; MLOps</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/react-docksmith" target="_blank" rel="noopener noreferrer">react-docksmith</a></h3>
+          <p class="muted repo-desc">A containerised React portfolio demonstrating multi-stage Docker builds and Nginx serving.</p>
+          <div class="tag-strip"><span class="tag-pill">React</span><span class="tag-pill">Docker</span><span class="tag-pill">Nginx</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/react-docksmith" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/react-docksmith/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 14 / Cloud &amp; MLOps</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/terraform-docker-nginx-app" target="_blank" rel="noopener noreferrer">terraform-docker-nginx-app</a></h3>
+          <p class="muted repo-desc">Infrastructure-as-code demo deploying an Nginx app with Terraform and Docker.</p>
+          <div class="tag-strip"><span class="tag-pill">Terraform</span><span class="tag-pill">Docker</span><span class="tag-pill">Nginx</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/terraform-docker-nginx-app" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/terraform-docker-nginx-app/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 15 / Cloud &amp; MLOps</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/docker-swarm-vagrant-demo" target="_blank" rel="noopener noreferrer">docker-swarm-vagrant-demo</a></h3>
+          <p class="muted repo-desc">Provisioning a Docker Swarm cluster on Windows using Vagrant and VirtualBox.</p>
+          <div class="tag-strip"><span class="tag-pill">Docker Swarm</span><span class="tag-pill">Vagrant</span><span class="tag-pill">VirtualBox</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/docker-swarm-vagrant-demo" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/docker-swarm-vagrant-demo/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
+        <article class="card repo-card" data-reveal>
+          <span class="eyebrow">Selected work / 16 / Apps &amp; Tools</span>
+          <h3 class="repo-title"><a href="https://github.com/jadeleke/pdf2audiobook" target="_blank" rel="noopener noreferrer">pdf2audiobook</a></h3>
+          <p class="muted repo-desc">A local PDF-to-audiobook command-line tool with chapter audio, merged outputs, and Piper or Coqui text-to-speech backends.</p>
+          <div class="tag-strip"><span class="tag-pill">Python</span><span class="tag-pill">Text-to-speech</span><span class="tag-pill">FFmpeg</span><span class="tag-pill">CLI</span></div>
+          <div class="repo-actions"><a class="btn" href="https://github.com/jadeleke/pdf2audiobook" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">&nearr;</span></a></div>
+          <a class="text-link" href="https://github.com/jadeleke/pdf2audiobook/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read project documentation <span aria-hidden="true">&nearr;</span></a>
+        </article>
       </div>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container"><div class="footer-main"><div class="footer-intro"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a><p>Exploring uncertainty.<br>Engineering dependability.<br>Based in Accra. Thinking beyond.</p></div><div class="footer-group"><h2>Explore</h2><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="research.html">Research</a></li><li><a href="blog/">Writing</a></li></ul></div><div class="footer-group"><h2>The practice</h2><ul><li><a href="projects.html">Projects</a></li><li><a href="featured.html">Featured work</a></li><li><a href="experience.html">Experience</a></li><li><a href="skills.html">Skills</a></li></ul></div><div class="footer-group"><h2>The background</h2><ul><li><a href="education.html">Education</a></li><li><a href="certificates.html">Credentials</a></li><li><a href="resume.html">Résumé</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025–2026 Joseph Adeleke</p><span>BUILT WITH CURIOSITY &amp; INTENTION</span><div class="footer-utilities"><a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a><a href="https://www.linkedin.com/in/joseph-adeleke-msc-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path class="pause-lines" d="M6 5v6m4-6v6"/></svg><span data-motion-label>Motion on</span></button></div></div></div>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-intro">
+          <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ja.</span><span class="brand-name">Joseph Adeleke<small>RESEARCH &amp; ENGINEERING</small></span></a>
+          <p>Exploring uncertainty.<br>Engineering dependability.<br>Based in Accra. Thinking beyond.</p>
+        </div>
+        <div class="footer-group">
+          <h2>Explore</h2>
+          <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="research.html">Research</a></li><li><a href="blog/">Writing</a></li></ul>
+        </div>
+        <div class="footer-group">
+          <h2>The practice</h2>
+          <ul><li><a href="projects.html">Projects</a></li><li><a href="featured.html">Featured work</a></li><li><a href="experience.html">Experience</a></li><li><a href="skills.html">Skills</a></li></ul>
+        </div>
+        <div class="footer-group">
+          <h2>The background</h2>
+          <ul><li><a href="education.html">Education</a></li><li><a href="certificates.html">Credentials</a></li><li><a href="resume.html">Résumé</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025–2026 Joseph Adeleke</p><span>BUILT WITH CURIOSITY &amp; INTENTION</span>
+        <div class="footer-utilities">
+          <a href="https://github.com/jadeleke" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+          <a href="https://www.linkedin.com/in/joseph-adeleke-msc-27b433149/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a>
+          <button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path class="pause-lines" d="M6 5v6m4-6v6"/></svg><span data-motion-label>Motion on</span></button>
+        </div>
+      </div>
+    </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
-  <script src="js/animation.js" defer></script>
+  <script src="js/main.js?v=20261106-2" defer></script>
+  <script src="js/animation.js?v=20261106-2" defer></script>
 </body>
 </html>

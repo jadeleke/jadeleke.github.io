@@ -3,6 +3,10 @@
 .projects-page .section-heading { margin-bottom: 30px; }
 .project-section-title { font: clamp(2rem, 3.4vw, 3rem)/1.12 var(--serif); letter-spacing: -.025em; }
 .projects-page .card-grid.flagship-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.projects-page .selected-project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.research-hub > .text-link { margin-top: 25px; }
+.page-sections { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-block: 18px; border-block: 1px solid var(--border); margin-block: 0 45px; }
+.page-sections a { font-size: .8rem; color: var(--text); padding-block: 5px; }
 .projects-page .repo-card { gap: 20px; padding: 32px; }
 .projects-page .repo-title { font-size: 1.2rem; line-height: 1.35; }
 .projects-page .repo-card.flagship { background: var(--surface-alt); border-color: var(--accent); }
@@ -25,7 +29,11 @@
 .projects-page .repo-title, .projects-page .repo-desc, .projects-page .repo-meta { overflow-wrap: anywhere; }
 .projects-page .repo-title a { text-decoration-thickness: 1px; }
 .projects-page .repo-actions .btn { font-size: .75rem; padding: 10px 15px; }
+@media (max-width: 1000px) {
+ .projects-page .selected-project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 680px) {
+ .projects-page .selected-project-grid { grid-template-columns: minmax(0, 1fr); }
  .projects-page .card-grid.flagship-grid { grid-template-columns: minmax(0, 1fr); }
  .projects-page .research-hub { margin-bottom: 50px; }
  .projects-page .repo-card { padding: 25px; }

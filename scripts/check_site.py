@@ -4,6 +4,9 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
+from sync_shell import sync
+from build_projects import build as check_projects
+import json
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -29,9 +32,17 @@ class Document(HTMLParser):
 
 
 def check():
+    sync(check=True)
+    check_projects(check=True)
     pages = [*ROOT.glob("*.html"), *ROOT.glob("blog/*.html"), *ROOT.glob("blog/posts/*.html")]
     docs = {p: Document(p.read_text(encoding="utf-8")) for p in pages}
     errors = []
+    snapshot = json.loads((ROOT / "data/repos-cache.json").read_text(encoding="utf-8"))
+    public_urls = {repo["html_url"].lower().rstrip("/") for repo in snapshot}
+    curated = json.loads((ROOT / "data/featured.json").read_text(encoding="utf-8"))
+    for item in curated:
+        if item["repo"].lower().rstrip("/") not in public_urls:
+            errors.append(f"Curated project is absent from the verified public snapshot: {item['repo']}")
     for page, doc in docs.items():
         name = page.relative_to(ROOT)
         duplicates = [key for key, n in Counter(doc.ids).items() if n > 1]

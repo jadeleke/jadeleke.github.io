@@ -298,11 +298,11 @@
   color: var(--success);
   min-height: 1.2em;
 }
-.form-status.error { color: #f87171; }
+.form-status.error { color: var(--error); }
 
 .btn-primary {
   background: var(--accent);
-  color: #0f172a;
+  color: var(--bg);
   border: none;
   border-radius: 8px;
   font-family: inherit;
