@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-v23';
+const CACHE_NAME = 'site-cache-v24';
 const ASSETS = [
   '/',
   '/index.html',
@@ -24,7 +24,8 @@ const ASSETS = [
   '/blog/posts/hello-mlops.html',
   '/blog/posts/devops-mlops-oracle-linux.html',
   '/data/featured.json',
-  '/assets/favicon.svg'
+  '/assets/favicon.svg',
+  '/assets/joseph-adeleke.jpg'
 ];
 
 self.addEventListener('install', event => {
