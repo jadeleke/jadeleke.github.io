@@ -224,6 +224,7 @@
     if (!container) return;
     // Verified selections from data/featured.json remain useful when the network is unavailable.
     const selections = [
+      { title: 'OpenMed MLOps', description: 'A synthetic readmission MLOps demo on Kubernetes with Kubeflow Pipelines and MLflow.', repo: 'https://github.com/jadeleke/openmed-mlops', tags: ['mlops', 'kubeflow', 'mlflow', 'kubernetes'] },
       { title: 'GhanaVoice', description: 'Speech classification for Ghanaian languages using CNN models.', repo: 'https://github.com/jadeleke/GhanaVoice', tags: ['ML', 'Python', 'Speech'] },
       { title: 'Melanoma-Classification-Pipeline', description: 'End-to-end ML pipeline for melanoma classification with model training, evaluation, and deployment.', repo: 'https://github.com/jadeleke/Melanoma-Classification-Pipeline', tags: ['ML', 'Python', 'Pipeline'] },
       { title: 'terraform-docker-nginx-app', description: 'Infrastructure-as-code demo deploying an Nginx app with Terraform and Docker.', repo: 'https://github.com/jadeleke/terraform-docker-nginx-app', tags: ['DevOps', 'Terraform', 'Docker'] }

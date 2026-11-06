@@ -160,6 +160,12 @@ main { min-height: 50vh; }
 .work-art { display: grid; place-items: center; position: relative; aspect-ratio: 1.7; overflow: hidden; border-radius: 4px; transition: border-radius .3s; }
 .work-art:hover { border-radius: 20px; }
 .sound-art { background: #dfe5d4; }
+.pipeline-art { background: #dfe5d4; }
+.mini-pipeline { display: flex; gap: 18px; align-items: center; width: 76%; }
+.mini-pipeline > span { flex: 1; aspect-ratio: 1; border: 1px solid #8caa7a; border-radius: 50%; background: #eaf0df; color: #34503f; display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center; font-size: .9rem; transition: transform .3s; }
+.mini-pipeline b { font: .6rem var(--mono); color: #627a55; font-weight: 400; }
+.mini-pipeline i { color: #668256; font-style: normal; }
+.pipeline-art:hover .mini-pipeline > span { transform: translateY(-5px); }
 .sound-wave { display: flex; align-items: center; gap: 7px; width: 75%; height: 44%; }
 .sound-wave i { height: var(--height); flex: 1; min-width: 2px; background: #3c674e; border-radius: 3px; transition: transform .4s; }
 .sound-wave i:nth-child(3n) { background: #7b9165; }
